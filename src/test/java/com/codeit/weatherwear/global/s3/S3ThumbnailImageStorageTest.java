@@ -10,7 +10,7 @@ import static org.mockito.Mockito.mock;
 
 import com.codeit.weatherwear.global.exception.s3.S3DeleteException;
 import com.codeit.weatherwear.global.exception.s3.S3PresignedException;
-import com.codeit.weatherwear.global.exception.s3.S3UploadException;
+import com.codeit.weatherwear.global.exception.s3.UnsupportedImageTypeException;
 import com.codeit.weatherwear.global.storage.s3.S3ThumbnailImageStorage;
 import java.io.ByteArrayInputStream;
 import java.net.URL;
@@ -72,14 +72,15 @@ public class S3ThumbnailImageStorageTest {
   }
 
   @Test
-  @DisplayName("upload 실패 - 지원하지 않는 미디어타입")
+  @DisplayName("upload 실패 - 이미지가 아닌 형식이면 UnsupportedImageTypeException")
   void upload_unsupportedMediaType_throwsException() {
-    // given
+    // given - content-type도 이미지가 아니고 확장자도 알 수 없는 경우
     given(multipartFile.getContentType()).willReturn("application/pdf");
+    given(multipartFile.getOriginalFilename()).willReturn("document.pdf");
 
     // when, then
     assertThatThrownBy(() -> storage.upload(multipartFile))
-        .isInstanceOf(S3UploadException.class);
+        .isInstanceOf(UnsupportedImageTypeException.class);
   }
 
   @Test

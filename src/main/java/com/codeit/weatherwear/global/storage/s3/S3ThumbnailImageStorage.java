@@ -3,6 +3,7 @@ package com.codeit.weatherwear.global.storage.s3;
 import com.codeit.weatherwear.global.exception.s3.S3DeleteException;
 import com.codeit.weatherwear.global.exception.s3.S3PresignedException;
 import com.codeit.weatherwear.global.exception.s3.S3UploadException;
+import com.codeit.weatherwear.global.exception.s3.UnsupportedImageTypeException;
 import com.codeit.weatherwear.global.storage.ThumbnailImageStorage;
 import java.io.IOException;
 import java.net.URI;
@@ -52,8 +53,8 @@ public class S3ThumbnailImageStorage implements ThumbnailImageStorage {
         case "gif" -> "image/gif";
         case "webp" -> "image/webp";
         default -> {
-          log.warn("[S3 Upload Fail] Unknown Media Type: {}", ext);
-          throw new S3UploadException();
+          log.warn("[S3 Upload Fail] Unsupported Image Type - ext: {}", ext);
+          throw new UnsupportedImageTypeException();
         }
       };
     }
@@ -64,7 +65,7 @@ public class S3ThumbnailImageStorage implements ThumbnailImageStorage {
         PutObjectRequest.builder()
             .bucket(bucket)
             .key(key)
-            .contentType(file.getContentType())
+            .contentType(contentType)
             .build();
 
     try {
