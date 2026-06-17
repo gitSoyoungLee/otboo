@@ -67,7 +67,7 @@ public class S3ThumbnailImageStorageTest {
     String key = storage.upload(multipartFile);
 
     // then
-    assertThat(key).startsWith("image/");
+    assertThat(key).startsWith("images/");
     then(s3Client).should().putObject(any(PutObjectRequest.class), any(RequestBody.class));
   }
 

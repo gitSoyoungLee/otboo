@@ -32,7 +32,11 @@ public class S3ThumbnailImageStorage implements ThumbnailImageStorage {
 
   private final S3Client s3Client;
   private final S3Presigner s3Presigner;
+  // MIME 타입 판별용 (Content-Type이 이미지인지 검사)
   private static final String CONTENT_TYPE_IMAGE_PREFIX = "image/";
+  // S3 객체 key 접두사 (저장 경로). MIME 판별 상수와 역할이 다르므로 분리.
+  // 의류/프로필/피드 등 여러 도메인이 공유하므로 도메인 중립적인 이름 사용.
+  private static final String KEY_PREFIX = "images/";
 
   @Value("${weatherwear.storage.s3.bucket}")
   private String bucket;
@@ -59,7 +63,7 @@ public class S3ThumbnailImageStorage implements ThumbnailImageStorage {
       };
     }
 
-    String key = CONTENT_TYPE_IMAGE_PREFIX + UUID.randomUUID();
+    String key = KEY_PREFIX + UUID.randomUUID();
 
     PutObjectRequest request =
         PutObjectRequest.builder()
