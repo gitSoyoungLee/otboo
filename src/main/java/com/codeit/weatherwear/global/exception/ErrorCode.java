@@ -88,7 +88,11 @@ public enum ErrorCode {
   NOT_SUPPORT_SITE(HttpStatus.BAD_REQUEST, "지원할 수 없는 사이트입니다.", "옷 불러오기 실패"),
 
   //EVENT
-  KAFKA_MESSAGE_CONVERT_FAIL(HttpStatus.INTERNAL_SERVER_ERROR, "이벤트 메세지 직렬화 실패", "");
+  KAFKA_MESSAGE_CONVERT_FAIL(HttpStatus.INTERNAL_SERVER_ERROR, "이벤트 메세지 직렬화 실패", ""),
+
+  //IMAGE PROCESSING
+  IMAGE_PROCESSING_FAIL(HttpStatus.INTERNAL_SERVER_ERROR,"이미지 처리 중 실패","")
+  ;
 
   private final HttpStatus status;
   private final String message;
