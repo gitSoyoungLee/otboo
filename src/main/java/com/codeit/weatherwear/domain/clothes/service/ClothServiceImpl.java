@@ -25,7 +25,7 @@ import com.codeit.weatherwear.domain.user.repository.UserRepository;
 import com.codeit.weatherwear.global.exception.s3.S3DeleteException;
 import com.codeit.weatherwear.global.request.SortDirection;
 import com.codeit.weatherwear.global.response.PageResponse;
-import com.codeit.weatherwear.global.storage.ThumbnailImageStorage;
+import com.codeit.weatherwear.global.storage.ImageStorage;
 import java.io.IOException;
 import java.time.Instant;
 import java.time.format.DateTimeParseException;
@@ -59,7 +59,7 @@ public class ClothServiceImpl implements ClothService {
   private final ClothRepository clothRepository;
   private final AttributeRepository attributeRepository;
   private final UserRepository userRepository;
-  private final ThumbnailImageStorage thumbnailImageStorage;
+  private final ImageStorage imageStorage;
   private final ClothMapper clothMapper;
   private final List<SiteParser> siteParsers;
   private final AIRecommendationService aiRecommendationService;
@@ -84,7 +84,7 @@ public class ClothServiceImpl implements ClothService {
     // 썸네일 S3 업로드
     log.debug("[Start Uploading Thumbnail Image]");
     String thumbnailKey = (image != null && !image.isEmpty())
-        ? thumbnailImageStorage.upload(image)
+        ? imageStorage.upload(image)
         : null;
     log.info("[Uploading Profile Image On S3 Completed] Key: {}", thumbnailKey);
 
@@ -110,7 +110,7 @@ public class ClothServiceImpl implements ClothService {
     Cloth savedCloth = clothRepository.save(cloth);
     log.info("[Creating Cloth Completed] Id: {}, Cloth Name: {}", savedCloth.getId(),
         savedCloth.getName());
-    String imageUrl = thumbnailKey != null ? thumbnailImageStorage.get(thumbnailKey) : null;
+    String imageUrl = thumbnailKey != null ? imageStorage.get(thumbnailKey) : null;
     aiRecommendationService.evictRecommendationCache(user);
     return clothMapper.toDto(savedCloth, imageUrl);
   }
@@ -202,15 +202,15 @@ public class ClothServiceImpl implements ClothService {
     if (image != null && !image.isEmpty()) {
       //기존 이미지 삭제
       String oldImageUrl = cloth.getClothesImageUrl();
-      String uploadKey = thumbnailImageStorage.upload(image);
-      String uploadUrl = thumbnailImageStorage.get(uploadKey);
+      String uploadKey = imageStorage.upload(image);
+      String uploadUrl = imageStorage.get(uploadKey);
       if (oldImageUrl != null) {
         try {
-          thumbnailImageStorage.delete(oldImageUrl);
+          imageStorage.delete(oldImageUrl);
           log.info("[Updating Cloth] Delete Old Image: {}", oldImageUrl);
         } catch (Exception e) {
           log.warn("[Fail Updating Cloth] Fail Deleting Old Image: {}", oldImageUrl);
-          thumbnailImageStorage.delete(uploadUrl);
+          imageStorage.delete(uploadUrl);
           throw new S3DeleteException();
         }
         log.info("[Updating Cloth] Change ThumbNail Image: {}", uploadUrl);
@@ -219,7 +219,7 @@ public class ClothServiceImpl implements ClothService {
     }
 
     String imageUrl =
-        cloth.getClothesImageUrl() != null ? thumbnailImageStorage.get(cloth.getClothesImageUrl())
+        cloth.getClothesImageUrl() != null ? imageStorage.get(cloth.getClothesImageUrl())
             : null;
 
     //이름을 수정할 경우
@@ -285,7 +285,7 @@ public class ClothServiceImpl implements ClothService {
         .map(cloth -> {
           String imageUrl =
               cloth.getClothesImageUrl() != null
-                  ? thumbnailImageStorage.get(cloth.getClothesImageUrl())
+                  ? imageStorage.get(cloth.getClothesImageUrl())
                   : null;
           return clothMapper.toDto(cloth, imageUrl);
         })
@@ -329,7 +329,7 @@ public class ClothServiceImpl implements ClothService {
     if (cloth.getClothesImageUrl() != null) {
       log.debug("[Request Deleting S3 Image] Key: {}", cloth.getClothesImageUrl());
       try {
-        thumbnailImageStorage.delete(cloth.getClothesImageUrl());
+        imageStorage.delete(cloth.getClothesImageUrl());
         log.info("[Delete Cloth] Deleting S3 ThumbNail Completed: {}", cloth.getClothesImageUrl());
       } catch (Exception e) {
         log.warn("[Fail Deleting Cloth] Fail Deleting S3 ThumbNail: {}",

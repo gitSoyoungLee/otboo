@@ -7,7 +7,7 @@ import com.codeit.weatherwear.domain.clothes.mapper.RecommendClothesMapper;
 import com.codeit.weatherwear.domain.recommendation.dto.response.RecommendationDto;
 import com.codeit.weatherwear.domain.user.entity.User;
 import com.codeit.weatherwear.domain.weather.entity.Weather;
-import com.codeit.weatherwear.global.storage.ThumbnailImageStorage;
+import com.codeit.weatherwear.global.storage.ImageStorage;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -24,7 +24,7 @@ import org.springframework.stereotype.Service;
 public class RandomRecommendService {
 
   private final RecommendClothesMapper recommendClothesMapper;
-  private final ThumbnailImageStorage thumbnailImageStorage;
+  private final ImageStorage imageStorage;
 
   public RecommendationDto recommend(List<Cloth> candidates, User user, Weather weather) {
     // 타입별 그룹핑
@@ -58,7 +58,7 @@ public class RandomRecommendService {
     List<RecommendClothesDto> recommendedClothes = finalRecommendation.stream()
         .map(cloth -> {
           String imageUrl = cloth.getClothesImageUrl() != null
-              ? thumbnailImageStorage.get(cloth.getClothesImageUrl())
+              ? imageStorage.get(cloth.getClothesImageUrl())
               : null;
           return recommendClothesMapper.toDto(cloth, imageUrl);
         })

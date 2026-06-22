@@ -4,7 +4,7 @@ import com.codeit.weatherwear.global.exception.s3.S3DeleteException;
 import com.codeit.weatherwear.global.exception.s3.S3PresignedException;
 import com.codeit.weatherwear.global.exception.s3.S3UploadException;
 import com.codeit.weatherwear.global.exception.s3.UnsupportedImageTypeException;
-import com.codeit.weatherwear.global.storage.ThumbnailImageStorage;
+import com.codeit.weatherwear.global.storage.ImageStorage;
 import java.io.IOException;
 import java.net.URI;
 import java.time.Duration;
@@ -28,7 +28,7 @@ import software.amazon.awssdk.services.s3.presigner.model.PresignedGetObjectRequ
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class S3ThumbnailImageStorage implements ThumbnailImageStorage {
+public class S3ImageStorage implements ImageStorage {
 
   private final S3Client s3Client;
   private final S3Presigner s3Presigner;

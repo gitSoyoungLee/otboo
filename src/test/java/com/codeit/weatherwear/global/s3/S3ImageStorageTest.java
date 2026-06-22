@@ -11,7 +11,7 @@ import static org.mockito.Mockito.mock;
 import com.codeit.weatherwear.global.exception.s3.S3DeleteException;
 import com.codeit.weatherwear.global.exception.s3.S3PresignedException;
 import com.codeit.weatherwear.global.exception.s3.UnsupportedImageTypeException;
-import com.codeit.weatherwear.global.storage.s3.S3ThumbnailImageStorage;
+import com.codeit.weatherwear.global.storage.s3.S3ImageStorage;
 import java.io.ByteArrayInputStream;
 import java.net.URL;
 import org.junit.jupiter.api.BeforeEach;
@@ -34,7 +34,7 @@ import software.amazon.awssdk.services.s3.presigner.model.GetObjectPresignReques
 import software.amazon.awssdk.services.s3.presigner.model.PresignedGetObjectRequest;
 
 @ExtendWith(MockitoExtension.class)
-public class S3ThumbnailImageStorageTest {
+public class S3ImageStorageTest {
 
   @Mock
   S3Client s3Client;
@@ -46,7 +46,7 @@ public class S3ThumbnailImageStorageTest {
   private MultipartFile multipartFile;
 
   @InjectMocks
-  S3ThumbnailImageStorage storage;
+  S3ImageStorage storage;
 
   @BeforeEach
   void setup() {

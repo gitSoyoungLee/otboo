@@ -2,7 +2,7 @@ package com.codeit.weatherwear.global.storage;
 
 import org.springframework.web.multipart.MultipartFile;
 
-public interface ThumbnailImageStorage {
+public interface ImageStorage {
   /** 이미지를 업로드하고, 접근 가능한 URL을 반환한다. */
   String upload(MultipartFile file);
 
