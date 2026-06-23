@@ -24,3 +24,5 @@ out/
 *.bak
 
 .coderabbit.yaml
+docs/
+.claude/

@@ -48,3 +48,7 @@ out/
 **/.DS_Store
 
 .coderabbit.yaml
+
+.claude/
+
+docs/
