@@ -27,7 +27,7 @@ import com.codeit.weatherwear.domain.user.repository.UserRepository;
 import com.codeit.weatherwear.global.event.DomainEventPublisher;
 import com.codeit.weatherwear.global.request.SortDirection;
 import com.codeit.weatherwear.global.response.PageResponse;
-import com.codeit.weatherwear.global.storage.ThumbnailImageStorage;
+import com.codeit.weatherwear.global.storage.ImageStorage;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.List;
@@ -64,7 +64,7 @@ class UserServiceImplTest {
   @Mock
   private DomainEventPublisher domainEventPublisher;
   @Mock
-  private ThumbnailImageStorage thumbnailImageStorage;
+  private ImageStorage imageStorage;
 
 
   @Test

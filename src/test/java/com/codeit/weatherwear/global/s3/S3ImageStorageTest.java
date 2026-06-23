@@ -10,8 +10,8 @@ import static org.mockito.Mockito.mock;
 
 import com.codeit.weatherwear.global.exception.s3.S3DeleteException;
 import com.codeit.weatherwear.global.exception.s3.S3PresignedException;
-import com.codeit.weatherwear.global.exception.s3.S3UploadException;
-import com.codeit.weatherwear.global.storage.s3.S3ThumbnailImageStorage;
+import com.codeit.weatherwear.global.exception.s3.UnsupportedImageTypeException;
+import com.codeit.weatherwear.global.storage.s3.S3ImageStorage;
 import java.io.ByteArrayInputStream;
 import java.net.URL;
 import org.junit.jupiter.api.BeforeEach;
@@ -34,7 +34,7 @@ import software.amazon.awssdk.services.s3.presigner.model.GetObjectPresignReques
 import software.amazon.awssdk.services.s3.presigner.model.PresignedGetObjectRequest;
 
 @ExtendWith(MockitoExtension.class)
-public class S3ThumbnailImageStorageTest {
+public class S3ImageStorageTest {
 
   @Mock
   S3Client s3Client;
@@ -46,7 +46,7 @@ public class S3ThumbnailImageStorageTest {
   private MultipartFile multipartFile;
 
   @InjectMocks
-  S3ThumbnailImageStorage storage;
+  S3ImageStorage storage;
 
   @BeforeEach
   void setup() {
@@ -67,19 +67,20 @@ public class S3ThumbnailImageStorageTest {
     String key = storage.upload(multipartFile);
 
     // then
-    assertThat(key).startsWith("image/");
+    assertThat(key).startsWith("images/");
     then(s3Client).should().putObject(any(PutObjectRequest.class), any(RequestBody.class));
   }
 
   @Test
-  @DisplayName("upload 실패 - 지원하지 않는 미디어타입")
+  @DisplayName("upload 실패 - 이미지가 아닌 형식이면 UnsupportedImageTypeException")
   void upload_unsupportedMediaType_throwsException() {
-    // given
+    // given - content-type도 이미지가 아니고 확장자도 알 수 없는 경우
     given(multipartFile.getContentType()).willReturn("application/pdf");
+    given(multipartFile.getOriginalFilename()).willReturn("document.pdf");
 
     // when, then
     assertThatThrownBy(() -> storage.upload(multipartFile))
-        .isInstanceOf(S3UploadException.class);
+        .isInstanceOf(UnsupportedImageTypeException.class);
   }
 
   @Test

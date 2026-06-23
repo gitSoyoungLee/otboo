@@ -26,7 +26,7 @@ import com.codeit.weatherwear.domain.weather.repository.WeatherRepository;
 import com.codeit.weatherwear.global.event.DomainEventPublisher;
 import com.codeit.weatherwear.global.event.dto.FolloweeFeedPostedEvent;
 import com.codeit.weatherwear.global.response.PageResponse;
-import com.codeit.weatherwear.global.storage.ThumbnailImageStorage;
+import com.codeit.weatherwear.global.storage.ImageStorage;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -49,7 +49,7 @@ public class FeedServiceImpl implements FeedService {
   private final FeedLikeService feedLikeService;
   private final WeatherMapper weatherMapper;
   private final WeatherRepository weatherRepository;
-  private final ThumbnailImageStorage thumbnailImageStorage;
+  private final ImageStorage imageStorage;
   private final DomainEventPublisher domainEventPublisher;
   private final FollowRepository followRepository;
 
@@ -125,7 +125,7 @@ public class FeedServiceImpl implements FeedService {
     UserSummaryDto authorDto = null;
     if (author.getProfileImageUrl() != null) {
       authorDto = UserSummaryDto.from(author,
-          thumbnailImageStorage.get(author.getProfileImageUrl()));
+          imageStorage.get(author.getProfileImageUrl()));
     } else {
       authorDto = UserSummaryDto.from(author);
     }

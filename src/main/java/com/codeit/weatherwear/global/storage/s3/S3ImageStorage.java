@@ -3,7 +3,9 @@ package com.codeit.weatherwear.global.storage.s3;
 import com.codeit.weatherwear.global.exception.s3.S3DeleteException;
 import com.codeit.weatherwear.global.exception.s3.S3PresignedException;
 import com.codeit.weatherwear.global.exception.s3.S3UploadException;
-import com.codeit.weatherwear.global.storage.ThumbnailImageStorage;
+import com.codeit.weatherwear.global.exception.s3.UnsupportedImageTypeException;
+import com.codeit.weatherwear.global.processor.ProcessedImage;
+import com.codeit.weatherwear.global.storage.ImageStorage;
 import java.io.IOException;
 import java.net.URI;
 import java.time.Duration;
@@ -27,11 +29,15 @@ import software.amazon.awssdk.services.s3.presigner.model.PresignedGetObjectRequ
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class S3ThumbnailImageStorage implements ThumbnailImageStorage {
+public class S3ImageStorage implements ImageStorage {
 
   private final S3Client s3Client;
   private final S3Presigner s3Presigner;
+  // MIME 타입 판별용 (Content-Type이 이미지인지 검사)
   private static final String CONTENT_TYPE_IMAGE_PREFIX = "image/";
+  // S3 객체 key 접두사 (저장 경로). MIME 판별 상수와 역할이 다르므로 분리.
+  // 의류/프로필/피드 등 여러 도메인이 공유하므로 도메인 중립적인 이름 사용.
+  private static final String KEY_PREFIX = "images/";
 
   @Value("${weatherwear.storage.s3.bucket}")
   private String bucket;
@@ -41,38 +47,23 @@ public class S3ThumbnailImageStorage implements ThumbnailImageStorage {
 
   // S3에 이미지를 저장하고 해당 파일의 key를 반환
   @Override
-  public String upload(MultipartFile file) {
-    String contentType = file.getContentType();
-    if (contentType == null || !contentType.startsWith(CONTENT_TYPE_IMAGE_PREFIX)) {
-      String ext = extractExtension(file.getOriginalFilename());
+  public String upload(ProcessedImage processedImage) {
 
-      contentType = switch (ext) {
-        case "jpg", "jpeg" -> "image/jpeg";
-        case "png" -> "image/png";
-        case "gif" -> "image/gif";
-        case "webp" -> "image/webp";
-        default -> {
-          log.warn("[S3 Upload Fail] Unknown Media Type: {}", ext);
-          throw new S3UploadException();
-        }
-      };
-    }
-
-    String key = CONTENT_TYPE_IMAGE_PREFIX + UUID.randomUUID();
+    String key = KEY_PREFIX + UUID.randomUUID() + "." + processedImage.extension();
 
     PutObjectRequest request =
         PutObjectRequest.builder()
             .bucket(bucket)
             .key(key)
-            .contentType(file.getContentType())
+            .contentType(processedImage.contentType())
             .build();
 
     try {
       s3Client.putObject(
-          request, RequestBody.fromInputStream(file.getInputStream(), file.getSize()));
+          request,  RequestBody.fromBytes(processedImage.bytes()));
       log.info("[S3 Upload Success] Key: {}", key);
-    } catch (IOException | SdkClientException | S3Exception e) {
-      log.error("[S3 Upload Fail] FileName: {}, Error: {}", file.getOriginalFilename(),
+    } catch (SdkClientException | S3Exception e) {
+      log.error("[S3 Upload Fail] FileName: {}, Error: {}",e.toString(),
           e.toString());
       throw new S3UploadException();
     }
