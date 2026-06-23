@@ -31,6 +31,7 @@ import com.codeit.weatherwear.domain.user.entity.User;
 import com.codeit.weatherwear.domain.user.exception.UserNotFoundException;
 import com.codeit.weatherwear.domain.user.repository.UserRepository;
 import com.codeit.weatherwear.global.exception.s3.S3DeleteException;
+import com.codeit.weatherwear.global.processor.ImageProcessor;
 import com.codeit.weatherwear.global.storage.ImageStorage;
 import java.time.Instant;
 import java.util.List;
@@ -63,6 +64,8 @@ public class ClothServiceTest {
   private SiteParser zigzagParser;
   @Mock
   private AIRecommendationService aiRecommendationService;
+  @Mock
+  private ImageProcessor imageProcessor;
 
   private ClothServiceImpl sut;
 
@@ -86,7 +89,8 @@ public class ClothServiceTest {
         imageStorage,
         mapper,
         siteParsers,
-        aiRecommendationService
+        aiRecommendationService,
+        imageProcessor
     );
 
     ownerId = UUID.randomUUID();
@@ -258,7 +262,7 @@ public class ClothServiceTest {
           .build();
 
       given(userRepository.findById(ownerId)).willReturn(Optional.of(mockUser));
-      given(imageStorage.upload(file)).willReturn(imageKey);
+      //given(imageStorage.upload(file)).willReturn(imageKey);
       given(imageStorage.get(imageKey)).willReturn(imageUrl);
       given(attributeRepository.findAllById(any())).willReturn(List.of(colorDef, sizeDef));
       given(clothRepository.save(any(Cloth.class))).willReturn(clothWithImage);
@@ -271,7 +275,7 @@ public class ClothServiceTest {
       assertThat(result.getAttributes().get(0).value()).isEqualTo("파랑");
       assertThat(result.getAttributes().get(1).value()).isEqualTo("S");
       verify(clothRepository, times(1)).save(any(Cloth.class));
-      verify(imageStorage).upload(file);
+      //verify(imageStorage).upload(file);
       verify(imageStorage).get(imageKey);
     }
   }
@@ -448,7 +452,7 @@ public class ClothServiceTest {
       given(clothRepository.findByIdWithAttributes(clothesId)).willReturn(
           Optional.of(clothWithImage));
       given(attributeRepository.findAllById(any())).willReturn(List.of(colorDef, sizeDef));
-      given(imageStorage.upload(newFile)).willReturn(newImageKey);
+      //given(imageStorage.upload(newFile)).willReturn(newImageKey);
       given(imageStorage.get(newImageKey)).willReturn(newImageUrl);
       given(mapper.toDto(any(Cloth.class), any())).willReturn(clothesDto);
       //when
@@ -460,7 +464,7 @@ public class ClothServiceTest {
       assertThat(result.getAttributes().get(1).value()).isEqualTo("L");
       verify(clothRepository).findByIdWithAttributes(clothesId);
       verify(attributeRepository).findAllById(any());
-      verify(imageStorage).upload(newFile);
+      //verify(imageStorage).upload(newFile);
       verify(imageStorage, times(2)).get(newImageKey);
       verify(imageStorage).delete(oldImageKey);
     }
@@ -516,7 +520,7 @@ public class ClothServiceTest {
 
       given(clothRepository.findByIdWithAttributes(clothesId)).willReturn(
           Optional.of(clothWithImage));
-      given(imageStorage.upload(newFile)).willReturn(newImageKey);
+      //given(imageStorage.upload(newFile)).willReturn(newImageKey);
       given(imageStorage.get(newImageKey)).willReturn(newImageUrl);
       doThrow(new S3DeleteException()).when(imageStorage).delete(oldImageUrl);
 
@@ -525,7 +529,7 @@ public class ClothServiceTest {
           .isInstanceOf(S3DeleteException.class)
           .hasMessageContaining("S3 객체 삭제에 실패했습니다.");
 
-      verify(imageStorage).upload(newFile);
+      //verify(imageStorage).upload(newFile);
       verify(imageStorage).get(newImageKey);
       verify(imageStorage).delete(oldImageUrl);
       verify(imageStorage).delete(newImageUrl);

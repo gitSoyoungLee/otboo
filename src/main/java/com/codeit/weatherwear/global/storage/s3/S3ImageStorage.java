@@ -4,6 +4,7 @@ import com.codeit.weatherwear.global.exception.s3.S3DeleteException;
 import com.codeit.weatherwear.global.exception.s3.S3PresignedException;
 import com.codeit.weatherwear.global.exception.s3.S3UploadException;
 import com.codeit.weatherwear.global.exception.s3.UnsupportedImageTypeException;
+import com.codeit.weatherwear.global.processor.ProcessedImage;
 import com.codeit.weatherwear.global.storage.ImageStorage;
 import java.io.IOException;
 import java.net.URI;
@@ -46,38 +47,23 @@ public class S3ImageStorage implements ImageStorage {
 
   // S3에 이미지를 저장하고 해당 파일의 key를 반환
   @Override
-  public String upload(MultipartFile file) {
-    String contentType = file.getContentType();
-    if (contentType == null || !contentType.startsWith(CONTENT_TYPE_IMAGE_PREFIX)) {
-      String ext = extractExtension(file.getOriginalFilename());
+  public String upload(ProcessedImage processedImage) {
 
-      contentType = switch (ext) {
-        case "jpg", "jpeg" -> "image/jpeg";
-        case "png" -> "image/png";
-        case "gif" -> "image/gif";
-        case "webp" -> "image/webp";
-        default -> {
-          log.warn("[S3 Upload Fail] Unsupported Image Type - ext: {}", ext);
-          throw new UnsupportedImageTypeException();
-        }
-      };
-    }
-
-    String key = KEY_PREFIX + UUID.randomUUID();
+    String key = KEY_PREFIX + UUID.randomUUID() + "." + processedImage.extension();
 
     PutObjectRequest request =
         PutObjectRequest.builder()
             .bucket(bucket)
             .key(key)
-            .contentType(contentType)
+            .contentType(processedImage.contentType())
             .build();
 
     try {
       s3Client.putObject(
-          request, RequestBody.fromInputStream(file.getInputStream(), file.getSize()));
+          request,  RequestBody.fromBytes(processedImage.bytes()));
       log.info("[S3 Upload Success] Key: {}", key);
-    } catch (IOException | SdkClientException | S3Exception e) {
-      log.error("[S3 Upload Fail] FileName: {}, Error: {}", file.getOriginalFilename(),
+    } catch (SdkClientException | S3Exception e) {
+      log.error("[S3 Upload Fail] FileName: {}, Error: {}",e.toString(),
           e.toString());
       throw new S3UploadException();
     }

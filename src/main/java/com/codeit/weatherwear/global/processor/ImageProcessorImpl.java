@@ -3,10 +3,12 @@ package com.codeit.weatherwear.global.processor;
 import com.codeit.weatherwear.global.exception.CustomException;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import lombok.extern.slf4j.Slf4j;
 import net.coobird.thumbnailator.Thumbnails;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
+@Slf4j
 @Component
 public class ImageProcessorImpl implements ImageProcessor{
 
@@ -25,6 +27,21 @@ public class ImageProcessorImpl implements ImageProcessor{
                 .toOutputStream(outputStream);
 
             byte[] bytes = outputStream.toByteArray();
+
+            /*
+             Before/After 측정용 로그
+             */
+            long originalSize = image.getSize();
+            long processedSize = bytes.length;
+
+            log.info(
+                "[Image Processing] Original: {} bytes, Processed: {} bytes, Reduced: {}%",
+                originalSize,
+                processedSize,
+                Math.round(
+                    (1 - (double) processedSize / originalSize) * 100
+                )
+            );
 
             return new ProcessedImage(
                 bytes,
