@@ -31,7 +31,7 @@ import com.codeit.weatherwear.domain.weather.entity.Weather;
 import com.codeit.weatherwear.domain.weather.entity.WindSpeed;
 import com.codeit.weatherwear.domain.weather.exception.WeatherNotFoundException;
 import com.codeit.weatherwear.domain.weather.repository.WeatherRepository;
-import com.codeit.weatherwear.global.storage.ThumbnailImageStorage;
+import com.codeit.weatherwear.global.storage.ImageStorage;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -65,7 +65,7 @@ class RecommendationServiceImplTest {
   private ClothRepository clothRepository;
 
   @Mock
-  private ThumbnailImageStorage thumbnailImageStorage;
+  private ImageStorage imageStorage;
 
   @Mock
   private RecommendClothesMapper recommendClothesMapper;
@@ -207,7 +207,7 @@ class RecommendationServiceImplTest {
     verify(userRepository, times(1)).findByEmail(any());
     verify(weatherRepository, never()).findById(any());
     verify(clothRepository, never()).findById(any());
-    verify(thumbnailImageStorage, never()).get(any());
+    verify(imageStorage, never()).get(any());
   }
 
   @Test
@@ -225,7 +225,7 @@ class RecommendationServiceImplTest {
     verify(userRepository, times(1)).findByEmail(any());
     verify(weatherRepository, times(1)).findById(any());
     verify(clothRepository, never()).findById(any());
-    verify(thumbnailImageStorage, never()).get(any());
+    verify(imageStorage, never()).get(any());
   }
 
   @Test

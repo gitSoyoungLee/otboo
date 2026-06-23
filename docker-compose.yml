@@ -13,6 +13,8 @@ x-backend-common: &backend-common
     - "8080"
   depends_on:
     - db
+    - redis
+    - broker
   networks:
     - otboo-network
 
@@ -71,6 +73,28 @@ services:
       KAFKA_LOG_DIRS: /tmp/kraft-combined-logs
       CLUSTER_ID: MkU3OEVBNTcwNTJENDM2Qk
 
+  redis:
+    image: redis:7-alpine
+    container_name: otboo-redis
+    ports:
+      - "6379:6379"
+    networks:
+      - otboo-network
+
+  minio:
+    image: quay.io/minio/minio
+    container_name: otboo-minio
+    command: server /data --console-address ":9001"
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    volumes:
+      - otboo-minio-data:/data
+    networks:
+      - otboo-network
 
   backend1:
     <<: *backend-common
@@ -78,6 +102,7 @@ services:
 
 volumes:
   otboo-postgres-data:
+  otboo-minio-data:
 
 networks:
   otboo-network:

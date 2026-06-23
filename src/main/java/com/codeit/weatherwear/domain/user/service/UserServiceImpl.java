@@ -20,8 +20,11 @@ import com.codeit.weatherwear.domain.user.mapper.UserMapper;
 import com.codeit.weatherwear.domain.user.repository.UserRepository;
 import com.codeit.weatherwear.global.event.DomainEventPublisher;
 import com.codeit.weatherwear.global.event.dto.RoleChangedEvent;
+import com.codeit.weatherwear.global.processor.ImageProcessingType;
+import com.codeit.weatherwear.global.processor.ImageProcessor;
+import com.codeit.weatherwear.global.processor.ProcessedImage;
 import com.codeit.weatherwear.global.response.PageResponse;
-import com.codeit.weatherwear.global.storage.ThumbnailImageStorage;
+import com.codeit.weatherwear.global.storage.ImageStorage;
 import java.util.List;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
@@ -47,9 +50,26 @@ public class UserServiceImpl implements UserService {
   private final PasswordEncoder passwordEncoder;
   private final LocationService locationService;
   private final JwtSessionService jwtSessionService;
-  private final ThumbnailImageStorage thumbnailImageStorage;
+  private final ImageStorage imageStorage;
   private final DomainEventPublisher domainEventPublisher;
+  private final ImageProcessor imageProcessor;
 
+  /**
+   * 이미지를 리사이즈 후 업로드하고 저장된 객체 key를 반환한다.
+   */
+  private String processAndUploadImage(
+      MultipartFile image,
+      ImageProcessingType type
+  ) {
+    if (image == null || image.isEmpty()) {
+      return null;
+    }
+
+    ProcessedImage processedImage =
+        imageProcessor.process(image, type);
+
+    return imageStorage.upload(processedImage);
+  }
 
   @Transactional
   @CacheEvict(cacheNames = "users", key = "'default:firstPage'")
@@ -83,7 +103,7 @@ public class UserServiceImpl implements UserService {
     User user = userRepository.findByIdWithLocation(userId)
         .orElseThrow(() -> new UserNotFoundException(userId));
     if (user.getProfileImageUrl() != null) {
-      return userMapper.toProfileDto(user, thumbnailImageStorage.get(user.getProfileImageUrl()));
+      return userMapper.toProfileDto(user, imageStorage.get(user.getProfileImageUrl()));
     } else {
       return userMapper.toProfileDto(user);
     }
@@ -111,7 +131,7 @@ public class UserServiceImpl implements UserService {
     String profileImageUrl = null;
     if (profileImage != null && !profileImage.isEmpty()) {
       log.debug("[Start Uploading Profile Image On S3] - userId: {}", userId);
-      profileImageUrl = thumbnailImageStorage.upload(profileImage);
+      profileImageUrl = processAndUploadImage(profileImage, ImageProcessingType.PROFILE);
       log.debug("[Uploading Profile Image On S3 Completed] - userId: {}, url: {}", userId,
           profileImageUrl);
     }
@@ -125,7 +145,7 @@ public class UserServiceImpl implements UserService {
         profileImageUrl);
 
     if (user.getProfileImageUrl() != null) {
-      return userMapper.toProfileDto(user, thumbnailImageStorage.get(user.getProfileImageUrl()));
+      return userMapper.toProfileDto(user, imageStorage.get(user.getProfileImageUrl()));
     } else {
       return userMapper.toProfileDto(user);
     }

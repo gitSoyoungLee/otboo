@@ -1,0 +1,13 @@
+spring:
+  config:
+    import: application-dev.yml
+
+weatherwear:
+  storage:
+    s3:
+      endpoint: http://localhost:9000
+      bucket: weatherwear
+      access-key: minioadmin
+      secret-key: minioadmin
+      presigned-url-expiration: 3600
+      path-style-access-enabled: true

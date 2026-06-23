@@ -23,9 +23,12 @@ import com.codeit.weatherwear.domain.user.entity.User;
 import com.codeit.weatherwear.domain.user.exception.UserNotFoundException;
 import com.codeit.weatherwear.domain.user.repository.UserRepository;
 import com.codeit.weatherwear.global.exception.s3.S3DeleteException;
+import com.codeit.weatherwear.global.processor.ImageProcessingType;
+import com.codeit.weatherwear.global.processor.ImageProcessor;
+import com.codeit.weatherwear.global.processor.ProcessedImage;
 import com.codeit.weatherwear.global.request.SortDirection;
 import com.codeit.weatherwear.global.response.PageResponse;
-import com.codeit.weatherwear.global.storage.ThumbnailImageStorage;
+import com.codeit.weatherwear.global.storage.ImageStorage;
 import java.io.IOException;
 import java.time.Instant;
 import java.time.format.DateTimeParseException;
@@ -53,16 +56,33 @@ import org.springframework.web.multipart.MultipartFile;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-@Transactional
 public class ClothServiceImpl implements ClothService {
 
   private final ClothRepository clothRepository;
   private final AttributeRepository attributeRepository;
   private final UserRepository userRepository;
-  private final ThumbnailImageStorage thumbnailImageStorage;
+  private final ImageStorage imageStorage;
   private final ClothMapper clothMapper;
   private final List<SiteParser> siteParsers;
   private final AIRecommendationService aiRecommendationService;
+  private final ImageProcessor imageProcessor;
+
+  /**
+   * 이미지를 리사이즈 후 업로드하고 저장된 객체 key를 반환한다.
+   */
+  private String processAndUploadImage(
+      MultipartFile image,
+      ImageProcessingType type
+  ) {
+    if (image == null || image.isEmpty()) {
+      return null;
+    }
+
+    ProcessedImage processedImage =
+        imageProcessor.process(image, type);
+
+    return imageStorage.upload(processedImage);
+  }
 
   /**
    * 의상 등록
@@ -71,22 +91,26 @@ public class ClothServiceImpl implements ClothService {
    * @return 의상 DTO
    */
   @Override
+  @Transactional
   public ClothesDto create(ClothesCreateRequest request, MultipartFile image) {
-    log.info("[Start Creating Cloth] Cloth Name: {}, Cloth Type: {}", request.name(),
+
+    log.info(
+        "[Start Creating Cloth] Cloth Name: {}, Cloth Type: {}",
+        request.name(),
         request.type());
-    //사용자 찾기
+
+    // 이미지가 있으면 리사이즈 후 업로드
+    String thumbnailKey =
+        processAndUploadImage(image, ImageProcessingType.CLOTH);
+
+    // 사용자 조회
     User user = userRepository.findById(request.ownerId())
         .orElseThrow(() -> {
-          log.warn("[Fail Creating Cloth] User Not Found - OwnerId: {}", request.ownerId());
+          log.warn(
+              "[Fail Creating Cloth] User Not Found - OwnerId: {}",
+              request.ownerId());
           return new UserNotFoundException();
         });
-
-    // 썸네일 S3 업로드
-    log.debug("[Start Uploading Thumbnail Image]");
-    String thumbnailKey = (image != null && !image.isEmpty())
-        ? thumbnailImageStorage.upload(image)
-        : null;
-    log.info("[Uploading Profile Image On S3 Completed] Key: {}", thumbnailKey);
 
     Cloth cloth = Cloth.builder()
         .name(request.name())
@@ -95,23 +119,39 @@ public class ClothServiceImpl implements ClothService {
         .user(user)
         .build();
 
+    // 요청된 속성 조회
     List<UUID> attributesIds = request.attributes().stream()
-        .map(ClothesAttributeDto::definitionId).toList();
+        .map(ClothesAttributeDto::definitionId)
+        .toList();
 
-    //속성 찾기
-    List<Attribute> attributesList = attributeRepository.findAllById(attributesIds);
+    List<Attribute> attributesList =
+        attributeRepository.findAllById(attributesIds);
 
-    //의상에 속성 적용
     Map<UUID, Attribute> attrMap = attributesList.stream()
-        .collect(Collectors.toMap(Attribute::getId, Function.identity()));
+        .collect(Collectors.toMap(
+            Attribute::getId,
+            Function.identity()));
 
-    applyAttributesToCloth(request.attributes(), attrMap, cloth);
+    // 의상에 속성 적용
+    applyAttributesToCloth(
+        request.attributes(),
+        attrMap,
+        cloth);
 
     Cloth savedCloth = clothRepository.save(cloth);
-    log.info("[Creating Cloth Completed] Id: {}, Cloth Name: {}", savedCloth.getId(),
+
+    log.info(
+        "[Creating Cloth Completed] Id: {}, Cloth Name: {}",
+        savedCloth.getId(),
         savedCloth.getName());
-    String imageUrl = thumbnailKey != null ? thumbnailImageStorage.get(thumbnailKey) : null;
+
+    String imageUrl =
+        thumbnailKey != null
+            ? imageStorage.get(thumbnailKey)
+            : null;
+
     aiRecommendationService.evictRecommendationCache(user);
+
     return clothMapper.toDto(savedCloth, imageUrl);
   }
 
@@ -130,6 +170,7 @@ public class ClothServiceImpl implements ClothService {
       noRetryFor = {NotSupportSiteException.class}
   )
   @Override
+  @Transactional
   public ClothesDto getFromUrl(String url) {
     log.info("[Start Getting Cloth From Url] URL: {}", url);
     int retryCount = Optional.ofNullable(RetrySynchronizationManager.getContext())
@@ -177,6 +218,7 @@ public class ClothServiceImpl implements ClothService {
   }
 
   @Recover
+  @Transactional
   public ClothesDto recover(RuntimeException e, String url) {
     log.warn("[Recover] Retry failed for URL: {}", url);
     throw new ExtractionException(url);
@@ -190,6 +232,7 @@ public class ClothServiceImpl implements ClothService {
    * @return 의상 DTO
    */
   @Override
+  @Transactional
   public ClothesDto update(UUID clothesId, ClothesUpdateRequest request, MultipartFile image) {
     log.info("[Start Updating Cloth] ID: {}, Cloth Name: {}", clothesId, request.name());
     Cloth cloth = clothRepository.findByIdWithAttributes(clothesId)
@@ -202,15 +245,15 @@ public class ClothServiceImpl implements ClothService {
     if (image != null && !image.isEmpty()) {
       //기존 이미지 삭제
       String oldImageUrl = cloth.getClothesImageUrl();
-      String uploadKey = thumbnailImageStorage.upload(image);
-      String uploadUrl = thumbnailImageStorage.get(uploadKey);
+      String uploadKey =  processAndUploadImage(image, ImageProcessingType.CLOTH);
+      String uploadUrl = imageStorage.get(uploadKey);
       if (oldImageUrl != null) {
         try {
-          thumbnailImageStorage.delete(oldImageUrl);
+          imageStorage.delete(oldImageUrl);
           log.info("[Updating Cloth] Delete Old Image: {}", oldImageUrl);
         } catch (Exception e) {
           log.warn("[Fail Updating Cloth] Fail Deleting Old Image: {}", oldImageUrl);
-          thumbnailImageStorage.delete(uploadUrl);
+          imageStorage.delete(uploadUrl);
           throw new S3DeleteException();
         }
         log.info("[Updating Cloth] Change ThumbNail Image: {}", uploadUrl);
@@ -219,7 +262,7 @@ public class ClothServiceImpl implements ClothService {
     }
 
     String imageUrl =
-        cloth.getClothesImageUrl() != null ? thumbnailImageStorage.get(cloth.getClothesImageUrl())
+        cloth.getClothesImageUrl() != null ? imageStorage.get(cloth.getClothesImageUrl())
             : null;
 
     //이름을 수정할 경우
@@ -285,7 +328,7 @@ public class ClothServiceImpl implements ClothService {
         .map(cloth -> {
           String imageUrl =
               cloth.getClothesImageUrl() != null
-                  ? thumbnailImageStorage.get(cloth.getClothesImageUrl())
+                  ? imageStorage.get(cloth.getClothesImageUrl())
                   : null;
           return clothMapper.toDto(cloth, imageUrl);
         })
@@ -317,6 +360,7 @@ public class ClothServiceImpl implements ClothService {
    * @param clothesId 의상 ID
    */
   @Override
+  @Transactional
   public void delete(UUID clothesId) {
     log.info("[Start Deleting Cloth] ID: {}", clothesId);
     Cloth cloth = clothRepository.findById(clothesId)
@@ -329,7 +373,7 @@ public class ClothServiceImpl implements ClothService {
     if (cloth.getClothesImageUrl() != null) {
       log.debug("[Request Deleting S3 Image] Key: {}", cloth.getClothesImageUrl());
       try {
-        thumbnailImageStorage.delete(cloth.getClothesImageUrl());
+        imageStorage.delete(cloth.getClothesImageUrl());
         log.info("[Delete Cloth] Deleting S3 ThumbNail Completed: {}", cloth.getClothesImageUrl());
       } catch (Exception e) {
         log.warn("[Fail Deleting Cloth] Fail Deleting S3 ThumbNail: {}",
