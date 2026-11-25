@@ -1,0 +1,369 @@
+> Task :compileJava UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+> Task :compileTestJava
+> Task :processTestResources UP-TO-DATE
+> Task :testClasses
+> Task :test
+
+Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+
+> Task :test
+
+PasswordResetRateLimitTest > [제한-1] 같은 이메일로 제한 횟수를 넘겨 요청하면 429를 받고, 메일은 제한 횟수만큼만 발송된다 FAILED
+    org.opentest4j.AssertionFailedError at PasswordResetRateLimitTest.java:105
+
+PasswordResetRateLimitTest > [제한-2] 같은 IP에서 서로 다른 이메일로 제한 횟수를 넘겨 요청하면 429를 받는다 FAILED
+    org.opentest4j.AssertionFailedError at PasswordResetRateLimitTest.java:122
+
+2026-11-24T01:24:54.277+09:00  INFO 35480 --- [weatherwear] [ntainer#6-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-1, groupId=weatherwear] Revoke previously assigned partitions weatherwear.cloth_attribute_updated-0
+2026-11-24T01:24:54.279+09:00  INFO 35480 --- [weatherwear] [ntainer#6-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: [weatherwear.cloth_attribute_updated-0]
+2026-11-24T01:24:54.280+09:00  INFO 35480 --- [weatherwear] [ntainer#6-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-1, groupId=weatherwear] Member consumer-weatherwear-1-a986d12a-00ba-4f02-8f78-e3ac57779217 sending LeaveGroup request to coordinator localhost:11656 (id: 2147483646 rack: null) due to the consumer unsubscribed from all topics
+2026-11-24T01:24:54.283+09:00  INFO 35480 --- [weatherwear] [ntainer#6-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-1, groupId=weatherwear] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-11-24T01:24:54.283+09:00  INFO 35480 --- [weatherwear] [ntainer#6-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-1, groupId=weatherwear] Request joining group due to: consumer pro-actively leaving the group
+2026-11-24T01:24:54.283+09:00  INFO 35480 --- [weatherwear] [ntainer#6-0-C-1] o.a.k.c.c.internals.LegacyKafkaConsumer  : [Consumer clientId=consumer-weatherwear-1, groupId=weatherwear] Unsubscribed all topics or patterns and assigned partitions
+2026-11-24T01:24:54.285+09:00  INFO 35480 --- [weatherwear] [ntainer#7-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-2, groupId=weatherwear] Revoke previously assigned partitions weatherwear.role_changed-0
+2026-11-24T01:24:54.285+09:00  INFO 35480 --- [weatherwear] [ntainer#7-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: [weatherwear.role_changed-0]
+2026-11-24T01:24:54.285+09:00  INFO 35480 --- [weatherwear] [ntainer#7-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-2, groupId=weatherwear] Member consumer-weatherwear-2-1e2f7997-2de4-4793-ab65-068486a9c3d4 sending LeaveGroup request to coordinator localhost:11656 (id: 2147483646 rack: null) due to the consumer unsubscribed from all topics
+2026-11-24T01:24:54.286+09:00  INFO 35480 --- [weatherwear] [ntainer#7-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-2, groupId=weatherwear] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-11-24T01:24:54.286+09:00  INFO 35480 --- [weatherwear] [ntainer#7-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-2, groupId=weatherwear] Request joining group due to: consumer pro-actively leaving the group
+2026-11-24T01:24:54.286+09:00  INFO 35480 --- [weatherwear] [ntainer#7-0-C-1] o.a.k.c.c.internals.LegacyKafkaConsumer  : [Consumer clientId=consumer-weatherwear-2, groupId=weatherwear] Unsubscribed all topics or patterns and assigned partitions
+2026-11-24T01:24:54.289+09:00  INFO 35480 --- [weatherwear] [ntainer#8-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-3, groupId=weatherwear] Revoke previously assigned partitions weatherwear.followee_feed_posted-0
+2026-11-24T01:24:54.291+09:00  INFO 35480 --- [weatherwear] [ntainer#8-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: [weatherwear.followee_feed_posted-0]
+2026-11-24T01:24:54.291+09:00  INFO 35480 --- [weatherwear] [ntainer#8-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-3, groupId=weatherwear] Member consumer-weatherwear-3-4e1b2f19-99df-41b1-a28f-20309411cc77 sending LeaveGroup request to coordinator localhost:11656 (id: 2147483646 rack: null) due to the consumer unsubscribed from all topics
+2026-11-24T01:24:54.292+09:00  INFO 35480 --- [weatherwear] [ntainer#6-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-1, groupId=weatherwear] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-11-24T01:24:54.292+09:00  INFO 35480 --- [weatherwear] [ntainer#0-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-d0a1c496-d659-4815-9b0d-8b15f89bcd76-9, groupId=d0a1c496-d659-4815-9b0d-8b15f89bcd76] Revoke previously assigned partitions weatherwear.direct_message_received-0
+2026-11-24T01:24:54.292+09:00  INFO 35480 --- [weatherwear] [ntainer#6-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-1, groupId=weatherwear] Request joining group due to: consumer pro-actively leaving the group
+2026-11-24T01:24:54.292+09:00  INFO 35480 --- [weatherwear] [ntainer#4-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-7, groupId=weatherwear] Revoke previously assigned partitions weatherwear.feed_like-0
+2026-11-24T01:24:54.292+09:00  INFO 35480 --- [weatherwear] [ntainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : d0a1c496-d659-4815-9b0d-8b15f89bcd76: partitions revoked: [weatherwear.direct_message_received-0]
+2026-11-24T01:24:54.292+09:00  INFO 35480 --- [weatherwear] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-d0a1c496-d659-4815-9b0d-8b15f89bcd76-9, groupId=d0a1c496-d659-4815-9b0d-8b15f89bcd76] Member consumer-d0a1c496-d659-4815-9b0d-8b15f89bcd76-9-eeb6d446-aa83-46a7-9e90-6f9d50c06d47 sending LeaveGroup request to coordinator localhost:11656 (id: 2147483646 rack: null) due to the consumer unsubscribed from all topics
+2026-11-24T01:24:54.292+09:00  INFO 35480 --- [weatherwear] [ntainer#4-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: [weatherwear.feed_like-0]
+2026-11-24T01:24:54.292+09:00  INFO 35480 --- [weatherwear] [ntainer#4-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-7, groupId=weatherwear] Member consumer-weatherwear-7-9efd161e-a95c-40be-93f2-715026f03a6c sending LeaveGroup request to coordinator localhost:11656 (id: 2147483646 rack: null) due to the consumer unsubscribed from all topics
+2026-11-24T01:24:54.293+09:00  INFO 35480 --- [weatherwear] [ntainer#4-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-7, groupId=weatherwear] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-11-24T01:24:54.293+09:00  INFO 35480 --- [weatherwear] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-d0a1c496-d659-4815-9b0d-8b15f89bcd76-9, groupId=d0a1c496-d659-4815-9b0d-8b15f89bcd76] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-11-24T01:24:54.293+09:00  INFO 35480 --- [weatherwear] [ntainer#4-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-7, groupId=weatherwear] Request joining group due to: consumer pro-actively leaving the group
+2026-11-24T01:24:54.293+09:00  INFO 35480 --- [weatherwear] [ntainer#8-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-3, groupId=weatherwear] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-11-24T01:24:54.293+09:00  INFO 35480 --- [weatherwear] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-d0a1c496-d659-4815-9b0d-8b15f89bcd76-9, groupId=d0a1c496-d659-4815-9b0d-8b15f89bcd76] Request joining group due to: consumer pro-actively leaving the group
+2026-11-24T01:24:54.293+09:00  INFO 35480 --- [weatherwear] [ntainer#8-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-3, groupId=weatherwear] Request joining group due to: consumer pro-actively leaving the group
+2026-11-24T01:24:54.293+09:00  INFO 35480 --- [weatherwear] [ntainer#8-0-C-1] o.a.k.c.c.internals.LegacyKafkaConsumer  : [Consumer clientId=consumer-weatherwear-3, groupId=weatherwear] Unsubscribed all topics or patterns and assigned partitions
+2026-11-24T01:24:54.293+09:00  INFO 35480 --- [weatherwear] [ntainer#4-0-C-1] o.a.k.c.c.internals.LegacyKafkaConsumer  : [Consumer clientId=consumer-weatherwear-7, groupId=weatherwear] Unsubscribed all topics or patterns and assigned partitions
+2026-11-24T01:24:54.293+09:00  INFO 35480 --- [weatherwear] [ntainer#0-0-C-1] o.a.k.c.c.internals.LegacyKafkaConsumer  : [Consumer clientId=consumer-d0a1c496-d659-4815-9b0d-8b15f89bcd76-9, groupId=d0a1c496-d659-4815-9b0d-8b15f89bcd76] Unsubscribed all topics or patterns and assigned partitions
+2026-11-24T01:24:54.294+09:00  INFO 35480 --- [weatherwear] [ntainer#7-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-2, groupId=weatherwear] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-11-24T01:24:54.294+09:00  INFO 35480 --- [weatherwear] [ntainer#7-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-2, groupId=weatherwear] Request joining group due to: consumer pro-actively leaving the group
+2026-11-24T01:24:54.295+09:00  INFO 35480 --- [weatherwear] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-d0a1c496-d659-4815-9b0d-8b15f89bcd76-9, groupId=d0a1c496-d659-4815-9b0d-8b15f89bcd76] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-11-24T01:24:54.295+09:00  INFO 35480 --- [weatherwear] [ntainer#4-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-7, groupId=weatherwear] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-11-24T01:24:54.295+09:00  INFO 35480 --- [weatherwear] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-d0a1c496-d659-4815-9b0d-8b15f89bcd76-9, groupId=d0a1c496-d659-4815-9b0d-8b15f89bcd76] Request joining group due to: consumer pro-actively leaving the group
+2026-11-24T01:24:54.295+09:00  INFO 35480 --- [weatherwear] [ntainer#4-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-7, groupId=weatherwear] Request joining group due to: consumer pro-actively leaving the group
+2026-11-24T01:24:54.295+09:00  INFO 35480 --- [weatherwear] [ntainer#8-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-3, groupId=weatherwear] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-11-24T01:24:54.295+09:00  INFO 35480 --- [weatherwear] [ntainer#8-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-3, groupId=weatherwear] Request joining group due to: consumer pro-actively leaving the group
+2026-11-24T01:24:54.296+09:00  INFO 35480 --- [weatherwear] [ntainer#2-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-5, groupId=weatherwear] Revoke previously assigned partitions weatherwear.new_follower-0
+2026-11-24T01:24:54.296+09:00  INFO 35480 --- [weatherwear] [ntainer#3-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-6, groupId=weatherwear] Revoke previously assigned partitions weatherwear.cloth_attribute_added-0
+2026-11-24T01:24:54.296+09:00  INFO 35480 --- [weatherwear] [ntainer#1-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-10, groupId=weatherwear] Revoke previously assigned partitions weatherwear.weather_alert-0
+2026-11-24T01:24:54.296+09:00  INFO 35480 --- [weatherwear] [ntainer#2-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: [weatherwear.new_follower-0]
+2026-11-24T01:24:54.296+09:00  INFO 35480 --- [weatherwear] [ntainer#1-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: [weatherwear.weather_alert-0]
+2026-11-24T01:24:54.296+09:00  INFO 35480 --- [weatherwear] [ntainer#3-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: [weatherwear.cloth_attribute_added-0]
+2026-11-24T01:24:54.296+09:00  INFO 35480 --- [weatherwear] [tainer#10-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-327ebdbf-4dac-4215-9370-c0447bc5a4d7-11, groupId=327ebdbf-4dac-4215-9370-c0447bc5a4d7] Revoke previously assigned partitions weatherwear.sse_sent-0
+2026-11-24T01:24:54.296+09:00  INFO 35480 --- [weatherwear] [ntainer#5-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-8, groupId=weatherwear] Revoke previously assigned partitions weatherwear.direct_message_received-0
+2026-11-24T01:24:54.296+09:00  INFO 35480 --- [weatherwear] [ntainer#3-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-6, groupId=weatherwear] Member consumer-weatherwear-6-791d1d3c-a915-4988-8893-9b9cd2f21f21 sending LeaveGroup request to coordinator localhost:11656 (id: 2147483646 rack: null) due to the consumer unsubscribed from all topics
+2026-11-24T01:24:54.296+09:00  INFO 35480 --- [weatherwear] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-10, groupId=weatherwear] Member consumer-weatherwear-10-6c6e3500-bab1-4e57-b407-13130d881db4 sending LeaveGroup request to coordinator localhost:11656 (id: 2147483646 rack: null) due to the consumer unsubscribed from all topics
+2026-11-24T01:24:54.296+09:00  INFO 35480 --- [weatherwear] [ntainer#5-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: [weatherwear.direct_message_received-0]
+2026-11-24T01:24:54.297+09:00  INFO 35480 --- [weatherwear] [ntainer#3-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-6, groupId=weatherwear] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-11-24T01:24:54.296+09:00  INFO 35480 --- [weatherwear] [tainer#10-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : 327ebdbf-4dac-4215-9370-c0447bc5a4d7: partitions revoked: [weatherwear.sse_sent-0]
+2026-11-24T01:24:54.296+09:00  INFO 35480 --- [weatherwear] [ntainer#9-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-4, groupId=weatherwear] Revoke previously assigned partitions weatherwear.new_feed_comment-0
+2026-11-24T01:24:54.296+09:00  INFO 35480 --- [weatherwear] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-5, groupId=weatherwear] Member consumer-weatherwear-5-61a22496-15b3-4c63-8803-a83929e9a641 sending LeaveGroup request to coordinator localhost:11656 (id: 2147483646 rack: null) due to the consumer unsubscribed from all topics
+2026-11-24T01:24:54.297+09:00  INFO 35480 --- [weatherwear] [ntainer#3-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-6, groupId=weatherwear] Request joining group due to: consumer pro-actively leaving the group
+2026-11-24T01:24:54.297+09:00  INFO 35480 --- [weatherwear] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-10, groupId=weatherwear] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-11-24T01:24:54.297+09:00  INFO 35480 --- [weatherwear] [tainer#10-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-327ebdbf-4dac-4215-9370-c0447bc5a4d7-11, groupId=327ebdbf-4dac-4215-9370-c0447bc5a4d7] Member consumer-327ebdbf-4dac-4215-9370-c0447bc5a4d7-11-e0bef17c-be25-43af-9c26-963ac09b3421 sending LeaveGroup request to coordinator localhost:11656 (id: 2147483646 rack: null) due to the consumer unsubscribed from all topics
+2026-11-24T01:24:54.297+09:00  INFO 35480 --- [weatherwear] [ntainer#9-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: [weatherwear.new_feed_comment-0]
+2026-11-24T01:24:54.297+09:00  INFO 35480 --- [weatherwear] [ntainer#3-0-C-1] o.a.k.c.c.internals.LegacyKafkaConsumer  : [Consumer clientId=consumer-weatherwear-6, groupId=weatherwear] Unsubscribed all topics or patterns and assigned partitions
+2026-11-24T01:24:54.298+09:00  INFO 35480 --- [weatherwear] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-10, groupId=weatherwear] Request joining group due to: consumer pro-actively leaving the group
+2026-11-24T01:24:54.298+09:00  INFO 35480 --- [weatherwear] [ntainer#1-0-C-1] o.a.k.c.c.internals.LegacyKafkaConsumer  : [Consumer clientId=consumer-weatherwear-10, groupId=weatherwear] Unsubscribed all topics or patterns and assigned partitions
+2026-11-24T01:24:54.298+09:00  INFO 35480 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-4, groupId=weatherwear] Member consumer-weatherwear-4-6bd3f8a6-f7a5-42a4-b01e-691d93bd2c82 sending LeaveGroup request to coordinator localhost:11656 (id: 2147483646 rack: null) due to the consumer unsubscribed from all topics
+2026-11-24T01:24:54.297+09:00  INFO 35480 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-8, groupId=weatherwear] Member consumer-weatherwear-8-f77ae00a-e18b-4c8d-b2dc-724904fd75db sending LeaveGroup request to coordinator localhost:11656 (id: 2147483646 rack: null) due to the consumer unsubscribed from all topics
+2026-11-24T01:24:54.298+09:00  INFO 35480 --- [weatherwear] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-5, groupId=weatherwear] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-11-24T01:24:54.298+09:00  INFO 35480 --- [weatherwear] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-5, groupId=weatherwear] Request joining group due to: consumer pro-actively leaving the group
+2026-11-24T01:24:54.298+09:00  INFO 35480 --- [weatherwear] [ntainer#2-0-C-1] o.a.k.c.c.internals.LegacyKafkaConsumer  : [Consumer clientId=consumer-weatherwear-5, groupId=weatherwear] Unsubscribed all topics or patterns and assigned partitions
+2026-11-24T01:24:54.298+09:00  INFO 35480 --- [weatherwear] [tainer#10-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-327ebdbf-4dac-4215-9370-c0447bc5a4d7-11, groupId=327ebdbf-4dac-4215-9370-c0447bc5a4d7] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-11-24T01:24:54.298+09:00  INFO 35480 --- [weatherwear] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-10, groupId=weatherwear] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-11-24T01:24:54.298+09:00  INFO 35480 --- [weatherwear] [ntainer#3-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-6, groupId=weatherwear] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-11-24T01:24:54.298+09:00  INFO 35480 --- [weatherwear] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-5, groupId=weatherwear] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-11-24T01:24:54.298+09:00  INFO 35480 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-4, groupId=weatherwear] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-11-24T01:24:54.298+09:00  INFO 35480 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-8, groupId=weatherwear] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-11-24T01:24:54.298+09:00  INFO 35480 --- [weatherwear] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-5, groupId=weatherwear] Request joining group due to: consumer pro-actively leaving the group
+2026-11-24T01:24:54.298+09:00  INFO 35480 --- [weatherwear] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-10, groupId=weatherwear] Request joining group due to: consumer pro-actively leaving the group
+2026-11-24T01:24:54.298+09:00  INFO 35480 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-4, groupId=weatherwear] Request joining group due to: consumer pro-actively leaving the group
+2026-11-24T01:24:54.298+09:00  INFO 35480 --- [weatherwear] [tainer#10-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-327ebdbf-4dac-4215-9370-c0447bc5a4d7-11, groupId=327ebdbf-4dac-4215-9370-c0447bc5a4d7] Request joining group due to: consumer pro-actively leaving the group
+2026-11-24T01:24:54.298+09:00  INFO 35480 --- [weatherwear] [ntainer#3-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-6, groupId=weatherwear] Request joining group due to: consumer pro-actively leaving the group
+2026-11-24T01:24:54.298+09:00  INFO 35480 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-8, groupId=weatherwear] Request joining group due to: consumer pro-actively leaving the group
+2026-11-24T01:24:54.299+09:00  INFO 35480 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.LegacyKafkaConsumer  : [Consumer clientId=consumer-weatherwear-4, groupId=weatherwear] Unsubscribed all topics or patterns and assigned partitions
+2026-11-24T01:24:54.299+09:00  INFO 35480 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.LegacyKafkaConsumer  : [Consumer clientId=consumer-weatherwear-8, groupId=weatherwear] Unsubscribed all topics or patterns and assigned partitions
+2026-11-24T01:24:54.299+09:00  INFO 35480 --- [weatherwear] [tainer#10-0-C-1] o.a.k.c.c.internals.LegacyKafkaConsumer  : [Consumer clientId=consumer-327ebdbf-4dac-4215-9370-c0447bc5a4d7-11, groupId=327ebdbf-4dac-4215-9370-c0447bc5a4d7] Unsubscribed all topics or patterns and assigned partitions
+2026-11-24T01:24:54.299+09:00  INFO 35480 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-4, groupId=weatherwear] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-11-24T01:24:54.299+09:00  INFO 35480 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-4, groupId=weatherwear] Request joining group due to: consumer pro-actively leaving the group
+2026-11-24T01:24:54.300+09:00  INFO 35480 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-8, groupId=weatherwear] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-11-24T01:24:54.317+09:00  INFO 35480 --- [weatherwear] [tainer#10-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-327ebdbf-4dac-4215-9370-c0447bc5a4d7-11, groupId=327ebdbf-4dac-4215-9370-c0447bc5a4d7] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-11-24T01:24:54.317+09:00  INFO 35480 --- [weatherwear] [tainer#10-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-327ebdbf-4dac-4215-9370-c0447bc5a4d7-11, groupId=327ebdbf-4dac-4215-9370-c0447bc5a4d7] Request joining group due to: consumer pro-actively leaving the group
+2026-11-24T01:24:54.316+09:00  INFO 35480 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-8, groupId=weatherwear] Request joining group due to: consumer pro-actively leaving the group
+2026-11-24T01:24:54.574+09:00  INFO 35480 --- [weatherwear] [ntainer#0-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2026-11-24T01:24:54.575+09:00  INFO 35480 --- [weatherwear] [ntainer#0-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-11-24T01:24:54.576+09:00  INFO 35480 --- [weatherwear] [ntainer#0-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.telemetry.internals.ClientTelemetryReporter
+2026-11-24T01:24:54.576+09:00  INFO 35480 --- [weatherwear] [ntainer#0-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2026-11-24T01:24:54.576+09:00  INFO 35480 --- [weatherwear] [ntainer#6-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2026-11-24T01:24:54.577+09:00  INFO 35480 --- [weatherwear] [ntainer#6-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-11-24T01:24:54.577+09:00  INFO 35480 --- [weatherwear] [ntainer#6-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.telemetry.internals.ClientTelemetryReporter
+2026-11-24T01:24:54.577+09:00  INFO 35480 --- [weatherwear] [ntainer#6-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2026-11-24T01:24:54.577+09:00  INFO 35480 --- [weatherwear] [ntainer#2-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2026-11-24T01:24:54.577+09:00  INFO 35480 --- [weatherwear] [tainer#10-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2026-11-24T01:24:54.577+09:00  INFO 35480 --- [weatherwear] [ntainer#5-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2026-11-24T01:24:54.577+09:00  INFO 35480 --- [weatherwear] [tainer#10-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-11-24T01:24:54.577+09:00  INFO 35480 --- [weatherwear] [ntainer#2-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-11-24T01:24:54.579+09:00  INFO 35480 --- [weatherwear] [ntainer#5-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-11-24T01:24:54.579+09:00  INFO 35480 --- [weatherwear] [tainer#10-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.telemetry.internals.ClientTelemetryReporter
+2026-11-24T01:24:54.579+09:00  INFO 35480 --- [weatherwear] [tainer#10-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2026-11-24T01:24:54.579+09:00  INFO 35480 --- [weatherwear] [ntainer#9-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2026-11-24T01:24:54.579+09:00  INFO 35480 --- [weatherwear] [ntainer#9-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-11-24T01:24:54.579+09:00  INFO 35480 --- [weatherwear] [ntainer#9-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.telemetry.internals.ClientTelemetryReporter
+2026-11-24T01:24:54.579+09:00  INFO 35480 --- [weatherwear] [ntainer#9-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2026-11-24T01:24:54.580+09:00  INFO 35480 --- [weatherwear] [ntainer#1-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2026-11-24T01:24:54.580+09:00  INFO 35480 --- [weatherwear] [ntainer#2-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.telemetry.internals.ClientTelemetryReporter
+2026-11-24T01:24:54.580+09:00  INFO 35480 --- [weatherwear] [ntainer#1-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-11-24T01:24:54.580+09:00  INFO 35480 --- [weatherwear] [ntainer#2-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2026-11-24T01:24:54.580+09:00  INFO 35480 --- [weatherwear] [ntainer#1-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.telemetry.internals.ClientTelemetryReporter
+2026-11-24T01:24:54.580+09:00  INFO 35480 --- [weatherwear] [ntainer#1-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2026-11-24T01:24:54.580+09:00  INFO 35480 --- [weatherwear] [ntainer#5-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.telemetry.internals.ClientTelemetryReporter
+2026-11-24T01:24:54.581+09:00  INFO 35480 --- [weatherwear] [ntainer#5-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2026-11-24T01:24:54.594+09:00  INFO 35480 --- [weatherwear] [ntainer#8-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2026-11-24T01:24:54.595+09:00  INFO 35480 --- [weatherwear] [ntainer#8-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-11-24T01:24:54.595+09:00  INFO 35480 --- [weatherwear] [ntainer#8-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.telemetry.internals.ClientTelemetryReporter
+2026-11-24T01:24:54.595+09:00  INFO 35480 --- [weatherwear] [ntainer#8-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2026-11-24T01:24:54.604+09:00  INFO 35480 --- [weatherwear] [ntainer#3-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2026-11-24T01:24:54.606+09:00  INFO 35480 --- [weatherwear] [ntainer#3-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-11-24T01:24:54.613+09:00  INFO 35480 --- [weatherwear] [ntainer#3-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.telemetry.internals.ClientTelemetryReporter
+2026-11-24T01:24:54.613+09:00  INFO 35480 --- [weatherwear] [ntainer#3-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2026-11-24T01:24:54.623+09:00  INFO 35480 --- [weatherwear] [ntainer#2-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-weatherwear-5 unregistered
+2026-11-24T01:24:54.627+09:00  INFO 35480 --- [weatherwear] [ntainer#4-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2026-11-24T01:24:54.627+09:00  INFO 35480 --- [weatherwear] [ntainer#4-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-11-24T01:24:54.629+09:00  INFO 35480 --- [weatherwear] [ntainer#7-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2026-11-24T01:24:54.629+09:00  INFO 35480 --- [weatherwear] [ntainer#7-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-11-24T01:24:54.630+09:00  INFO 35480 --- [weatherwear] [ntainer#7-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.telemetry.internals.ClientTelemetryReporter
+2026-11-24T01:24:54.630+09:00  INFO 35480 --- [weatherwear] [ntainer#7-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2026-11-24T01:24:54.632+09:00  INFO 35480 --- [weatherwear] [ntainer#4-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.telemetry.internals.ClientTelemetryReporter
+2026-11-24T01:24:54.632+09:00  INFO 35480 --- [weatherwear] [ntainer#4-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2026-11-24T01:24:54.634+09:00  INFO 35480 --- [weatherwear] [ntainer#2-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: Consumer stopped
+2026-11-24T01:24:54.642+09:00  INFO 35480 --- [weatherwear] [ntainer#9-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-weatherwear-4 unregistered
+2026-11-24T01:24:54.643+09:00  INFO 35480 --- [weatherwear] [ntainer#9-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: Consumer stopped
+2026-11-24T01:24:54.647+09:00  INFO 35480 --- [weatherwear] [ntainer#6-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-weatherwear-1 unregistered
+2026-11-24T01:24:54.648+09:00  INFO 35480 --- [weatherwear] [ntainer#6-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: Consumer stopped
+2026-11-24T01:24:54.650+09:00  INFO 35480 --- [weatherwear] [ntainer#1-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-weatherwear-10 unregistered
+2026-11-24T01:24:54.652+09:00  INFO 35480 --- [weatherwear] [ntainer#1-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: Consumer stopped
+2026-11-24T01:24:54.655+09:00  INFO 35480 --- [weatherwear] [ntainer#5-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-weatherwear-8 unregistered
+2026-11-24T01:24:54.657+09:00  INFO 35480 --- [weatherwear] [ntainer#8-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-weatherwear-3 unregistered
+2026-11-24T01:24:54.657+09:00  INFO 35480 --- [weatherwear] [ntainer#3-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-weatherwear-6 unregistered
+2026-11-24T01:24:54.660+09:00  INFO 35480 --- [weatherwear] [ntainer#3-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: Consumer stopped
+2026-11-24T01:24:54.661+09:00  INFO 35480 --- [weatherwear] [ntainer#8-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: Consumer stopped
+2026-11-24T01:24:54.660+09:00  INFO 35480 --- [weatherwear] [ntainer#5-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: Consumer stopped
+2026-11-24T01:24:54.664+09:00  INFO 35480 --- [weatherwear] [tainer#10-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-327ebdbf-4dac-4215-9370-c0447bc5a4d7-11 unregistered
+2026-11-24T01:24:54.665+09:00  INFO 35480 --- [weatherwear] [tainer#10-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : 327ebdbf-4dac-4215-9370-c0447bc5a4d7: Consumer stopped
+2026-11-24T01:24:54.667+09:00  INFO 35480 --- [weatherwear] [ntainer#4-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-weatherwear-7 unregistered
+2026-11-24T01:24:54.667+09:00  INFO 35480 --- [weatherwear] [ntainer#4-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: Consumer stopped
+2026-11-24T01:24:54.670+09:00  INFO 35480 --- [weatherwear] [ntainer#7-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-weatherwear-2 unregistered
+2026-11-24T01:24:54.671+09:00  INFO 35480 --- [weatherwear] [ntainer#7-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: Consumer stopped
+2026-11-24T01:24:54.672+09:00  INFO 35480 --- [weatherwear] [ntainer#0-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-d0a1c496-d659-4815-9b0d-8b15f89bcd76-9 unregistered
+2026-11-24T01:24:54.672+09:00  INFO 35480 --- [weatherwear] [ntainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : d0a1c496-d659-4815-9b0d-8b15f89bcd76: Consumer stopped
+2026-11-24T01:24:54.680+09:00  INFO 35480 --- [weatherwear] [ionShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-11-24T01:24:55.119+09:00 ERROR 35480 --- [weatherwear] [        event-1] c.c.w.d.auth.service.EmailServiceImpl    : Fail to send reset-password email. to=ra***@mail.com
+
+org.springframework.mail.MailSendException: Mail server connection failed. Failed messages: org.eclipse.angus.mail.util.MailConnectException: Couldn't connect to host, port: localhost, 3025; timeout -1;
+  nested exception is:
+	java.net.ConnectException: Connection refused: connect
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:410) ~[spring-context-support-6.2.8.jar:6.2.8]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:350) ~[spring-context-support-6.2.8.jar:6.2.8]
+	at org.springframework.mail.javamail.JavaMailSender.send(JavaMailSender.java:101) ~[spring-context-support-6.2.8.jar:6.2.8]
+	at com.codeit.weatherwear.domain.auth.service.EmailServiceImpl.sendTempPasswordEmail(EmailServiceImpl.java:42) ~[main/:na]
+	at com.codeit.weatherwear.domain.auth.event.TempPasswordMailListener.handle(TempPasswordMailListener.java:28) ~[main/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359) ~[spring-aop-6.2.8.jar:6.2.8]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.2.8.jar:6.2.8]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.2.8.jar:6.2.8]
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:114) ~[spring-aop-6.2.8.jar:6.2.8]
+	at org.springframework.security.concurrent.DelegatingSecurityContextCallable.call(DelegatingSecurityContextCallable.java:96) ~[spring-security-core-6.4.7.jar:6.4.7]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+Caused by: org.eclipse.angus.mail.util.MailConnectException: Couldn't connect to host, port: localhost, 3025; timeout -1
+	at org.eclipse.angus.mail.smtp.SMTPTransport.openServer(SMTPTransport.java:2243) ~[jakarta.mail-2.0.3.jar:na]
+	at org.eclipse.angus.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:729) ~[jakarta.mail-2.0.3.jar:na]
+	at jakarta.mail.Service.connect(Service.java:345) ~[jakarta.mail-2.0.3.jar:na]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:480) ~[spring-context-support-6.2.8.jar:6.2.8]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:399) ~[spring-context-support-6.2.8.jar:6.2.8]
+	... 17 common frames omitted
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.base/sun.nio.ch.Net.connect0(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.Net.connect(Net.java:579) ~[na:na]
+	at java.base/sun.nio.ch.Net.connect(Net.java:568) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:593) ~[na:na]
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327) ~[na:na]
+	at java.base/java.net.Socket.connect(Socket.java:633) ~[na:na]
+	at java.base/java.net.Socket.connect(Socket.java:583) ~[na:na]
+	at org.eclipse.angus.mail.util.SocketFetcher.createSocket(SocketFetcher.java:368) ~[jakarta.mail-2.0.3.jar:na]
+	at org.eclipse.angus.mail.util.SocketFetcher.getSocket(SocketFetcher.java:243) ~[jakarta.mail-2.0.3.jar:na]
+	at org.eclipse.angus.mail.smtp.SMTPTransport.openServer(SMTPTransport.java:2193) ~[jakarta.mail-2.0.3.jar:na]
+	... 21 common frames omitted
+
+2026-11-24T01:24:55.120+09:00 ERROR 35480 --- [weatherwear] [        event-2] c.c.w.d.auth.service.EmailServiceImpl    : Fail to send reset-password email. to=ra***@mail.com
+
+org.springframework.mail.MailSendException: Mail server connection failed. Failed messages: org.eclipse.angus.mail.util.MailConnectException: Couldn't connect to host, port: localhost, 3025; timeout -1;
+  nested exception is:
+	java.net.ConnectException: Connection refused: connect
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:410) ~[spring-context-support-6.2.8.jar:6.2.8]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:350) ~[spring-context-support-6.2.8.jar:6.2.8]
+	at org.springframework.mail.javamail.JavaMailSender.send(JavaMailSender.java:101) ~[spring-context-support-6.2.8.jar:6.2.8]
+	at com.codeit.weatherwear.domain.auth.service.EmailServiceImpl.sendTempPasswordEmail(EmailServiceImpl.java:42) ~[main/:na]
+	at com.codeit.weatherwear.domain.auth.event.TempPasswordMailListener.handle(TempPasswordMailListener.java:28) ~[main/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359) ~[spring-aop-6.2.8.jar:6.2.8]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.2.8.jar:6.2.8]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.2.8.jar:6.2.8]
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:114) ~[spring-aop-6.2.8.jar:6.2.8]
+	at org.springframework.security.concurrent.DelegatingSecurityContextCallable.call(DelegatingSecurityContextCallable.java:96) ~[spring-security-core-6.4.7.jar:6.4.7]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+Caused by: org.eclipse.angus.mail.util.MailConnectException: Couldn't connect to host, port: localhost, 3025; timeout -1
+	at org.eclipse.angus.mail.smtp.SMTPTransport.openServer(SMTPTransport.java:2243) ~[jakarta.mail-2.0.3.jar:na]
+	at org.eclipse.angus.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:729) ~[jakarta.mail-2.0.3.jar:na]
+	at jakarta.mail.Service.connect(Service.java:345) ~[jakarta.mail-2.0.3.jar:na]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:480) ~[spring-context-support-6.2.8.jar:6.2.8]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:399) ~[spring-context-support-6.2.8.jar:6.2.8]
+	... 17 common frames omitted
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.base/sun.nio.ch.Net.connect0(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.Net.connect(Net.java:579) ~[na:na]
+	at java.base/sun.nio.ch.Net.connect(Net.java:568) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:593) ~[na:na]
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327) ~[na:na]
+	at java.base/java.net.Socket.connect(Socket.java:633) ~[na:na]
+	at java.base/java.net.Socket.connect(Socket.java:583) ~[na:na]
+	at org.eclipse.angus.mail.util.SocketFetcher.createSocket(SocketFetcher.java:368) ~[jakarta.mail-2.0.3.jar:na]
+	at org.eclipse.angus.mail.util.SocketFetcher.getSocket(SocketFetcher.java:243) ~[jakarta.mail-2.0.3.jar:na]
+	at org.eclipse.angus.mail.smtp.SMTPTransport.openServer(SMTPTransport.java:2193) ~[jakarta.mail-2.0.3.jar:na]
+	... 21 common frames omitted
+
+2026-11-24T01:24:55.207+09:00 ERROR 35480 --- [weatherwear] [        event-2] c.c.w.d.auth.service.EmailServiceImpl    : Fail to send reset-password email. to=ra***@mail.com
+
+org.springframework.mail.MailSendException: Mail server connection failed. Failed messages: org.eclipse.angus.mail.util.MailConnectException: Couldn't connect to host, port: localhost, 3025; timeout -1;
+  nested exception is:
+	java.net.ConnectException: Connection refused: connect
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:410) ~[spring-context-support-6.2.8.jar:6.2.8]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:350) ~[spring-context-support-6.2.8.jar:6.2.8]
+	at org.springframework.mail.javamail.JavaMailSender.send(JavaMailSender.java:101) ~[spring-context-support-6.2.8.jar:6.2.8]
+	at com.codeit.weatherwear.domain.auth.service.EmailServiceImpl.sendTempPasswordEmail(EmailServiceImpl.java:42) ~[main/:na]
+	at com.codeit.weatherwear.domain.auth.event.TempPasswordMailListener.handle(TempPasswordMailListener.java:28) ~[main/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359) ~[spring-aop-6.2.8.jar:6.2.8]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.2.8.jar:6.2.8]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.2.8.jar:6.2.8]
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:114) ~[spring-aop-6.2.8.jar:6.2.8]
+	at org.springframework.security.concurrent.DelegatingSecurityContextCallable.call(DelegatingSecurityContextCallable.java:96) ~[spring-security-core-6.4.7.jar:6.4.7]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+Caused by: org.eclipse.angus.mail.util.MailConnectException: Couldn't connect to host, port: localhost, 3025; timeout -1
+	at org.eclipse.angus.mail.smtp.SMTPTransport.openServer(SMTPTransport.java:2243) ~[jakarta.mail-2.0.3.jar:na]
+	at org.eclipse.angus.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:729) ~[jakarta.mail-2.0.3.jar:na]
+	at jakarta.mail.Service.connect(Service.java:345) ~[jakarta.mail-2.0.3.jar:na]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:480) ~[spring-context-support-6.2.8.jar:6.2.8]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:399) ~[spring-context-support-6.2.8.jar:6.2.8]
+	... 17 common frames omitted
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.base/sun.nio.ch.Net.connect0(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.Net.connect(Net.java:579) ~[na:na]
+	at java.base/sun.nio.ch.Net.connect(Net.java:568) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:593) ~[na:na]
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327) ~[na:na]
+	at java.base/java.net.Socket.connect(Socket.java:633) ~[na:na]
+	at java.base/java.net.Socket.connect(Socket.java:583) ~[na:na]
+	at org.eclipse.angus.mail.util.SocketFetcher.createSocket(SocketFetcher.java:368) ~[jakarta.mail-2.0.3.jar:na]
+	at org.eclipse.angus.mail.util.SocketFetcher.getSocket(SocketFetcher.java:243) ~[jakarta.mail-2.0.3.jar:na]
+	at org.eclipse.angus.mail.smtp.SMTPTransport.openServer(SMTPTransport.java:2193) ~[jakarta.mail-2.0.3.jar:na]
+	... 21 common frames omitted
+
+2026-11-24T01:24:55.205+09:00 ERROR 35480 --- [weatherwear] [        event-1] c.c.w.d.auth.service.EmailServiceImpl    : Fail to send reset-password email. to=ra***@mail.com
+
+org.springframework.mail.MailSendException: Mail server connection failed. Failed messages: org.eclipse.angus.mail.util.MailConnectException: Couldn't connect to host, port: localhost, 3025; timeout -1;
+  nested exception is:
+	java.net.ConnectException: Connection refused: connect
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:410) ~[spring-context-support-6.2.8.jar:6.2.8]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:350) ~[spring-context-support-6.2.8.jar:6.2.8]
+	at org.springframework.mail.javamail.JavaMailSender.send(JavaMailSender.java:101) ~[spring-context-support-6.2.8.jar:6.2.8]
+	at com.codeit.weatherwear.domain.auth.service.EmailServiceImpl.sendTempPasswordEmail(EmailServiceImpl.java:42) ~[main/:na]
+	at com.codeit.weatherwear.domain.auth.event.TempPasswordMailListener.handle(TempPasswordMailListener.java:28) ~[main/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359) ~[spring-aop-6.2.8.jar:6.2.8]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.2.8.jar:6.2.8]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.2.8.jar:6.2.8]
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:114) ~[spring-aop-6.2.8.jar:6.2.8]
+	at org.springframework.security.concurrent.DelegatingSecurityContextCallable.call(DelegatingSecurityContextCallable.java:96) ~[spring-security-core-6.4.7.jar:6.4.7]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+Caused by: org.eclipse.angus.mail.util.MailConnectException: Couldn't connect to host, port: localhost, 3025; timeout -1
+	at org.eclipse.angus.mail.smtp.SMTPTransport.openServer(SMTPTransport.java:2243) ~[jakarta.mail-2.0.3.jar:na]
+	at org.eclipse.angus.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:729) ~[jakarta.mail-2.0.3.jar:na]
+	at jakarta.mail.Service.connect(Service.java:345) ~[jakarta.mail-2.0.3.jar:na]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:480) ~[spring-context-support-6.2.8.jar:6.2.8]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:399) ~[spring-context-support-6.2.8.jar:6.2.8]
+	... 17 common frames omitted
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.base/sun.nio.ch.Net.connect0(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.Net.connect(Net.java:579) ~[na:na]
+	at java.base/sun.nio.ch.Net.connect(Net.java:568) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:593) ~[na:na]
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327) ~[na:na]
+	at java.base/java.net.Socket.connect(Socket.java:633) ~[na:na]
+	at java.base/java.net.Socket.connect(Socket.java:583) ~[na:na]
+	at org.eclipse.angus.mail.util.SocketFetcher.createSocket(SocketFetcher.java:368) ~[jakarta.mail-2.0.3.jar:na]
+	at org.eclipse.angus.mail.util.SocketFetcher.getSocket(SocketFetcher.java:243) ~[jakarta.mail-2.0.3.jar:na]
+	at org.eclipse.angus.mail.smtp.SMTPTransport.openServer(SMTPTransport.java:2193) ~[jakarta.mail-2.0.3.jar:na]
+	... 21 common frames omitted
+
+2026-11-24T01:25:00.808+09:00  INFO 35480 --- [weatherwear] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-11-24T01:25:00.815+09:00  INFO 35480 --- [weatherwear] [ionShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2026-11-24T01:25:00.815+09:00  INFO 35480 --- [weatherwear] [ionShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@65d9e1d8]]
+2026-11-24T01:25:00.815+09:00  INFO 35480 --- [weatherwear] [ionShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2026-11-24T01:25:00.920+09:00  WARN 35480 --- [weatherwear] [ionShutdownHook] o.s.b.f.support.DisposableBeanAdapter    : Custom destroy method 'close' on bean with name 'locationReader' propagated an exception: org.springframework.batch.item.ItemStreamException: Error while closing item reader
+2026-11-24T01:25:00.955+09:00  INFO 35480 --- [weatherwear] [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-11-24T01:25:00.959+09:00  INFO 35480 --- [weatherwear] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-11-24T01:25:00.966+09:00  INFO 35480 --- [weatherwear] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+
+> Task :test FAILED
+
+2 tests completed, 2 failed
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':test'.
+> There were failing tests. See the report at: file:///C:/Users/soo71/github/myotboo-password-reset/build/reports/tests/test/index.html
+
+* Try:
+> Run with --scan to get full insights.
+
+BUILD FAILED in 2m 10s
+5 actionable tasks: 2 executed, 3 up-to-date

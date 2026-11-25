@@ -1,0 +1,1806 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - AuthorizationTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>AuthorizationTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/com.codeit.weatherwear.domain.security.integration.html">com.codeit.weatherwear.domain.security.integration</a> &gt; AuthorizationTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">6</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">5.688s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="tab-container">
+<ul class="tabLinks">
+<li>
+<a href="#">Tests</a>
+</li>
+<li>
+<a href="#">Standard output</a>
+</li>
+</ul>
+<div class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Method name</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">다른 사람의 비밀번호를 변경할 수 없다: #userId == principal.userId 테스트</td>
+<td class="success">FailUpdatePassword()</td>
+<td class="success">0.894s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">ADMIN은 권한을 수정할 수 있다: hasRole('ADMIN') 테스트</td>
+<td class="success">adminCanUpadteRole()</td>
+<td class="success">0.801s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">관리자나 자신의 옷이 아니면 삭제할 수 없다: @authorizationEvaluator.isClothOwner(authentication.principal.userId, #clothesId) 테스트</td>
+<td class="success">failDeleteClothes()</td>
+<td class="success">1.111s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">자신의 옷을 삭제할 수 있다: @authorizationEvaluator.isClothOwner(authentication.principal.userId, #clothesId) 테스트</td>
+<td class="success">successDeleteClothes()</td>
+<td class="success">0.776s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">자신의 비밀번호를 변경할 수 있다: #userId == principal.userId 테스트</td>
+<td class="success">successUpdatePassword()</td>
+<td class="success">1.082s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">USER은 권한을 수정할 수 없다: hasRole('ADMIN') 테스트</td>
+<td class="success">userCannotUpadteRole()</td>
+<td class="success">1.024s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>2026-11-24T01:33:18.872+09:00  INFO 33480 --- [weatherwear] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.codeit.weatherwear.domain.security.integration.AuthorizationTest]: AuthorizationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-11-24T01:33:18.901+09:00  INFO 33480 --- [weatherwear] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.codeit.weatherwear.WeatherwearApplication for test class com.codeit.weatherwear.domain.security.integration.AuthorizationTest
+2026-11-24T01:33:19.062+09:00 DEBUG 33480 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        users
+        (birth_date, created_at, email, gender, linked_oauth_providers, location_id, locked, name, password, profile_image_url, role, temp_password, temp_password_expiration_time, temperature_sensitivity, updated_at, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-11-24T01:33:19.242+09:00 DEBUG 33480 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        users
+        (birth_date, created_at, email, gender, linked_oauth_providers, location_id, locked, name, password, profile_image_url, role, temp_password, temp_password_expiration_time, temperature_sensitivity, updated_at, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-11-24T01:33:19.259+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-5] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.birth_date,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.linked_oauth_providers,
+        u1_0.location_id,
+        u1_0.locked,
+        u1_0.name,
+        u1_0.password,
+        u1_0.profile_image_url,
+        u1_0.role,
+        u1_0.temp_password,
+        u1_0.temp_password_expiration_time,
+        u1_0.temperature_sensitivity,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-11-24T01:33:19.472+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-5] .TempPasswordAwareAuthenticationProvider : Authenticated user
+2026-11-24T01:33:19.472+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-5] c.c.w.d.s.c.CustomAuthenticationFilter   : Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=com.codeit.weatherwear.domain.security.customauthentication.CustomUserDetails@3c5c453, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[ROLE_USER]]
+2026-11-24T01:33:19.477+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-5] org.hibernate.SQL                        : 
+    select
+        js1_0.id,
+        js1_0.access_token,
+        js1_0.created_at,
+        js1_0.expiration_time,
+        js1_0.refresh_token,
+        js1_0.updated_at,
+        js1_0.user_id 
+    from
+        jwt_sessions js1_0 
+    where
+        js1_0.user_id=?
+2026-11-24T01:33:19.481+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-5] c.c.w.d.s.service.JwtSessionService      : No active JwtSession found for userId: d7cb8171-f0bb-4653-9b5f-cecdfd188f2a
+2026-11-24T01:33:19.484+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-5] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.birth_date,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.linked_oauth_providers,
+        u1_0.location_id,
+        u1_0.locked,
+        u1_0.name,
+        u1_0.password,
+        u1_0.profile_image_url,
+        u1_0.role,
+        u1_0.temp_password,
+        u1_0.temp_password_expiration_time,
+        u1_0.temperature_sensitivity,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-11-24T01:33:19.495+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-5] org.hibernate.SQL                        : 
+    insert 
+    into
+        jwt_sessions
+        (access_token, created_at, expiration_time, refresh_token, updated_at, user_id, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?)
+2026-11-24T01:33:19.548+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-7] org.hibernate.SQL                        : 
+    select
+        js1_0.id 
+    from
+        jwt_sessions js1_0 
+    where
+        js1_0.access_token=? 
+    fetch
+        first ? rows only
+2026-11-24T01:33:19.557+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.birth_date,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.linked_oauth_providers,
+        u1_0.location_id,
+        u1_0.locked,
+        u1_0.name,
+        u1_0.password,
+        u1_0.profile_image_url,
+        u1_0.role,
+        u1_0.temp_password,
+        u1_0.temp_password_expiration_time,
+        u1_0.temperature_sensitivity,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-11-24T01:33:19.661+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.birth_date,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.linked_oauth_providers,
+        u1_0.location_id,
+        u1_0.locked,
+        u1_0.name,
+        u1_0.password,
+        u1_0.profile_image_url,
+        u1_0.role,
+        u1_0.temp_password,
+        u1_0.temp_password_expiration_time,
+        u1_0.temperature_sensitivity,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-11-24T01:33:19.701+09:00  INFO 33480 --- [weatherwear] [ntainer#7-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-2, groupId=weatherwear] Request joining group due to: group is already rebalancing
+2026-11-24T01:33:19.702+09:00  INFO 33480 --- [weatherwear] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-16, groupId=weatherwear] Request joining group due to: group is already rebalancing
+2026-11-24T01:33:19.702+09:00  INFO 33480 --- [weatherwear] [ntainer#2-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-16, groupId=weatherwear] Revoke previously assigned partitions weatherwear.direct_message_received-0
+2026-11-24T01:33:19.702+09:00  INFO 33480 --- [weatherwear] [ntainer#7-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-2, groupId=weatherwear] Revoke previously assigned partitions 
+2026-11-24T01:33:19.702+09:00  INFO 33480 --- [weatherwear] [ntainer#2-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: [weatherwear.direct_message_received-0]
+2026-11-24T01:33:19.702+09:00  INFO 33480 --- [weatherwear] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-16, groupId=weatherwear] (Re-)joining group
+2026-11-24T01:33:19.702+09:00  INFO 33480 --- [weatherwear] [ntainer#7-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: []
+2026-11-24T01:33:19.702+09:00  INFO 33480 --- [weatherwear] [ntainer#7-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-2, groupId=weatherwear] (Re-)joining group
+2026-11-24T01:33:19.703+09:00  INFO 33480 --- [weatherwear] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-21, groupId=weatherwear] Request joining group due to: group is already rebalancing
+2026-11-24T01:33:19.703+09:00  INFO 33480 --- [weatherwear] [ntainer#1-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-21, groupId=weatherwear] Revoke previously assigned partitions 
+2026-11-24T01:33:19.703+09:00  INFO 33480 --- [weatherwear] [ntainer#1-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: []
+2026-11-24T01:33:19.703+09:00  INFO 33480 --- [weatherwear] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-21, groupId=weatherwear] (Re-)joining group
+2026-11-24T01:33:19.709+09:00  INFO 33480 --- [weatherwear] [ntainer#8-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-25, groupId=weatherwear] Request joining group due to: group is already rebalancing
+2026-11-24T01:33:19.709+09:00  INFO 33480 --- [weatherwear] [ntainer#8-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-25, groupId=weatherwear] Revoke previously assigned partitions 
+2026-11-24T01:33:19.710+09:00  INFO 33480 --- [weatherwear] [ntainer#8-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: []
+2026-11-24T01:33:19.710+09:00  INFO 33480 --- [weatherwear] [ntainer#8-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-25, groupId=weatherwear] (Re-)joining group
+2026-11-24T01:33:19.713+09:00  INFO 33480 --- [weatherwear] [ntainer#8-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-3, groupId=weatherwear] Request joining group due to: group is already rebalancing
+2026-11-24T01:33:19.713+09:00  INFO 33480 --- [weatherwear] [ntainer#8-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-3, groupId=weatherwear] Revoke previously assigned partitions 
+2026-11-24T01:33:19.713+09:00  INFO 33480 --- [weatherwear] [ntainer#8-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: []
+2026-11-24T01:33:19.713+09:00  INFO 33480 --- [weatherwear] [ntainer#8-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-3, groupId=weatherwear] (Re-)joining group
+2026-11-24T01:33:19.721+09:00  INFO 33480 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-19, groupId=weatherwear] Request joining group due to: group is already rebalancing
+2026-11-24T01:33:19.721+09:00  INFO 33480 --- [weatherwear] [ntainer#4-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-29, groupId=weatherwear] Request joining group due to: group is already rebalancing
+2026-11-24T01:33:19.721+09:00  INFO 33480 --- [weatherwear] [ntainer#3-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-17, groupId=weatherwear] Request joining group due to: group is already rebalancing
+2026-11-24T01:33:19.721+09:00  INFO 33480 --- [weatherwear] [ntainer#6-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-1, groupId=weatherwear] Request joining group due to: group is already rebalancing
+2026-11-24T01:33:19.721+09:00  INFO 33480 --- [weatherwear] [ntainer#6-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-1, groupId=weatherwear] Revoke previously assigned partitions weatherwear.new_feed_comment-0
+2026-11-24T01:33:19.721+09:00  INFO 33480 --- [weatherwear] [ntainer#5-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-19, groupId=weatherwear] Revoke previously assigned partitions weatherwear.feed_like-0
+2026-11-24T01:33:19.721+09:00  INFO 33480 --- [weatherwear] [ntainer#4-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-29, groupId=weatherwear] Revoke previously assigned partitions 
+2026-11-24T01:33:19.721+09:00  INFO 33480 --- [weatherwear] [ntainer#6-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: [weatherwear.new_feed_comment-0]
+2026-11-24T01:33:19.721+09:00  INFO 33480 --- [weatherwear] [ntainer#5-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: [weatherwear.feed_like-0]
+2026-11-24T01:33:19.721+09:00  INFO 33480 --- [weatherwear] [ntainer#3-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-17, groupId=weatherwear] Revoke previously assigned partitions weatherwear.cloth_attribute_added-0
+2026-11-24T01:33:19.721+09:00  INFO 33480 --- [weatherwear] [ntainer#6-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-1, groupId=weatherwear] (Re-)joining group
+2026-11-24T01:33:19.721+09:00  INFO 33480 --- [weatherwear] [ntainer#4-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: []
+2026-11-24T01:33:19.721+09:00  INFO 33480 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-19, groupId=weatherwear] (Re-)joining group
+2026-11-24T01:33:19.721+09:00  INFO 33480 --- [weatherwear] [ntainer#3-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: [weatherwear.cloth_attribute_added-0]
+2026-11-24T01:33:19.721+09:00  INFO 33480 --- [weatherwear] [ntainer#4-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-29, groupId=weatherwear] (Re-)joining group
+2026-11-24T01:33:19.721+09:00  INFO 33480 --- [weatherwear] [ntainer#3-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-17, groupId=weatherwear] (Re-)joining group
+2026-11-24T01:33:19.721+09:00  INFO 33480 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-26, groupId=weatherwear] Request joining group due to: group is already rebalancing
+2026-11-24T01:33:19.721+09:00  INFO 33480 --- [weatherwear] [ntainer#7-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-13, groupId=weatherwear] Request joining group due to: group is already rebalancing
+2026-11-24T01:33:19.723+09:00  INFO 33480 --- [weatherwear] [ntainer#6-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-12, groupId=weatherwear] Request joining group due to: group is already rebalancing
+2026-11-24T01:33:19.723+09:00  INFO 33480 --- [weatherwear] [ntainer#9-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-26, groupId=weatherwear] Revoke previously assigned partitions 
+2026-11-24T01:33:19.723+09:00  INFO 33480 --- [weatherwear] [ntainer#6-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-12, groupId=weatherwear] Revoke previously assigned partitions 
+2026-11-24T01:33:19.723+09:00  INFO 33480 --- [weatherwear] [ntainer#9-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: []
+2026-11-24T01:33:19.723+09:00  INFO 33480 --- [weatherwear] [ntainer#6-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: []
+2026-11-24T01:33:19.723+09:00  INFO 33480 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-26, groupId=weatherwear] (Re-)joining group
+2026-11-24T01:33:19.723+09:00  INFO 33480 --- [weatherwear] [ntainer#6-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-12, groupId=weatherwear] (Re-)joining group
+2026-11-24T01:33:19.723+09:00  INFO 33480 --- [weatherwear] [ntainer#4-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-7, groupId=weatherwear] Request joining group due to: group is already rebalancing
+2026-11-24T01:33:19.723+09:00  INFO 33480 --- [weatherwear] [ntainer#7-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-13, groupId=weatherwear] Revoke previously assigned partitions weatherwear.role_changed-0
+2026-11-24T01:33:19.724+09:00  INFO 33480 --- [weatherwear] [ntainer#4-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-7, groupId=weatherwear] Revoke previously assigned partitions 
+2026-11-24T01:33:19.724+09:00  INFO 33480 --- [weatherwear] [ntainer#4-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: []
+2026-11-24T01:33:19.723+09:00  INFO 33480 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-15, groupId=weatherwear] Request joining group due to: group is already rebalancing
+2026-11-24T01:33:19.724+09:00  INFO 33480 --- [weatherwear] [ntainer#4-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-7, groupId=weatherwear] (Re-)joining group
+2026-11-24T01:33:19.724+09:00  INFO 33480 --- [weatherwear] [ntainer#7-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: [weatherwear.role_changed-0]
+2026-11-24T01:33:19.725+09:00  INFO 33480 --- [weatherwear] [ntainer#7-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-13, groupId=weatherwear] (Re-)joining group
+2026-11-24T01:33:19.725+09:00  INFO 33480 --- [weatherwear] [ntainer#9-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-15, groupId=weatherwear] Revoke previously assigned partitions weatherwear.weather_alert-0
+2026-11-24T01:33:19.725+09:00  INFO 33480 --- [weatherwear] [ntainer#9-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: [weatherwear.weather_alert-0]
+2026-11-24T01:33:19.725+09:00  INFO 33480 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-15, groupId=weatherwear] (Re-)joining group
+2026-11-24T01:33:19.725+09:00  INFO 33480 --- [weatherwear] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-10, groupId=weatherwear] Request joining group due to: group is already rebalancing
+2026-11-24T01:33:19.726+09:00  INFO 33480 --- [weatherwear] [ntainer#1-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-10, groupId=weatherwear] Revoke previously assigned partitions weatherwear.cloth_attribute_updated-0
+2026-11-24T01:33:19.726+09:00  INFO 33480 --- [weatherwear] [ntainer#1-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: [weatherwear.cloth_attribute_updated-0]
+2026-11-24T01:33:19.726+09:00  INFO 33480 --- [weatherwear] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-10, groupId=weatherwear] (Re-)joining group
+2026-11-24T01:33:19.727+09:00  INFO 33480 --- [weatherwear] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-38, groupId=weatherwear] Request joining group due to: group is already rebalancing
+2026-11-24T01:33:19.727+09:00  INFO 33480 --- [weatherwear] [ntainer#7-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-24, groupId=weatherwear] Request joining group due to: group is already rebalancing
+2026-11-24T01:33:19.727+09:00  INFO 33480 --- [weatherwear] [ntainer#2-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-38, groupId=weatherwear] Revoke previously assigned partitions 
+2026-11-24T01:33:19.727+09:00  INFO 33480 --- [weatherwear] [ntainer#4-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-40, groupId=weatherwear] Request joining group due to: group is already rebalancing
+2026-11-24T01:33:19.727+09:00  INFO 33480 --- [weatherwear] [ntainer#2-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: []
+2026-11-24T01:33:19.728+09:00  INFO 33480 --- [weatherwear] [ntainer#4-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-40, groupId=weatherwear] Revoke previously assigned partitions 
+2026-11-24T01:33:19.728+09:00  INFO 33480 --- [weatherwear] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-38, groupId=weatherwear] (Re-)joining group
+2026-11-24T01:33:19.728+09:00  INFO 33480 --- [weatherwear] [ntainer#4-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: []
+2026-11-24T01:33:19.728+09:00  INFO 33480 --- [weatherwear] [ntainer#7-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-24, groupId=weatherwear] Revoke previously assigned partitions 
+2026-11-24T01:33:19.728+09:00  INFO 33480 --- [weatherwear] [ntainer#4-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-40, groupId=weatherwear] (Re-)joining group
+2026-11-24T01:33:19.728+09:00  INFO 33480 --- [weatherwear] [ntainer#7-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: []
+2026-11-24T01:33:19.728+09:00  INFO 33480 --- [weatherwear] [ntainer#7-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-24, groupId=weatherwear] (Re-)joining group
+2026-11-24T01:33:19.728+09:00  INFO 33480 --- [weatherwear] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-5, groupId=weatherwear] Request joining group due to: group is already rebalancing
+2026-11-24T01:33:19.728+09:00  INFO 33480 --- [weatherwear] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-32, groupId=weatherwear] Request joining group due to: group is already rebalancing
+2026-11-24T01:33:19.728+09:00  INFO 33480 --- [weatherwear] [ntainer#2-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-5, groupId=weatherwear] Revoke previously assigned partitions 
+2026-11-24T01:33:19.728+09:00  INFO 33480 --- [weatherwear] [ntainer#1-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-32, groupId=weatherwear] Revoke previously assigned partitions 
+2026-11-24T01:33:19.728+09:00  INFO 33480 --- [weatherwear] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-27, groupId=weatherwear] Request joining group due to: group is already rebalancing
+2026-11-24T01:33:19.728+09:00  INFO 33480 --- [weatherwear] [ntainer#2-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: []
+2026-11-24T01:33:19.728+09:00  INFO 33480 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-4, groupId=weatherwear] Request joining group due to: group is already rebalancing
+2026-11-24T01:33:19.729+09:00  INFO 33480 --- [weatherwear] [ntainer#2-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-27, groupId=weatherwear] Revoke previously assigned partitions 
+2026-11-24T01:33:19.729+09:00  INFO 33480 --- [weatherwear] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-5, groupId=weatherwear] (Re-)joining group
+2026-11-24T01:33:19.729+09:00  INFO 33480 --- [weatherwear] [ntainer#9-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-4, groupId=weatherwear] Revoke previously assigned partitions 
+2026-11-24T01:33:19.728+09:00  INFO 33480 --- [weatherwear] [ntainer#1-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: []
+2026-11-24T01:33:19.729+09:00  INFO 33480 --- [weatherwear] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-32, groupId=weatherwear] (Re-)joining group
+2026-11-24T01:33:19.729+09:00  INFO 33480 --- [weatherwear] [ntainer#2-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: []
+2026-11-24T01:33:19.729+09:00  INFO 33480 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-30, groupId=weatherwear] Request joining group due to: group is already rebalancing
+2026-11-24T01:33:19.729+09:00  INFO 33480 --- [weatherwear] [ntainer#5-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-30, groupId=weatherwear] Revoke previously assigned partitions 
+2026-11-24T01:33:19.729+09:00  INFO 33480 --- [weatherwear] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-27, groupId=weatherwear] (Re-)joining group
+2026-11-24T01:33:19.729+09:00  INFO 33480 --- [weatherwear] [ntainer#5-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: []
+2026-11-24T01:33:19.729+09:00  INFO 33480 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-30, groupId=weatherwear] (Re-)joining group
+2026-11-24T01:33:19.729+09:00  INFO 33480 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-41, groupId=weatherwear] Request joining group due to: group is already rebalancing
+2026-11-24T01:33:19.729+09:00  INFO 33480 --- [weatherwear] [ntainer#5-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-41, groupId=weatherwear] Revoke previously assigned partitions 
+2026-11-24T01:33:19.729+09:00  INFO 33480 --- [weatherwear] [ntainer#6-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-34, groupId=weatherwear] Request joining group due to: group is already rebalancing
+2026-11-24T01:33:19.729+09:00  INFO 33480 --- [weatherwear] [ntainer#5-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: []
+2026-11-24T01:33:19.729+09:00  INFO 33480 --- [weatherwear] [ntainer#6-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-34, groupId=weatherwear] Revoke previously assigned partitions 
+2026-11-24T01:33:19.729+09:00  INFO 33480 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-41, groupId=weatherwear] (Re-)joining group
+2026-11-24T01:33:19.729+09:00  INFO 33480 --- [weatherwear] [ntainer#6-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: []
+2026-11-24T01:33:19.729+09:00  INFO 33480 --- [weatherwear] [ntainer#6-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-34, groupId=weatherwear] (Re-)joining group
+2026-11-24T01:33:19.729+09:00  INFO 33480 --- [weatherwear] [ntainer#9-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: []
+2026-11-24T01:33:19.729+09:00  INFO 33480 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-37, groupId=weatherwear] Request joining group due to: group is already rebalancing
+2026-11-24T01:33:19.730+09:00  INFO 33480 --- [weatherwear] [ntainer#9-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-37, groupId=weatherwear] Revoke previously assigned partitions 
+2026-11-24T01:33:19.730+09:00  INFO 33480 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-4, groupId=weatherwear] (Re-)joining group
+2026-11-24T01:33:19.730+09:00  INFO 33480 --- [weatherwear] [ntainer#9-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: []
+2026-11-24T01:33:19.730+09:00  INFO 33480 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-37, groupId=weatherwear] (Re-)joining group
+2026-11-24T01:33:19.730+09:00  INFO 33480 --- [weatherwear] [ntainer#6-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-23, groupId=weatherwear] Request joining group due to: group is already rebalancing
+2026-11-24T01:33:19.730+09:00  INFO 33480 --- [weatherwear] [ntainer#3-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-6, groupId=weatherwear] Request joining group due to: group is already rebalancing
+2026-11-24T01:33:19.730+09:00  INFO 33480 --- [weatherwear] [ntainer#3-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-6, groupId=weatherwear] Revoke previously assigned partitions 
+2026-11-24T01:33:19.730+09:00  INFO 33480 --- [weatherwear] [ntainer#6-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-23, groupId=weatherwear] Revoke previously assigned partitions 
+2026-11-24T01:33:19.730+09:00  INFO 33480 --- [weatherwear] [ntainer#3-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: []
+2026-11-24T01:33:19.730+09:00  INFO 33480 --- [weatherwear] [ntainer#4-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-18, groupId=weatherwear] Request joining group due to: group is already rebalancing
+2026-11-24T01:33:19.730+09:00  INFO 33480 --- [weatherwear] [ntainer#6-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: []
+2026-11-24T01:33:19.730+09:00  INFO 33480 --- [weatherwear] [ntainer#3-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-6, groupId=weatherwear] (Re-)joining group
+2026-11-24T01:33:19.730+09:00  INFO 33480 --- [weatherwear] [ntainer#6-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-23, groupId=weatherwear] (Re-)joining group
+2026-11-24T01:33:19.730+09:00  INFO 33480 --- [weatherwear] [ntainer#4-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-18, groupId=weatherwear] Revoke previously assigned partitions weatherwear.new_follower-0
+2026-11-24T01:33:19.730+09:00  INFO 33480 --- [weatherwear] [ntainer#4-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: [weatherwear.new_follower-0]
+2026-11-24T01:33:19.730+09:00  INFO 33480 --- [weatherwear] [ntainer#4-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-18, groupId=weatherwear] (Re-)joining group
+2026-11-24T01:33:19.734+09:00  INFO 33480 --- [weatherwear] [ntainer#7-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-35, groupId=weatherwear] Request joining group due to: group is already rebalancing
+2026-11-24T01:33:19.734+09:00  INFO 33480 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-8, groupId=weatherwear] Request joining group due to: group is already rebalancing
+2026-11-24T01:33:19.734+09:00  INFO 33480 --- [weatherwear] [ntainer#7-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-35, groupId=weatherwear] Revoke previously assigned partitions 
+2026-11-24T01:33:19.734+09:00  INFO 33480 --- [weatherwear] [ntainer#5-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-8, groupId=weatherwear] Revoke previously assigned partitions 
+2026-11-24T01:33:19.734+09:00  INFO 33480 --- [weatherwear] [ntainer#7-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: []
+2026-11-24T01:33:19.734+09:00  INFO 33480 --- [weatherwear] [ntainer#5-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: []
+2026-11-24T01:33:19.734+09:00  INFO 33480 --- [weatherwear] [ntainer#7-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-35, groupId=weatherwear] (Re-)joining group
+2026-11-24T01:33:19.734+09:00  INFO 33480 --- [weatherwear] [ntainer#3-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-39, groupId=weatherwear] Request joining group due to: group is already rebalancing
+2026-11-24T01:33:19.734+09:00  INFO 33480 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-8, groupId=weatherwear] (Re-)joining group
+2026-11-24T01:33:19.734+09:00  INFO 33480 --- [weatherwear] [ntainer#3-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-39, groupId=weatherwear] Revoke previously assigned partitions 
+2026-11-24T01:33:19.734+09:00  INFO 33480 --- [weatherwear] [ntainer#3-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: []
+2026-11-24T01:33:19.734+09:00  INFO 33480 --- [weatherwear] [ntainer#3-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-39, groupId=weatherwear] (Re-)joining group
+2026-11-24T01:33:19.735+09:00  INFO 33480 --- [weatherwear] [ntainer#8-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-14, groupId=weatherwear] Request joining group due to: group is already rebalancing
+2026-11-24T01:33:19.735+09:00  INFO 33480 --- [weatherwear] [ntainer#8-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-36, groupId=weatherwear] Request joining group due to: group is already rebalancing
+2026-11-24T01:33:19.735+09:00  INFO 33480 --- [weatherwear] [ntainer#8-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-36, groupId=weatherwear] Revoke previously assigned partitions 
+2026-11-24T01:33:19.735+09:00  INFO 33480 --- [weatherwear] [ntainer#3-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-28, groupId=weatherwear] Request joining group due to: group is already rebalancing
+2026-11-24T01:33:19.736+09:00  INFO 33480 --- [weatherwear] [ntainer#8-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: []
+2026-11-24T01:33:19.736+09:00  INFO 33480 --- [weatherwear] [ntainer#8-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-36, groupId=weatherwear] (Re-)joining group
+2026-11-24T01:33:19.736+09:00  INFO 33480 --- [weatherwear] [ntainer#3-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-28, groupId=weatherwear] Revoke previously assigned partitions 
+2026-11-24T01:33:19.737+09:00  INFO 33480 --- [weatherwear] [ntainer#3-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: []
+2026-11-24T01:33:19.737+09:00  INFO 33480 --- [weatherwear] [ntainer#3-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-28, groupId=weatherwear] (Re-)joining group
+2026-11-24T01:33:19.737+09:00  INFO 33480 --- [weatherwear] [ntainer#8-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-14, groupId=weatherwear] Revoke previously assigned partitions weatherwear.followee_feed_posted-0
+2026-11-24T01:33:19.737+09:00  INFO 33480 --- [weatherwear] [ntainer#8-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: [weatherwear.followee_feed_posted-0]
+2026-11-24T01:33:19.737+09:00  INFO 33480 --- [weatherwear] [ntainer#8-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-14, groupId=weatherwear] (Re-)joining group
+2026-11-24T01:33:19.741+09:00  INFO 33480 --- [weatherwear] [ntainer#6-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-34, groupId=weatherwear] Successfully joined group with generation Generation{generationId=6, memberId='consumer-weatherwear-34-5bd7419a-ea81-4b8c-8900-846b95800386', protocol='range'}
+2026-11-24T01:33:19.741+09:00  INFO 33480 --- [weatherwear] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-16, groupId=weatherwear] Successfully joined group with generation Generation{generationId=6, memberId='consumer-weatherwear-16-8859c41c-29ad-4dc6-bbb2-b64078b48a9a', protocol='range'}
+2026-11-24T01:33:19.741+09:00  INFO 33480 --- [weatherwear] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-21, groupId=weatherwear] Successfully joined group with generation Generation{generationId=6, memberId='consumer-weatherwear-21-aee3a768-1584-4975-9103-2f1e9530e3db', protocol='range'}
+2026-11-24T01:33:19.741+09:00  INFO 33480 --- [weatherwear] [ntainer#6-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-1, groupId=weatherwear] Successfully joined group with generation Generation{generationId=6, memberId='consumer-weatherwear-1-9eb94436-789d-4da1-a54c-dd4e296bc23d', protocol='range'}
+2026-11-24T01:33:19.741+09:00  INFO 33480 --- [weatherwear] [ntainer#4-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-7, groupId=weatherwear] Successfully joined group with generation Generation{generationId=6, memberId='consumer-weatherwear-7-a4133c8c-8d35-493b-ab02-0479017bd2c5', protocol='range'}
+2026-11-24T01:33:19.741+09:00  INFO 33480 --- [weatherwear] [ntainer#6-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-23, groupId=weatherwear] Successfully joined group with generation Generation{generationId=6, memberId='consumer-weatherwear-23-d386d948-8049-47ee-b3da-566903c39fb5', protocol='range'}
+2026-11-24T01:33:19.742+09:00  INFO 33480 --- [weatherwear] [ntainer#7-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-2, groupId=weatherwear] Successfully joined group with generation Generation{generationId=6, memberId='consumer-weatherwear-2-fc7e9364-8ad0-44c7-8f91-d6f5a24fb509', protocol='range'}
+2026-11-24T01:33:19.742+09:00  INFO 33480 --- [weatherwear] [ntainer#3-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-6, groupId=weatherwear] Successfully joined group with generation Generation{generationId=6, memberId='consumer-weatherwear-6-2cc63af6-9769-4e76-8122-8810de14ef9e', protocol='range'}
+2026-11-24T01:33:19.742+09:00  INFO 33480 --- [weatherwear] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-10, groupId=weatherwear] Successfully joined group with generation Generation{generationId=6, memberId='consumer-weatherwear-10-3d0f19f6-1944-4c83-8432-46f2f0172069', protocol='range'}
+2026-11-24T01:33:19.743+09:00  INFO 33480 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-15, groupId=weatherwear] Successfully joined group with generation Generation{generationId=6, memberId='consumer-weatherwear-15-2889d6af-c5f3-4e67-aabc-5cc4f52f89a9', protocol='range'}
+2026-11-24T01:33:19.743+09:00  INFO 33480 --- [weatherwear] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-5, groupId=weatherwear] Successfully joined group with generation Generation{generationId=6, memberId='consumer-weatherwear-5-58d31562-c7ba-4e09-9c1e-10cc2fbbe58c', protocol='range'}
+2026-11-24T01:33:19.743+09:00  INFO 33480 --- [weatherwear] [ntainer#8-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-36, groupId=weatherwear] Successfully joined group with generation Generation{generationId=6, memberId='consumer-weatherwear-36-e1abb12b-7264-4166-a9e3-2d332611cd34', protocol='range'}
+2026-11-24T01:33:19.744+09:00  INFO 33480 --- [weatherwear] [ntainer#7-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-24, groupId=weatherwear] Successfully joined group with generation Generation{generationId=6, memberId='consumer-weatherwear-24-975a82d1-29f2-449e-999b-0ad88afa10f6', protocol='range'}
+2026-11-24T01:33:19.745+09:00  INFO 33480 --- [weatherwear] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-38, groupId=weatherwear] Successfully joined group with generation Generation{generationId=6, memberId='consumer-weatherwear-38-7125bd45-ff74-46e3-be08-c1df2f5d60df', protocol='range'}
+2026-11-24T01:33:19.745+09:00  INFO 33480 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-37, groupId=weatherwear] Successfully joined group with generation Generation{generationId=6, memberId='consumer-weatherwear-37-8ed58875-c9a8-49ca-a4ef-26fd895a4323', protocol='range'}
+2026-11-24T01:33:19.745+09:00  INFO 33480 --- [weatherwear] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-32, groupId=weatherwear] Successfully joined group with generation Generation{generationId=6, memberId='consumer-weatherwear-32-aa9091a7-3898-46b9-899c-81f4044c0d30', protocol='range'}
+2026-11-24T01:33:19.745+09:00  INFO 33480 --- [weatherwear] [ntainer#8-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-25, groupId=weatherwear] Successfully joined group with generation Generation{generationId=6, memberId='consumer-weatherwear-25-5fb0a3dc-907f-404a-b72f-6af788415153', protocol='range'}
+2026-11-24T01:33:19.746+09:00  INFO 33480 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-30, groupId=weatherwear] Successfully joined group with generation Generation{generationId=6, memberId='consumer-weatherwear-30-0904df12-89c1-4395-9467-ea89503c3bdb', protocol='range'}
+2026-11-24T01:33:19.746+09:00  INFO 33480 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-26, groupId=weatherwear] Successfully joined group with generation Generation{generationId=6, memberId='consumer-weatherwear-26-c37bbf38-4982-4f29-9948-de50cf4707d0', protocol='range'}
+2026-11-24T01:33:19.746+09:00  INFO 33480 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-4, groupId=weatherwear] Successfully joined group with generation Generation{generationId=6, memberId='consumer-weatherwear-4-60f7edc9-4369-4353-bc8f-6702d6b2b102', protocol='range'}
+2026-11-24T01:33:19.746+09:00  INFO 33480 --- [weatherwear] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-43, groupId=weatherwear] Successfully joined group with generation Generation{generationId=6, memberId='consumer-weatherwear-43-a02cc7e3-3740-4a8f-b438-6494882a73b5', protocol='range'}
+2026-11-24T01:33:19.747+09:00  INFO 33480 --- [weatherwear] [ntainer#4-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-29, groupId=weatherwear] Successfully joined group with generation Generation{generationId=6, memberId='consumer-weatherwear-29-34a5195e-7ebb-4669-ad01-b9118ea5095d', protocol='range'}
+2026-11-24T01:33:19.747+09:00  INFO 33480 --- [weatherwear] [ntainer#3-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-17, groupId=weatherwear] Successfully joined group with generation Generation{generationId=6, memberId='consumer-weatherwear-17-8f862e1c-422f-4924-9630-6417020f355e', protocol='range'}
+2026-11-24T01:33:19.747+09:00  INFO 33480 --- [weatherwear] [ntainer#8-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-3, groupId=weatherwear] Successfully joined group with generation Generation{generationId=6, memberId='consumer-weatherwear-3-ed3f06ca-5e4b-4230-b64b-2a525aa2c2eb', protocol='range'}
+2026-11-24T01:33:19.747+09:00  INFO 33480 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-19, groupId=weatherwear] Successfully joined group with generation Generation{generationId=6, memberId='consumer-weatherwear-19-fe0c7f17-891d-4716-af5d-c6558ba94f2a', protocol='range'}
+2026-11-24T01:33:19.748+09:00  INFO 33480 --- [weatherwear] [ntainer#4-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-40, groupId=weatherwear] Successfully joined group with generation Generation{generationId=6, memberId='consumer-weatherwear-40-1ff6f0c5-f3a9-4e54-a4a8-a035bbfafba9', protocol='range'}
+2026-11-24T01:33:19.749+09:00  INFO 33480 --- [weatherwear] [ntainer#6-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-12, groupId=weatherwear] Successfully joined group with generation Generation{generationId=6, memberId='consumer-weatherwear-12-e7c1223f-5816-4028-ac83-dd6979c08386', protocol='range'}
+2026-11-24T01:33:19.749+09:00  INFO 33480 --- [weatherwear] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-27, groupId=weatherwear] Successfully joined group with generation Generation{generationId=6, memberId='consumer-weatherwear-27-208219b8-b1e3-41c1-a010-4802b8ca9c7b', protocol='range'}
+2026-11-24T01:33:19.747+09:00  INFO 33480 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-41, groupId=weatherwear] Successfully joined group with generation Generation{generationId=6, memberId='consumer-weatherwear-41-8c9a657e-7a15-4d89-b4c4-f877ab66c165', protocol='range'}
+2026-11-24T01:33:19.749+09:00  INFO 33480 --- [weatherwear] [ntainer#7-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-13, groupId=weatherwear] Successfully joined group with generation Generation{generationId=6, memberId='consumer-weatherwear-13-987f4972-142d-4fcb-ba4b-c561f154ed2d', protocol='range'}
+2026-11-24T01:33:19.750+09:00  INFO 33480 --- [weatherwear] [ntainer#3-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-39, groupId=weatherwear] Successfully joined group with generation Generation{generationId=6, memberId='consumer-weatherwear-39-8b0be35c-bc37-4eb4-8c14-92f718807c4f', protocol='range'}
+2026-11-24T01:33:19.750+09:00  INFO 33480 --- [weatherwear] [ntainer#7-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-35, groupId=weatherwear] Successfully joined group with generation Generation{generationId=6, memberId='consumer-weatherwear-35-09b8bccc-56bd-4e07-bcff-02fb8bc6ca13', protocol='range'}
+2026-11-24T01:33:19.751+09:00  INFO 33480 --- [weatherwear] [ntainer#4-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-18, groupId=weatherwear] Successfully joined group with generation Generation{generationId=6, memberId='consumer-weatherwear-18-48e1cf17-d787-4f6f-b8df-51cc2e16ea76', protocol='range'}
+2026-11-24T01:33:19.752+09:00  INFO 33480 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-8, groupId=weatherwear] Successfully joined group with generation Generation{generationId=6, memberId='consumer-weatherwear-8-a843d2b5-c318-43c9-85f2-b9edf0076f3c', protocol='range'}
+2026-11-24T01:33:19.752+09:00  INFO 33480 --- [weatherwear] [ntainer#3-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-28, groupId=weatherwear] Successfully joined group with generation Generation{generationId=6, memberId='consumer-weatherwear-28-6d5dff96-ee45-47ce-9daa-34a1eaa14c8b', protocol='range'}
+2026-11-24T01:33:19.752+09:00  INFO 33480 --- [weatherwear] [ntainer#8-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-14, groupId=weatherwear] Successfully joined group with generation Generation{generationId=6, memberId='consumer-weatherwear-14-33547213-e524-4fdc-9cbb-79ea40e8ee3f', protocol='range'}
+2026-11-24T01:33:19.755+09:00  INFO 33480 --- [weatherwear] [ntainer#7-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-2, groupId=weatherwear] Finished assignment for group at generation 6: {consumer-weatherwear-16-8859c41c-29ad-4dc6-bbb2-b64078b48a9a=Assignment(partitions=[weatherwear.direct_message_received-0]), consumer-weatherwear-7-a4133c8c-8d35-493b-ab02-0479017bd2c5=Assignment(partitions=[]), consumer-weatherwear-21-aee3a768-1584-4975-9103-2f1e9530e3db=Assignment(partitions=[]), consumer-weatherwear-2-fc7e9364-8ad0-44c7-8f91-d6f5a24fb509=Assignment(partitions=[]), consumer-weatherwear-15-2889d6af-c5f3-4e67-aabc-5cc4f52f89a9=Assignment(partitions=[weatherwear.weather_alert-0]), consumer-weatherwear-1-9eb94436-789d-4da1-a54c-dd4e296bc23d=Assignment(partitions=[weatherwear.new_feed_comment-0]), consumer-weatherwear-6-2cc63af6-9769-4e76-8122-8810de14ef9e=Assignment(partitions=[]), consumer-weatherwear-38-7125bd45-ff74-46e3-be08-c1df2f5d60df=Assignment(partitions=[]), consumer-weatherwear-23-d386d948-8049-47ee-b3da-566903c39fb5=Assignment(partitions=[]), consumer-weatherwear-34-5bd7419a-ea81-4b8c-8900-846b95800386=Assignment(partitions=[]), consumer-weatherwear-5-58d31562-c7ba-4e09-9c1e-10cc2fbbe58c=Assignment(partitions=[]), consumer-weatherwear-10-3d0f19f6-1944-4c83-8432-46f2f0172069=Assignment(partitions=[weatherwear.cloth_attribute_updated-0]), consumer-weatherwear-24-975a82d1-29f2-449e-999b-0ad88afa10f6=Assignment(partitions=[]), consumer-weatherwear-25-5fb0a3dc-907f-404a-b72f-6af788415153=Assignment(partitions=[]), consumer-weatherwear-32-aa9091a7-3898-46b9-899c-81f4044c0d30=Assignment(partitions=[]), consumer-weatherwear-4-60f7edc9-4369-4353-bc8f-6702d6b2b102=Assignment(partitions=[]), consumer-weatherwear-30-0904df12-89c1-4395-9467-ea89503c3bdb=Assignment(partitions=[]), consumer-weatherwear-37-8ed58875-c9a8-49ca-a4ef-26fd895a4323=Assignment(partitions=[]), consumer-weatherwear-26-c37bbf38-4982-4f29-9948-de50cf4707d0=Assignment(partitions=[]), consumer-weatherwear-36-e1abb12b-7264-4166-a9e3-2d332611cd34=Assignment(partitions=[]), consumer-weatherwear-13-987f4972-142d-4fcb-ba4b-c561f154ed2d=Assignment(partitions=[weatherwear.role_changed-0]), consumer-weatherwear-29-34a5195e-7ebb-4669-ad01-b9118ea5095d=Assignment(partitions=[]), consumer-weatherwear-43-a02cc7e3-3740-4a8f-b438-6494882a73b5=Assignment(partitions=[]), consumer-weatherwear-27-208219b8-b1e3-41c1-a010-4802b8ca9c7b=Assignment(partitions=[]), consumer-weatherwear-19-fe0c7f17-891d-4716-af5d-c6558ba94f2a=Assignment(partitions=[weatherwear.feed_like-0]), consumer-weatherwear-41-8c9a657e-7a15-4d89-b4c4-f877ab66c165=Assignment(partitions=[]), consumer-weatherwear-3-ed3f06ca-5e4b-4230-b64b-2a525aa2c2eb=Assignment(partitions=[]), consumer-weatherwear-17-8f862e1c-422f-4924-9630-6417020f355e=Assignment(partitions=[weatherwear.cloth_attribute_added-0]), consumer-weatherwear-40-1ff6f0c5-f3a9-4e54-a4a8-a035bbfafba9=Assignment(partitions=[]), consumer-weatherwear-12-e7c1223f-5816-4028-ac83-dd6979c08386=Assignment(partitions=[]), consumer-weatherwear-18-48e1cf17-d787-4f6f-b8df-51cc2e16ea76=Assignment(partitions=[weatherwear.new_follower-0]), consumer-weatherwear-35-09b8bccc-56bd-4e07-bcff-02fb8bc6ca13=Assignment(partitions=[]), consumer-weatherwear-28-6d5dff96-ee45-47ce-9daa-34a1eaa14c8b=Assignment(partitions=[]), consumer-weatherwear-39-8b0be35c-bc37-4eb4-8c14-92f718807c4f=Assignment(partitions=[]), consumer-weatherwear-14-33547213-e524-4fdc-9cbb-79ea40e8ee3f=Assignment(partitions=[weatherwear.followee_feed_posted-0]), consumer-weatherwear-8-a843d2b5-c318-43c9-85f2-b9edf0076f3c=Assignment(partitions=[])}
+2026-11-24T01:33:19.766+09:00  INFO 33480 --- [weatherwear] [ntainer#8-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-14, groupId=weatherwear] Successfully synced group in generation Generation{generationId=6, memberId='consumer-weatherwear-14-33547213-e524-4fdc-9cbb-79ea40e8ee3f', protocol='range'}
+2026-11-24T01:33:19.766+09:00  INFO 33480 --- [weatherwear] [ntainer#6-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-34, groupId=weatherwear] Successfully synced group in generation Generation{generationId=6, memberId='consumer-weatherwear-34-5bd7419a-ea81-4b8c-8900-846b95800386', protocol='range'}
+2026-11-24T01:33:19.766+09:00  INFO 33480 --- [weatherwear] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-21, groupId=weatherwear] Successfully synced group in generation Generation{generationId=6, memberId='consumer-weatherwear-21-aee3a768-1584-4975-9103-2f1e9530e3db', protocol='range'}
+2026-11-24T01:33:19.766+09:00  INFO 33480 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-15, groupId=weatherwear] Successfully synced group in generation Generation{generationId=6, memberId='consumer-weatherwear-15-2889d6af-c5f3-4e67-aabc-5cc4f52f89a9', protocol='range'}
+2026-11-24T01:33:19.766+09:00  INFO 33480 --- [weatherwear] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-10, groupId=weatherwear] Successfully synced group in generation Generation{generationId=6, memberId='consumer-weatherwear-10-3d0f19f6-1944-4c83-8432-46f2f0172069', protocol='range'}
+2026-11-24T01:33:19.766+09:00  INFO 33480 --- [weatherwear] [ntainer#7-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-2, groupId=weatherwear] Successfully synced group in generation Generation{generationId=6, memberId='consumer-weatherwear-2-fc7e9364-8ad0-44c7-8f91-d6f5a24fb509', protocol='range'}
+2026-11-24T01:33:19.766+09:00  INFO 33480 --- [weatherwear] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-5, groupId=weatherwear] Successfully synced group in generation Generation{generationId=6, memberId='consumer-weatherwear-5-58d31562-c7ba-4e09-9c1e-10cc2fbbe58c', protocol='range'}
+2026-11-24T01:33:19.766+09:00  INFO 33480 --- [weatherwear] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-10, groupId=weatherwear] Notifying assignor about the new Assignment(partitions=[weatherwear.cloth_attribute_updated-0])
+2026-11-24T01:33:19.766+09:00  INFO 33480 --- [weatherwear] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-16, groupId=weatherwear] Successfully synced group in generation Generation{generationId=6, memberId='consumer-weatherwear-16-8859c41c-29ad-4dc6-bbb2-b64078b48a9a', protocol='range'}
+2026-11-24T01:33:19.767+09:00  INFO 33480 --- [weatherwear] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-5, groupId=weatherwear] Notifying assignor about the new Assignment(partitions=[])
+2026-11-24T01:33:19.767+09:00  INFO 33480 --- [weatherwear] [ntainer#1-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-10, groupId=weatherwear] Adding newly assigned partitions: weatherwear.cloth_attribute_updated-0
+2026-11-24T01:33:19.766+09:00  INFO 33480 --- [weatherwear] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-21, groupId=weatherwear] Notifying assignor about the new Assignment(partitions=[])
+2026-11-24T01:33:19.767+09:00  INFO 33480 --- [weatherwear] [ntainer#2-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-5, groupId=weatherwear] Adding newly assigned partitions: 
+2026-11-24T01:33:19.767+09:00  INFO 33480 --- [weatherwear] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-16, groupId=weatherwear] Notifying assignor about the new Assignment(partitions=[weatherwear.direct_message_received-0])
+2026-11-24T01:33:19.767+09:00  INFO 33480 --- [weatherwear] [ntainer#8-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-14, groupId=weatherwear] Notifying assignor about the new Assignment(partitions=[weatherwear.followee_feed_posted-0])
+2026-11-24T01:33:19.766+09:00  INFO 33480 --- [weatherwear] [ntainer#6-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-34, groupId=weatherwear] Notifying assignor about the new Assignment(partitions=[])
+2026-11-24T01:33:19.767+09:00  INFO 33480 --- [weatherwear] [ntainer#2-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-16, groupId=weatherwear] Adding newly assigned partitions: weatherwear.direct_message_received-0
+2026-11-24T01:33:19.767+09:00  INFO 33480 --- [weatherwear] [ntainer#8-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-14, groupId=weatherwear] Adding newly assigned partitions: weatherwear.followee_feed_posted-0
+2026-11-24T01:33:19.767+09:00  INFO 33480 --- [weatherwear] [ntainer#8-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-36, groupId=weatherwear] Successfully synced group in generation Generation{generationId=6, memberId='consumer-weatherwear-36-e1abb12b-7264-4166-a9e3-2d332611cd34', protocol='range'}
+2026-11-24T01:33:19.768+09:00  INFO 33480 --- [weatherwear] [ntainer#8-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-36, groupId=weatherwear] Notifying assignor about the new Assignment(partitions=[])
+2026-11-24T01:33:19.768+09:00  INFO 33480 --- [weatherwear] [ntainer#6-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-1, groupId=weatherwear] Successfully synced group in generation Generation{generationId=6, memberId='consumer-weatherwear-1-9eb94436-789d-4da1-a54c-dd4e296bc23d', protocol='range'}
+2026-11-24T01:33:19.768+09:00  INFO 33480 --- [weatherwear] [ntainer#8-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-36, groupId=weatherwear] Adding newly assigned partitions: 
+2026-11-24T01:33:19.767+09:00  INFO 33480 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-15, groupId=weatherwear] Notifying assignor about the new Assignment(partitions=[weatherwear.weather_alert-0])
+2026-11-24T01:33:19.767+09:00  INFO 33480 --- [weatherwear] [ntainer#7-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-2, groupId=weatherwear] Notifying assignor about the new Assignment(partitions=[])
+2026-11-24T01:33:19.768+09:00  INFO 33480 --- [weatherwear] [ntainer#8-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions assigned: []
+2026-11-24T01:33:19.768+09:00  INFO 33480 --- [weatherwear] [ntainer#9-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-15, groupId=weatherwear] Adding newly assigned partitions: weatherwear.weather_alert-0
+2026-11-24T01:33:19.768+09:00  INFO 33480 --- [weatherwear] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-43, groupId=weatherwear] Successfully synced group in generation Generation{generationId=6, memberId='consumer-weatherwear-43-a02cc7e3-3740-4a8f-b438-6494882a73b5', protocol='range'}
+2026-11-24T01:33:19.767+09:00  INFO 33480 --- [weatherwear] [ntainer#1-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-21, groupId=weatherwear] Adding newly assigned partitions: 
+2026-11-24T01:33:19.767+09:00  INFO 33480 --- [weatherwear] [ntainer#2-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions assigned: []
+2026-11-24T01:33:19.768+09:00  INFO 33480 --- [weatherwear] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-27, groupId=weatherwear] Successfully synced group in generation Generation{generationId=6, memberId='consumer-weatherwear-27-208219b8-b1e3-41c1-a010-4802b8ca9c7b', protocol='range'}
+2026-11-24T01:33:19.768+09:00  INFO 33480 --- [weatherwear] [ntainer#1-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions assigned: []
+2026-11-24T01:33:19.767+09:00  INFO 33480 --- [weatherwear] [ntainer#6-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-34, groupId=weatherwear] Adding newly assigned partitions: 
+2026-11-24T01:33:19.768+09:00  INFO 33480 --- [weatherwear] [ntainer#7-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-2, groupId=weatherwear] Adding newly assigned partitions: 
+2026-11-24T01:33:19.768+09:00  INFO 33480 --- [weatherwear] [ntainer#6-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-1, groupId=weatherwear] Notifying assignor about the new Assignment(partitions=[weatherwear.new_feed_comment-0])
+2026-11-24T01:33:19.768+09:00  INFO 33480 --- [weatherwear] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-43, groupId=weatherwear] Notifying assignor about the new Assignment(partitions=[])
+2026-11-24T01:33:19.769+09:00  INFO 33480 --- [weatherwear] [ntainer#7-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions assigned: []
+2026-11-24T01:33:19.769+09:00  INFO 33480 --- [weatherwear] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-27, groupId=weatherwear] Notifying assignor about the new Assignment(partitions=[])
+2026-11-24T01:33:19.769+09:00  INFO 33480 --- [weatherwear] [ntainer#6-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-1, groupId=weatherwear] Adding newly assigned partitions: weatherwear.new_feed_comment-0
+2026-11-24T01:33:19.769+09:00  INFO 33480 --- [weatherwear] [ntainer#1-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-43, groupId=weatherwear] Adding newly assigned partitions: 
+2026-11-24T01:33:19.769+09:00  INFO 33480 --- [weatherwear] [ntainer#2-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-27, groupId=weatherwear] Adding newly assigned partitions: 
+2026-11-24T01:33:19.769+09:00  INFO 33480 --- [weatherwear] [ntainer#6-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions assigned: []
+2026-11-24T01:33:19.769+09:00  INFO 33480 --- [weatherwear] [ntainer#1-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions assigned: []
+2026-11-24T01:33:19.769+09:00  INFO 33480 --- [weatherwear] [ntainer#2-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions assigned: []
+2026-11-24T01:33:19.770+09:00  INFO 33480 --- [weatherwear] [ntainer#4-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-40, groupId=weatherwear] Successfully synced group in generation Generation{generationId=6, memberId='consumer-weatherwear-40-1ff6f0c5-f3a9-4e54-a4a8-a035bbfafba9', protocol='range'}
+2026-11-24T01:33:19.770+09:00  INFO 33480 --- [weatherwear] [ntainer#4-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-7, groupId=weatherwear] Successfully synced group in generation Generation{generationId=6, memberId='consumer-weatherwear-7-a4133c8c-8d35-493b-ab02-0479017bd2c5', protocol='range'}
+2026-11-24T01:33:19.770+09:00  INFO 33480 --- [weatherwear] [ntainer#4-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-18, groupId=weatherwear] Successfully synced group in generation Generation{generationId=6, memberId='consumer-weatherwear-18-48e1cf17-d787-4f6f-b8df-51cc2e16ea76', protocol='range'}
+2026-11-24T01:33:19.770+09:00  INFO 33480 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-37, groupId=weatherwear] Successfully synced group in generation Generation{generationId=6, memberId='consumer-weatherwear-37-8ed58875-c9a8-49ca-a4ef-26fd895a4323', protocol='range'}
+2026-11-24T01:33:19.770+09:00  INFO 33480 --- [weatherwear] [ntainer#4-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-7, groupId=weatherwear] Notifying assignor about the new Assignment(partitions=[])
+2026-11-24T01:33:19.770+09:00  INFO 33480 --- [weatherwear] [ntainer#4-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-40, groupId=weatherwear] Notifying assignor about the new Assignment(partitions=[])
+2026-11-24T01:33:19.770+09:00  INFO 33480 --- [weatherwear] [ntainer#4-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-7, groupId=weatherwear] Adding newly assigned partitions: 
+2026-11-24T01:33:19.770+09:00  INFO 33480 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-37, groupId=weatherwear] Notifying assignor about the new Assignment(partitions=[])
+2026-11-24T01:33:19.770+09:00  INFO 33480 --- [weatherwear] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-38, groupId=weatherwear] Successfully synced group in generation Generation{generationId=6, memberId='consumer-weatherwear-38-7125bd45-ff74-46e3-be08-c1df2f5d60df', protocol='range'}
+2026-11-24T01:33:19.770+09:00  INFO 33480 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-19, groupId=weatherwear] Successfully synced group in generation Generation{generationId=6, memberId='consumer-weatherwear-19-fe0c7f17-891d-4716-af5d-c6558ba94f2a', protocol='range'}
+2026-11-24T01:33:19.770+09:00  INFO 33480 --- [weatherwear] [ntainer#9-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-37, groupId=weatherwear] Adding newly assigned partitions: 
+2026-11-24T01:33:19.770+09:00  INFO 33480 --- [weatherwear] [ntainer#4-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-18, groupId=weatherwear] Notifying assignor about the new Assignment(partitions=[weatherwear.new_follower-0])
+2026-11-24T01:33:19.770+09:00  INFO 33480 --- [weatherwear] [ntainer#4-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-40, groupId=weatherwear] Adding newly assigned partitions: 
+2026-11-24T01:33:19.771+09:00  INFO 33480 --- [weatherwear] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-38, groupId=weatherwear] Notifying assignor about the new Assignment(partitions=[])
+2026-11-24T01:33:19.771+09:00  INFO 33480 --- [weatherwear] [ntainer#4-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-18, groupId=weatherwear] Adding newly assigned partitions: weatherwear.new_follower-0
+2026-11-24T01:33:19.771+09:00  INFO 33480 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-19, groupId=weatherwear] Notifying assignor about the new Assignment(partitions=[weatherwear.feed_like-0])
+2026-11-24T01:33:19.771+09:00  INFO 33480 --- [weatherwear] [ntainer#2-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-38, groupId=weatherwear] Adding newly assigned partitions: 
+2026-11-24T01:33:19.771+09:00  INFO 33480 --- [weatherwear] [ntainer#4-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions assigned: []
+2026-11-24T01:33:19.771+09:00  INFO 33480 --- [weatherwear] [ntainer#5-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-19, groupId=weatherwear] Adding newly assigned partitions: weatherwear.feed_like-0
+2026-11-24T01:33:19.771+09:00  INFO 33480 --- [weatherwear] [ntainer#2-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions assigned: []
+2026-11-24T01:33:19.771+09:00  INFO 33480 --- [weatherwear] [ntainer#3-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-6, groupId=weatherwear] Successfully synced group in generation Generation{generationId=6, memberId='consumer-weatherwear-6-2cc63af6-9769-4e76-8122-8810de14ef9e', protocol='range'}
+2026-11-24T01:33:19.771+09:00  INFO 33480 --- [weatherwear] [ntainer#7-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-35, groupId=weatherwear] Successfully synced group in generation Generation{generationId=6, memberId='consumer-weatherwear-35-09b8bccc-56bd-4e07-bcff-02fb8bc6ca13', protocol='range'}
+2026-11-24T01:33:19.772+09:00  INFO 33480 --- [weatherwear] [ntainer#4-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-29, groupId=weatherwear] Successfully synced group in generation Generation{generationId=6, memberId='consumer-weatherwear-29-34a5195e-7ebb-4669-ad01-b9118ea5095d', protocol='range'}
+2026-11-24T01:33:19.770+09:00  INFO 33480 --- [weatherwear] [ntainer#4-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions assigned: []
+2026-11-24T01:33:19.771+09:00  INFO 33480 --- [weatherwear] [ntainer#9-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions assigned: []
+2026-11-24T01:33:19.772+09:00  INFO 33480 --- [weatherwear] [ntainer#7-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-35, groupId=weatherwear] Notifying assignor about the new Assignment(partitions=[])
+2026-11-24T01:33:19.771+09:00  INFO 33480 --- [weatherwear] [ntainer#6-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-12, groupId=weatherwear] Successfully synced group in generation Generation{generationId=6, memberId='consumer-weatherwear-12-e7c1223f-5816-4028-ac83-dd6979c08386', protocol='range'}
+2026-11-24T01:33:19.772+09:00  INFO 33480 --- [weatherwear] [ntainer#7-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-35, groupId=weatherwear] Adding newly assigned partitions: 
+2026-11-24T01:33:19.772+09:00  INFO 33480 --- [weatherwear] [ntainer#3-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-6, groupId=weatherwear] Notifying assignor about the new Assignment(partitions=[])
+2026-11-24T01:33:19.772+09:00  INFO 33480 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-30, groupId=weatherwear] Successfully synced group in generation Generation{generationId=6, memberId='consumer-weatherwear-30-0904df12-89c1-4395-9467-ea89503c3bdb', protocol='range'}
+2026-11-24T01:33:19.772+09:00  INFO 33480 --- [weatherwear] [ntainer#3-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-6, groupId=weatherwear] Adding newly assigned partitions: 
+2026-11-24T01:33:19.772+09:00  INFO 33480 --- [weatherwear] [ntainer#3-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-28, groupId=weatherwear] Successfully synced group in generation Generation{generationId=6, memberId='consumer-weatherwear-28-6d5dff96-ee45-47ce-9daa-34a1eaa14c8b', protocol='range'}
+2026-11-24T01:33:19.772+09:00  INFO 33480 --- [weatherwear] [ntainer#6-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-12, groupId=weatherwear] Notifying assignor about the new Assignment(partitions=[])
+2026-11-24T01:33:19.772+09:00  INFO 33480 --- [weatherwear] [ntainer#3-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions assigned: []
+2026-11-24T01:33:19.772+09:00  INFO 33480 --- [weatherwear] [ntainer#6-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-12, groupId=weatherwear] Adding newly assigned partitions: 
+2026-11-24T01:33:19.772+09:00  INFO 33480 --- [weatherwear] [ntainer#3-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-17, groupId=weatherwear] Successfully synced group in generation Generation{generationId=6, memberId='consumer-weatherwear-17-8f862e1c-422f-4924-9630-6417020f355e', protocol='range'}
+2026-11-24T01:33:19.772+09:00  INFO 33480 --- [weatherwear] [ntainer#3-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-28, groupId=weatherwear] Notifying assignor about the new Assignment(partitions=[])
+2026-11-24T01:33:19.772+09:00  INFO 33480 --- [weatherwear] [ntainer#4-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-29, groupId=weatherwear] Notifying assignor about the new Assignment(partitions=[])
+2026-11-24T01:33:19.772+09:00  INFO 33480 --- [weatherwear] [ntainer#3-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-28, groupId=weatherwear] Adding newly assigned partitions: 
+2026-11-24T01:33:19.772+09:00  INFO 33480 --- [weatherwear] [ntainer#7-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions assigned: []
+2026-11-24T01:33:19.772+09:00  INFO 33480 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-30, groupId=weatherwear] Notifying assignor about the new Assignment(partitions=[])
+2026-11-24T01:33:19.773+09:00  INFO 33480 --- [weatherwear] [ntainer#4-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-29, groupId=weatherwear] Adding newly assigned partitions: 
+2026-11-24T01:33:19.773+09:00  INFO 33480 --- [weatherwear] [ntainer#3-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions assigned: []
+2026-11-24T01:33:19.772+09:00  INFO 33480 --- [weatherwear] [ntainer#6-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions assigned: []
+2026-11-24T01:33:19.773+09:00  INFO 33480 --- [weatherwear] [ntainer#5-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-30, groupId=weatherwear] Adding newly assigned partitions: 
+2026-11-24T01:33:19.773+09:00  INFO 33480 --- [weatherwear] [ntainer#3-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-17, groupId=weatherwear] Notifying assignor about the new Assignment(partitions=[weatherwear.cloth_attribute_added-0])
+2026-11-24T01:33:19.773+09:00  INFO 33480 --- [weatherwear] [ntainer#5-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions assigned: []
+2026-11-24T01:33:19.773+09:00  INFO 33480 --- [weatherwear] [ntainer#3-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-17, groupId=weatherwear] Adding newly assigned partitions: weatherwear.cloth_attribute_added-0
+2026-11-24T01:33:19.773+09:00  INFO 33480 --- [weatherwear] [ntainer#4-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions assigned: []
+2026-11-24T01:33:19.773+09:00  INFO 33480 --- [weatherwear] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-32, groupId=weatherwear] Successfully synced group in generation Generation{generationId=6, memberId='consumer-weatherwear-32-aa9091a7-3898-46b9-899c-81f4044c0d30', protocol='range'}
+2026-11-24T01:33:19.773+09:00  INFO 33480 --- [weatherwear] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-32, groupId=weatherwear] Notifying assignor about the new Assignment(partitions=[])
+2026-11-24T01:33:19.773+09:00  INFO 33480 --- [weatherwear] [ntainer#1-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-32, groupId=weatherwear] Adding newly assigned partitions: 
+2026-11-24T01:33:19.774+09:00  INFO 33480 --- [weatherwear] [ntainer#1-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions assigned: []
+2026-11-24T01:33:19.774+09:00  INFO 33480 --- [weatherwear] [ntainer#3-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-39, groupId=weatherwear] Successfully synced group in generation Generation{generationId=6, memberId='consumer-weatherwear-39-8b0be35c-bc37-4eb4-8c14-92f718807c4f', protocol='range'}
+2026-11-24T01:33:19.774+09:00  INFO 33480 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-41, groupId=weatherwear] Successfully synced group in generation Generation{generationId=6, memberId='consumer-weatherwear-41-8c9a657e-7a15-4d89-b4c4-f877ab66c165', protocol='range'}
+2026-11-24T01:33:19.774+09:00  INFO 33480 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-4, groupId=weatherwear] Successfully synced group in generation Generation{generationId=6, memberId='consumer-weatherwear-4-60f7edc9-4369-4353-bc8f-6702d6b2b102', protocol='range'}
+2026-11-24T01:33:19.774+09:00  INFO 33480 --- [weatherwear] [ntainer#3-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-39, groupId=weatherwear] Notifying assignor about the new Assignment(partitions=[])
+2026-11-24T01:33:19.774+09:00  INFO 33480 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-41, groupId=weatherwear] Notifying assignor about the new Assignment(partitions=[])
+2026-11-24T01:33:19.775+09:00  INFO 33480 --- [weatherwear] [ntainer#3-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-39, groupId=weatherwear] Adding newly assigned partitions: 
+2026-11-24T01:33:19.775+09:00  INFO 33480 --- [weatherwear] [ntainer#5-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-41, groupId=weatherwear] Adding newly assigned partitions: 
+2026-11-24T01:33:19.775+09:00  INFO 33480 --- [weatherwear] [ntainer#3-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions assigned: []
+2026-11-24T01:33:19.775+09:00  INFO 33480 --- [weatherwear] [ntainer#5-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions assigned: []
+2026-11-24T01:33:19.775+09:00  INFO 33480 --- [weatherwear] [ntainer#7-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-13, groupId=weatherwear] Successfully synced group in generation Generation{generationId=6, memberId='consumer-weatherwear-13-987f4972-142d-4fcb-ba4b-c561f154ed2d', protocol='range'}
+2026-11-24T01:33:19.775+09:00  INFO 33480 --- [weatherwear] [ntainer#8-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-25, groupId=weatherwear] Successfully synced group in generation Generation{generationId=6, memberId='consumer-weatherwear-25-5fb0a3dc-907f-404a-b72f-6af788415153', protocol='range'}
+2026-11-24T01:33:19.775+09:00  INFO 33480 --- [weatherwear] [ntainer#8-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-3, groupId=weatherwear] Successfully synced group in generation Generation{generationId=6, memberId='consumer-weatherwear-3-ed3f06ca-5e4b-4230-b64b-2a525aa2c2eb', protocol='range'}
+2026-11-24T01:33:19.775+09:00  INFO 33480 --- [weatherwear] [ntainer#8-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-25, groupId=weatherwear] Notifying assignor about the new Assignment(partitions=[])
+2026-11-24T01:33:19.775+09:00  INFO 33480 --- [weatherwear] [ntainer#8-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-25, groupId=weatherwear] Adding newly assigned partitions: 
+2026-11-24T01:33:19.775+09:00  INFO 33480 --- [weatherwear] [ntainer#8-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions assigned: []
+2026-11-24T01:33:19.774+09:00  INFO 33480 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-4, groupId=weatherwear] Notifying assignor about the new Assignment(partitions=[])
+2026-11-24T01:33:19.776+09:00  INFO 33480 --- [weatherwear] [ntainer#9-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-4, groupId=weatherwear] Adding newly assigned partitions: 
+2026-11-24T01:33:19.776+09:00  INFO 33480 --- [weatherwear] [ntainer#9-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions assigned: []
+2026-11-24T01:33:19.775+09:00  INFO 33480 --- [weatherwear] [ntainer#7-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-13, groupId=weatherwear] Notifying assignor about the new Assignment(partitions=[weatherwear.role_changed-0])
+2026-11-24T01:33:19.777+09:00  INFO 33480 --- [weatherwear] [ntainer#7-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-13, groupId=weatherwear] Adding newly assigned partitions: weatherwear.role_changed-0
+2026-11-24T01:33:19.777+09:00  INFO 33480 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-26, groupId=weatherwear] Successfully synced group in generation Generation{generationId=6, memberId='consumer-weatherwear-26-c37bbf38-4982-4f29-9948-de50cf4707d0', protocol='range'}
+2026-11-24T01:33:19.777+09:00  INFO 33480 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-26, groupId=weatherwear] Notifying assignor about the new Assignment(partitions=[])
+2026-11-24T01:33:19.777+09:00  INFO 33480 --- [weatherwear] [ntainer#9-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-26, groupId=weatherwear] Adding newly assigned partitions: 
+2026-11-24T01:33:19.777+09:00  INFO 33480 --- [weatherwear] [ntainer#9-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions assigned: []
+2026-11-24T01:33:19.775+09:00  INFO 33480 --- [weatherwear] [ntainer#8-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-3, groupId=weatherwear] Notifying assignor about the new Assignment(partitions=[])
+2026-11-24T01:33:19.778+09:00  INFO 33480 --- [weatherwear] [ntainer#8-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-3, groupId=weatherwear] Adding newly assigned partitions: 
+2026-11-24T01:33:19.778+09:00  INFO 33480 --- [weatherwear] [ntainer#7-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-24, groupId=weatherwear] Successfully synced group in generation Generation{generationId=6, memberId='consumer-weatherwear-24-975a82d1-29f2-449e-999b-0ad88afa10f6', protocol='range'}
+2026-11-24T01:33:19.778+09:00  INFO 33480 --- [weatherwear] [ntainer#8-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions assigned: []
+2026-11-24T01:33:19.778+09:00  INFO 33480 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-8, groupId=weatherwear] Successfully synced group in generation Generation{generationId=6, memberId='consumer-weatherwear-8-a843d2b5-c318-43c9-85f2-b9edf0076f3c', protocol='range'}
+2026-11-24T01:33:19.778+09:00  INFO 33480 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-8, groupId=weatherwear] Notifying assignor about the new Assignment(partitions=[])
+2026-11-24T01:33:19.778+09:00  INFO 33480 --- [weatherwear] [ntainer#7-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-24, groupId=weatherwear] Notifying assignor about the new Assignment(partitions=[])
+2026-11-24T01:33:19.778+09:00  INFO 33480 --- [weatherwear] [ntainer#5-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-8, groupId=weatherwear] Adding newly assigned partitions: 
+2026-11-24T01:33:19.778+09:00  INFO 33480 --- [weatherwear] [ntainer#7-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-24, groupId=weatherwear] Adding newly assigned partitions: 
+2026-11-24T01:33:19.778+09:00  INFO 33480 --- [weatherwear] [ntainer#5-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions assigned: []
+2026-11-24T01:33:19.778+09:00  INFO 33480 --- [weatherwear] [ntainer#7-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions assigned: []
+2026-11-24T01:33:19.780+09:00  INFO 33480 --- [weatherwear] [ntainer#6-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-23, groupId=weatherwear] Successfully synced group in generation Generation{generationId=6, memberId='consumer-weatherwear-23-d386d948-8049-47ee-b3da-566903c39fb5', protocol='range'}
+2026-11-24T01:33:19.780+09:00  INFO 33480 --- [weatherwear] [ntainer#6-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-23, groupId=weatherwear] Notifying assignor about the new Assignment(partitions=[])
+2026-11-24T01:33:19.780+09:00  INFO 33480 --- [weatherwear] [ntainer#6-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-23, groupId=weatherwear] Adding newly assigned partitions: 
+2026-11-24T01:33:19.780+09:00  INFO 33480 --- [weatherwear] [ntainer#6-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions assigned: []
+2026-11-24T01:33:19.783+09:00  INFO 33480 --- [weatherwear] [ntainer#3-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-17, groupId=weatherwear] Found no committed offset for partition weatherwear.cloth_attribute_added-0
+2026-11-24T01:33:19.783+09:00  INFO 33480 --- [weatherwear] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-16, groupId=weatherwear] Found no committed offset for partition weatherwear.direct_message_received-0
+2026-11-24T01:33:19.784+09:00  INFO 33480 --- [weatherwear] [ntainer#8-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-14, groupId=weatherwear] Found no committed offset for partition weatherwear.followee_feed_posted-0
+2026-11-24T01:33:19.784+09:00  INFO 33480 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-15, groupId=weatherwear] Found no committed offset for partition weatherwear.weather_alert-0
+2026-11-24T01:33:19.783+09:00  INFO 33480 --- [weatherwear] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-10, groupId=weatherwear] Found no committed offset for partition weatherwear.cloth_attribute_updated-0
+2026-11-24T01:33:19.784+09:00  INFO 33480 --- [weatherwear] [ntainer#6-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-1, groupId=weatherwear] Found no committed offset for partition weatherwear.new_feed_comment-0
+2026-11-24T01:33:19.786+09:00  INFO 33480 --- [weatherwear] [ntainer#4-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-18, groupId=weatherwear] Found no committed offset for partition weatherwear.new_follower-0
+2026-11-24T01:33:19.786+09:00  INFO 33480 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-19, groupId=weatherwear] Found no committed offset for partition weatherwear.feed_like-0
+2026-11-24T01:33:19.786+09:00  INFO 33480 --- [weatherwear] [ntainer#7-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-13, groupId=weatherwear] Found no committed offset for partition weatherwear.role_changed-0
+2026-11-24T01:33:19.825+09:00  INFO 33480 --- [weatherwear] [ntainer#4-0-C-1] o.a.k.c.c.internals.SubscriptionState    : [Consumer clientId=consumer-weatherwear-18, groupId=weatherwear] Resetting offset for partition weatherwear.new_follower-0 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:3849 (id: 1 rack: null)], epoch=0}}.
+2026-11-24T01:33:19.825+09:00  INFO 33480 --- [weatherwear] [ntainer#3-0-C-1] o.a.k.c.c.internals.SubscriptionState    : [Consumer clientId=consumer-weatherwear-17, groupId=weatherwear] Resetting offset for partition weatherwear.cloth_attribute_added-0 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:3849 (id: 1 rack: null)], epoch=0}}.
+2026-11-24T01:33:19.825+09:00  INFO 33480 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.SubscriptionState    : [Consumer clientId=consumer-weatherwear-15, groupId=weatherwear] Resetting offset for partition weatherwear.weather_alert-0 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:3849 (id: 1 rack: null)], epoch=0}}.
+2026-11-24T01:33:19.826+09:00  INFO 33480 --- [weatherwear] [ntainer#4-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions assigned: [weatherwear.new_follower-0]
+2026-11-24T01:33:19.826+09:00  INFO 33480 --- [weatherwear] [ntainer#3-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions assigned: [weatherwear.cloth_attribute_added-0]
+2026-11-24T01:33:19.827+09:00  INFO 33480 --- [weatherwear] [ntainer#9-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions assigned: [weatherwear.weather_alert-0]
+2026-11-24T01:33:19.876+09:00  INFO 33480 --- [weatherwear] [d | weatherwear] o.a.k.c.c.internals.SubscriptionState    : [Consumer clientId=consumer-weatherwear-13, groupId=weatherwear] Resetting offset for partition weatherwear.role_changed-0 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:3849 (id: 1 rack: null)], epoch=0}}.
+2026-11-24T01:33:19.876+09:00  INFO 33480 --- [weatherwear] [ntainer#7-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions assigned: [weatherwear.role_changed-0]
+2026-11-24T01:33:19.880+09:00  INFO 33480 --- [weatherwear] [ntainer#2-0-C-1] o.a.k.c.c.internals.SubscriptionState    : [Consumer clientId=consumer-weatherwear-16, groupId=weatherwear] Resetting offset for partition weatherwear.direct_message_received-0 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:3849 (id: 1 rack: null)], epoch=0}}.
+2026-11-24T01:33:19.880+09:00  INFO 33480 --- [weatherwear] [ntainer#2-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions assigned: [weatherwear.direct_message_received-0]
+2026-11-24T01:33:19.880+09:00  INFO 33480 --- [weatherwear] [ntainer#8-0-C-1] o.a.k.c.c.internals.SubscriptionState    : [Consumer clientId=consumer-weatherwear-14, groupId=weatherwear] Resetting offset for partition weatherwear.followee_feed_posted-0 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:3849 (id: 1 rack: null)], epoch=0}}.
+2026-11-24T01:33:19.881+09:00  INFO 33480 --- [weatherwear] [ntainer#8-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions assigned: [weatherwear.followee_feed_posted-0]
+2026-11-24T01:33:19.881+09:00  INFO 33480 --- [weatherwear] [d | weatherwear] o.a.k.c.c.internals.SubscriptionState    : [Consumer clientId=consumer-weatherwear-1, groupId=weatherwear] Resetting offset for partition weatherwear.new_feed_comment-0 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:3849 (id: 1 rack: null)], epoch=0}}.
+2026-11-24T01:33:19.882+09:00  INFO 33480 --- [weatherwear] [ntainer#6-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions assigned: [weatherwear.new_feed_comment-0]
+2026-11-24T01:33:19.885+09:00  INFO 33480 --- [weatherwear] [d | weatherwear] o.a.k.c.c.internals.SubscriptionState    : [Consumer clientId=consumer-weatherwear-19, groupId=weatherwear] Resetting offset for partition weatherwear.feed_like-0 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:3849 (id: 1 rack: null)], epoch=0}}.
+2026-11-24T01:33:19.886+09:00  INFO 33480 --- [weatherwear] [ntainer#5-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions assigned: [weatherwear.feed_like-0]
+2026-11-24T01:33:19.887+09:00  INFO 33480 --- [weatherwear] [d | weatherwear] o.a.k.c.c.internals.SubscriptionState    : [Consumer clientId=consumer-weatherwear-10, groupId=weatherwear] Resetting offset for partition weatherwear.cloth_attribute_updated-0 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:3849 (id: 1 rack: null)], epoch=0}}.
+2026-11-24T01:33:19.887+09:00  INFO 33480 --- [weatherwear] [ntainer#1-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions assigned: [weatherwear.cloth_attribute_updated-0]
+2026-11-24T01:33:19.914+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-7] org.hibernate.SQL                        : 
+    update
+        users 
+    set
+        birth_date=?,
+        email=?,
+        gender=?,
+        linked_oauth_providers=?,
+        location_id=?,
+        locked=?,
+        name=?,
+        password=?,
+        profile_image_url=?,
+        role=?,
+        temp_password=?,
+        temp_password_expiration_time=?,
+        temperature_sensitivity=?,
+        updated_at=? 
+    where
+        id=?
+2026-11-24T01:33:19.936+09:00 DEBUG 33480 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.birth_date,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.linked_oauth_providers,
+        u1_0.location_id,
+        u1_0.locked,
+        u1_0.name,
+        u1_0.password,
+        u1_0.profile_image_url,
+        u1_0.role,
+        u1_0.temp_password,
+        u1_0.temp_password_expiration_time,
+        u1_0.temperature_sensitivity,
+        u1_0.updated_at 
+    from
+        users u1_0
+2026-11-24T01:33:19.944+09:00 DEBUG 33480 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    delete 
+    from
+        users 
+    where
+        id=?
+2026-11-24T01:33:19.949+09:00 DEBUG 33480 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    delete 
+    from
+        users 
+    where
+        id=?
+2026-11-24T01:33:19.957+09:00 DEBUG 33480 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    select
+        c1_0.id,
+        c1_0.type,
+        c1_0.image_url,
+        c1_0.created_at,
+        c1_0.name,
+        c1_0.updated_at,
+        c1_0.owner_id 
+    from
+        clothes c1_0
+2026-11-24T01:33:20.245+09:00 DEBUG 33480 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        users
+        (birth_date, created_at, email, gender, linked_oauth_providers, location_id, locked, name, password, profile_image_url, role, temp_password, temp_password_expiration_time, temperature_sensitivity, updated_at, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-11-24T01:33:20.486+09:00 DEBUG 33480 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        users
+        (birth_date, created_at, email, gender, linked_oauth_providers, location_id, locked, name, password, profile_image_url, role, temp_password, temp_password_expiration_time, temperature_sensitivity, updated_at, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-11-24T01:33:20.502+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.birth_date,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.linked_oauth_providers,
+        u1_0.location_id,
+        u1_0.locked,
+        u1_0.name,
+        u1_0.password,
+        u1_0.profile_image_url,
+        u1_0.role,
+        u1_0.temp_password,
+        u1_0.temp_password_expiration_time,
+        u1_0.temperature_sensitivity,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-11-24T01:33:20.757+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-8] .TempPasswordAwareAuthenticationProvider : Authenticated user
+2026-11-24T01:33:20.757+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-8] c.c.w.d.s.c.CustomAuthenticationFilter   : Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=com.codeit.weatherwear.domain.security.customauthentication.CustomUserDetails@444f6b27, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[ROLE_USER]]
+2026-11-24T01:33:20.761+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-8] org.hibernate.SQL                        : 
+    select
+        js1_0.id,
+        js1_0.access_token,
+        js1_0.created_at,
+        js1_0.expiration_time,
+        js1_0.refresh_token,
+        js1_0.updated_at,
+        js1_0.user_id 
+    from
+        jwt_sessions js1_0 
+    where
+        js1_0.user_id=?
+2026-11-24T01:33:20.766+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-8] c.c.w.d.s.service.JwtSessionService      : No active JwtSession found for userId: 2e55d2b3-59fc-4eb9-afa7-3306476145ac
+2026-11-24T01:33:20.770+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.birth_date,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.linked_oauth_providers,
+        u1_0.location_id,
+        u1_0.locked,
+        u1_0.name,
+        u1_0.password,
+        u1_0.profile_image_url,
+        u1_0.role,
+        u1_0.temp_password,
+        u1_0.temp_password_expiration_time,
+        u1_0.temperature_sensitivity,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-11-24T01:33:20.780+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-8] org.hibernate.SQL                        : 
+    insert 
+    into
+        jwt_sessions
+        (access_token, created_at, expiration_time, refresh_token, updated_at, user_id, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?)
+2026-11-24T01:33:20.891+09:00 DEBUG 33480 --- [weatherwear] [-auto-3-exec-10] org.hibernate.SQL                        : 
+    select
+        js1_0.id 
+    from
+        jwt_sessions js1_0 
+    where
+        js1_0.access_token=? 
+    fetch
+        first ? rows only
+2026-11-24T01:33:20.898+09:00 DEBUG 33480 --- [weatherwear] [-auto-3-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.birth_date,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.linked_oauth_providers,
+        u1_0.location_id,
+        u1_0.locked,
+        u1_0.name,
+        u1_0.password,
+        u1_0.profile_image_url,
+        u1_0.role,
+        u1_0.temp_password,
+        u1_0.temp_password_expiration_time,
+        u1_0.temperature_sensitivity,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-11-24T01:33:20.977+09:00 DEBUG 33480 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.birth_date,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.linked_oauth_providers,
+        u1_0.location_id,
+        u1_0.locked,
+        u1_0.name,
+        u1_0.password,
+        u1_0.profile_image_url,
+        u1_0.role,
+        u1_0.temp_password,
+        u1_0.temp_password_expiration_time,
+        u1_0.temperature_sensitivity,
+        u1_0.updated_at 
+    from
+        users u1_0
+2026-11-24T01:33:20.986+09:00 DEBUG 33480 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    delete 
+    from
+        users 
+    where
+        id=?
+2026-11-24T01:33:20.990+09:00 DEBUG 33480 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    delete 
+    from
+        users 
+    where
+        id=?
+2026-11-24T01:33:20.998+09:00 DEBUG 33480 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    select
+        c1_0.id,
+        c1_0.type,
+        c1_0.image_url,
+        c1_0.created_at,
+        c1_0.name,
+        c1_0.updated_at,
+        c1_0.owner_id 
+    from
+        clothes c1_0
+2026-11-24T01:33:21.277+09:00 DEBUG 33480 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        users
+        (birth_date, created_at, email, gender, linked_oauth_providers, location_id, locked, name, password, profile_image_url, role, temp_password, temp_password_expiration_time, temperature_sensitivity, updated_at, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-11-24T01:33:21.528+09:00 DEBUG 33480 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        users
+        (birth_date, created_at, email, gender, linked_oauth_providers, location_id, locked, name, password, profile_image_url, role, temp_password, temp_password_expiration_time, temperature_sensitivity, updated_at, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-11-24T01:33:21.546+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-1] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.birth_date,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.linked_oauth_providers,
+        u1_0.location_id,
+        u1_0.locked,
+        u1_0.name,
+        u1_0.password,
+        u1_0.profile_image_url,
+        u1_0.role,
+        u1_0.temp_password,
+        u1_0.temp_password_expiration_time,
+        u1_0.temperature_sensitivity,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-11-24T01:33:21.786+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-1] .TempPasswordAwareAuthenticationProvider : Authenticated user
+2026-11-24T01:33:21.786+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-1] c.c.w.d.s.c.CustomAuthenticationFilter   : Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=com.codeit.weatherwear.domain.security.customauthentication.CustomUserDetails@35cded3f, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[ROLE_USER]]
+2026-11-24T01:33:21.790+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-1] org.hibernate.SQL                        : 
+    select
+        js1_0.id,
+        js1_0.access_token,
+        js1_0.created_at,
+        js1_0.expiration_time,
+        js1_0.refresh_token,
+        js1_0.updated_at,
+        js1_0.user_id 
+    from
+        jwt_sessions js1_0 
+    where
+        js1_0.user_id=?
+2026-11-24T01:33:21.793+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-1] c.c.w.d.s.service.JwtSessionService      : No active JwtSession found for userId: 598c2200-dd8f-4350-88eb-96f2feaba243
+2026-11-24T01:33:21.797+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-1] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.birth_date,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.linked_oauth_providers,
+        u1_0.location_id,
+        u1_0.locked,
+        u1_0.name,
+        u1_0.password,
+        u1_0.profile_image_url,
+        u1_0.role,
+        u1_0.temp_password,
+        u1_0.temp_password_expiration_time,
+        u1_0.temperature_sensitivity,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-11-24T01:33:21.807+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-1] org.hibernate.SQL                        : 
+    insert 
+    into
+        jwt_sessions
+        (access_token, created_at, expiration_time, refresh_token, updated_at, user_id, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?)
+2026-11-24T01:33:21.853+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-3] org.hibernate.SQL                        : 
+    select
+        js1_0.id 
+    from
+        jwt_sessions js1_0 
+    where
+        js1_0.access_token=? 
+    fetch
+        first ? rows only
+2026-11-24T01:33:21.860+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-3] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.birth_date,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.linked_oauth_providers,
+        u1_0.location_id,
+        u1_0.locked,
+        u1_0.name,
+        u1_0.password,
+        u1_0.profile_image_url,
+        u1_0.role,
+        u1_0.temp_password,
+        u1_0.temp_password_expiration_time,
+        u1_0.temperature_sensitivity,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-11-24T01:33:21.884+09:00 DEBUG 33480 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.birth_date,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.linked_oauth_providers,
+        u1_0.location_id,
+        u1_0.locked,
+        u1_0.name,
+        u1_0.password,
+        u1_0.profile_image_url,
+        u1_0.role,
+        u1_0.temp_password,
+        u1_0.temp_password_expiration_time,
+        u1_0.temperature_sensitivity,
+        u1_0.updated_at 
+    from
+        users u1_0
+2026-11-24T01:33:21.891+09:00 DEBUG 33480 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    delete 
+    from
+        users 
+    where
+        id=?
+2026-11-24T01:33:21.894+09:00 DEBUG 33480 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    delete 
+    from
+        users 
+    where
+        id=?
+2026-11-24T01:33:21.900+09:00 DEBUG 33480 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    select
+        c1_0.id,
+        c1_0.type,
+        c1_0.image_url,
+        c1_0.created_at,
+        c1_0.name,
+        c1_0.updated_at,
+        c1_0.owner_id 
+    from
+        clothes c1_0
+2026-11-24T01:33:22.166+09:00 DEBUG 33480 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        users
+        (birth_date, created_at, email, gender, linked_oauth_providers, location_id, locked, name, password, profile_image_url, role, temp_password, temp_password_expiration_time, temperature_sensitivity, updated_at, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-11-24T01:33:22.347+09:00 DEBUG 33480 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        users
+        (birth_date, created_at, email, gender, linked_oauth_providers, location_id, locked, name, password, profile_image_url, role, temp_password, temp_password_expiration_time, temperature_sensitivity, updated_at, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-11-24T01:33:22.366+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.birth_date,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.linked_oauth_providers,
+        u1_0.location_id,
+        u1_0.locked,
+        u1_0.name,
+        u1_0.password,
+        u1_0.profile_image_url,
+        u1_0.role,
+        u1_0.temp_password,
+        u1_0.temp_password_expiration_time,
+        u1_0.temperature_sensitivity,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-11-24T01:33:22.501+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-4] .TempPasswordAwareAuthenticationProvider : Authenticated user
+2026-11-24T01:33:22.502+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-4] c.c.w.d.s.c.CustomAuthenticationFilter   : Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=com.codeit.weatherwear.domain.security.customauthentication.CustomUserDetails@57a6f655, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[ROLE_ADMIN]]
+2026-11-24T01:33:22.506+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-4] org.hibernate.SQL                        : 
+    select
+        js1_0.id,
+        js1_0.access_token,
+        js1_0.created_at,
+        js1_0.expiration_time,
+        js1_0.refresh_token,
+        js1_0.updated_at,
+        js1_0.user_id 
+    from
+        jwt_sessions js1_0 
+    where
+        js1_0.user_id=?
+2026-11-24T01:33:22.510+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-4] c.c.w.d.s.service.JwtSessionService      : No active JwtSession found for userId: d18c6bdf-4d2b-408c-94be-afee3611128c
+2026-11-24T01:33:22.514+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.birth_date,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.linked_oauth_providers,
+        u1_0.location_id,
+        u1_0.locked,
+        u1_0.name,
+        u1_0.password,
+        u1_0.profile_image_url,
+        u1_0.role,
+        u1_0.temp_password,
+        u1_0.temp_password_expiration_time,
+        u1_0.temperature_sensitivity,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-11-24T01:33:22.526+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-4] org.hibernate.SQL                        : 
+    insert 
+    into
+        jwt_sessions
+        (access_token, created_at, expiration_time, refresh_token, updated_at, user_id, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?)
+2026-11-24T01:33:22.564+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-6] org.hibernate.SQL                        : 
+    select
+        js1_0.id 
+    from
+        jwt_sessions js1_0 
+    where
+        js1_0.access_token=? 
+    fetch
+        first ? rows only
+2026-11-24T01:33:22.571+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-6] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.birth_date,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.linked_oauth_providers,
+        u1_0.location_id,
+        u1_0.locked,
+        u1_0.name,
+        u1_0.password,
+        u1_0.profile_image_url,
+        u1_0.role,
+        u1_0.temp_password,
+        u1_0.temp_password_expiration_time,
+        u1_0.temperature_sensitivity,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-11-24T01:33:22.589+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-6] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.birth_date,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.linked_oauth_providers,
+        u1_0.location_id,
+        u1_0.locked,
+        u1_0.name,
+        u1_0.password,
+        u1_0.profile_image_url,
+        u1_0.role,
+        u1_0.temp_password,
+        u1_0.temp_password_expiration_time,
+        u1_0.temperature_sensitivity,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-11-24T01:33:22.597+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-6] org.hibernate.SQL                        : 
+    select
+        js1_0.id,
+        js1_0.access_token,
+        js1_0.created_at,
+        js1_0.expiration_time,
+        js1_0.refresh_token,
+        js1_0.updated_at,
+        js1_0.user_id 
+    from
+        jwt_sessions js1_0 
+    where
+        js1_0.user_id=?
+2026-11-24T01:33:22.600+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-6] c.c.w.d.s.service.JwtSessionService      : No active JwtSession found for userId: e5a0e27e-f401-4cde-ac25-0eb639100cf3
+2026-11-24T01:33:22.603+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-6] org.hibernate.SQL                        : 
+    update
+        users 
+    set
+        birth_date=?,
+        email=?,
+        gender=?,
+        linked_oauth_providers=?,
+        location_id=?,
+        locked=?,
+        name=?,
+        password=?,
+        profile_image_url=?,
+        role=?,
+        temp_password=?,
+        temp_password_expiration_time=?,
+        temperature_sensitivity=?,
+        updated_at=? 
+    where
+        id=?
+2026-11-24T01:33:22.672+09:00 DEBUG 33480 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.birth_date,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.linked_oauth_providers,
+        u1_0.location_id,
+        u1_0.locked,
+        u1_0.name,
+        u1_0.password,
+        u1_0.profile_image_url,
+        u1_0.role,
+        u1_0.temp_password,
+        u1_0.temp_password_expiration_time,
+        u1_0.temperature_sensitivity,
+        u1_0.updated_at 
+    from
+        users u1_0
+2026-11-24T01:33:22.681+09:00 DEBUG 33480 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    delete 
+    from
+        users 
+    where
+        id=?
+2026-11-24T01:33:22.687+09:00 DEBUG 33480 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    delete 
+    from
+        users 
+    where
+        id=?
+2026-11-24T01:33:22.694+09:00  INFO 33480 --- [weatherwear] [        event-1] o.a.k.clients.producer.ProducerConfig    : ProducerConfig values: 
+	acks = -1
+	auto.include.jmx.reporter = true
+	batch.size = 16384
+	bootstrap.servers = [localhost:3849]
+	buffer.memory = 33554432
+	client.dns.lookup = use_all_dns_ips
+	client.id = weatherwear-producer-1
+	compression.gzip.level = -1
+	compression.lz4.level = 9
+	compression.type = none
+	compression.zstd.level = 3
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = true
+	enable.metrics.push = true
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 5
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metadata.recovery.strategy = none
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.adaptive.partitioning.enable = true
+	partitioner.availability.timeout.ms = 0
+	partitioner.class = null
+	partitioner.ignore.keys = false
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+
+2026-11-24T01:33:22.695+09:00 DEBUG 33480 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    select
+        c1_0.id,
+        c1_0.type,
+        c1_0.image_url,
+        c1_0.created_at,
+        c1_0.name,
+        c1_0.updated_at,
+        c1_0.owner_id 
+    from
+        clothes c1_0
+2026-11-24T01:33:22.698+09:00  INFO 33480 --- [weatherwear] [        event-1] o.a.k.c.t.i.KafkaMetricsCollector        : initializing Kafka metrics collector
+2026-11-24T01:33:22.765+09:00  INFO 33480 --- [weatherwear] [        event-1] o.a.k.clients.producer.KafkaProducer     : [Producer clientId=weatherwear-producer-1] Instantiated an idempotent producer.
+2026-11-24T01:33:22.836+09:00  INFO 33480 --- [weatherwear] [        event-1] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.8.1
+2026-11-24T01:33:22.837+09:00  INFO 33480 --- [weatherwear] [        event-1] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 70d6ff42debf7e17
+2026-11-24T01:33:22.837+09:00  INFO 33480 --- [weatherwear] [        event-1] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1795451602836
+2026-11-24T01:33:22.871+09:00  INFO 33480 --- [weatherwear] [wear-producer-1] org.apache.kafka.clients.Metadata        : [Producer clientId=weatherwear-producer-1] Cluster ID: 4L6g3nShT-eMCtK--X86sw
+2026-11-24T01:33:22.900+09:00 DEBUG 33480 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        users
+        (birth_date, created_at, email, gender, linked_oauth_providers, location_id, locked, name, password, profile_image_url, role, temp_password, temp_password_expiration_time, temperature_sensitivity, updated_at, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-11-24T01:33:23.000+09:00  INFO 33480 --- [weatherwear] [wear-producer-1] o.a.k.c.p.internals.TransactionManager   : [Producer clientId=weatherwear-producer-1] ProducerId set to 0 with epoch 0
+2026-11-24T01:33:23.077+09:00 DEBUG 33480 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        users
+        (birth_date, created_at, email, gender, linked_oauth_providers, location_id, locked, name, password, profile_image_url, role, temp_password, temp_password_expiration_time, temperature_sensitivity, updated_at, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-11-24T01:33:23.084+09:00 DEBUG 33480 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.birth_date,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.linked_oauth_providers,
+        u1_0.location_id,
+        u1_0.locked,
+        u1_0.name,
+        u1_0.password,
+        u1_0.profile_image_url,
+        u1_0.role,
+        u1_0.temp_password,
+        u1_0.temp_password_expiration_time,
+        u1_0.temperature_sensitivity,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-11-24T01:33:23.100+09:00  INFO 33480 --- [weatherwear] [wear-producer-1] c.c.w.g.e.p.NotificationKafkaPublisher   : Produced event to topic weatherwear.role_changed: value = {&quot;receiverId&quot;:&quot;e5a0e27e-f401-4cde-ac25-0eb639100cf3&quot;,&quot;newRoles&quot;:&quot;ADMIN&quot;,&quot;previousRoles&quot;:&quot;USER&quot;}
+2026-11-24T01:33:23.252+09:00 DEBUG 33480 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        clothes
+        (type, image_url, created_at, name, updated_at, owner_id, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?)
+2026-11-24T01:33:23.310+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.birth_date,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.linked_oauth_providers,
+        u1_0.location_id,
+        u1_0.locked,
+        u1_0.name,
+        u1_0.password,
+        u1_0.profile_image_url,
+        u1_0.role,
+        u1_0.temp_password,
+        u1_0.temp_password_expiration_time,
+        u1_0.temperature_sensitivity,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-11-24T01:33:23.540+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-7] .TempPasswordAwareAuthenticationProvider : Authenticated user
+2026-11-24T01:33:23.540+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-7] c.c.w.d.s.c.CustomAuthenticationFilter   : Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=com.codeit.weatherwear.domain.security.customauthentication.CustomUserDetails@3028ad14, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[ROLE_USER]]
+2026-11-24T01:33:23.545+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-7] org.hibernate.SQL                        : 
+    select
+        js1_0.id,
+        js1_0.access_token,
+        js1_0.created_at,
+        js1_0.expiration_time,
+        js1_0.refresh_token,
+        js1_0.updated_at,
+        js1_0.user_id 
+    from
+        jwt_sessions js1_0 
+    where
+        js1_0.user_id=?
+2026-11-24T01:33:23.549+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-7] c.c.w.d.s.service.JwtSessionService      : No active JwtSession found for userId: 6b54611c-1851-47aa-9145-0e0ec0da6d62
+2026-11-24T01:33:23.552+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.birth_date,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.linked_oauth_providers,
+        u1_0.location_id,
+        u1_0.locked,
+        u1_0.name,
+        u1_0.password,
+        u1_0.profile_image_url,
+        u1_0.role,
+        u1_0.temp_password,
+        u1_0.temp_password_expiration_time,
+        u1_0.temperature_sensitivity,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-11-24T01:33:23.558+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-7] org.hibernate.SQL                        : 
+    insert 
+    into
+        jwt_sessions
+        (access_token, created_at, expiration_time, refresh_token, updated_at, user_id, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?)
+2026-11-24T01:33:23.613+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-9] org.hibernate.SQL                        : 
+    select
+        js1_0.id 
+    from
+        jwt_sessions js1_0 
+    where
+        js1_0.access_token=? 
+    fetch
+        first ? rows only
+2026-11-24T01:33:23.621+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-9] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.birth_date,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.linked_oauth_providers,
+        u1_0.location_id,
+        u1_0.locked,
+        u1_0.name,
+        u1_0.password,
+        u1_0.profile_image_url,
+        u1_0.role,
+        u1_0.temp_password,
+        u1_0.temp_password_expiration_time,
+        u1_0.temperature_sensitivity,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-11-24T01:33:23.642+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-9] org.hibernate.SQL                        : 
+    select
+        c1_0.id,
+        c1_0.type,
+        c1_0.image_url,
+        c1_0.created_at,
+        c1_0.name,
+        c1_0.updated_at,
+        c1_0.owner_id 
+    from
+        clothes c1_0 
+    where
+        c1_0.id=?
+2026-11-24T01:33:23.717+09:00 DEBUG 33480 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    select
+        c1_0.id,
+        c1_0.type,
+        c1_0.image_url,
+        c1_0.created_at,
+        c1_0.name,
+        c1_0.updated_at,
+        c1_0.owner_id 
+    from
+        clothes c1_0 
+    where
+        c1_0.id=?
+2026-11-24T01:33:23.742+09:00 DEBUG 33480 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    select
+        cwa1_0.clothes_id,
+        cwa1_0.id,
+        cwa1_0.definition_id,
+        cwa1_0.created_at,
+        cwa1_0.updated_at,
+        cwa1_0.&quot;value&quot; 
+    from
+        clothes_attribute cwa1_0 
+    where
+        cwa1_0.clothes_id=?
+2026-11-24T01:33:23.782+09:00 DEBUG 33480 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    delete 
+    from
+        clothes 
+    where
+        id=?
+2026-11-24T01:33:23.793+09:00 DEBUG 33480 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.birth_date,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.linked_oauth_providers,
+        u1_0.location_id,
+        u1_0.locked,
+        u1_0.name,
+        u1_0.password,
+        u1_0.profile_image_url,
+        u1_0.role,
+        u1_0.temp_password,
+        u1_0.temp_password_expiration_time,
+        u1_0.temperature_sensitivity,
+        u1_0.updated_at 
+    from
+        users u1_0
+2026-11-24T01:33:23.798+09:00 DEBUG 33480 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    delete 
+    from
+        users 
+    where
+        id=?
+2026-11-24T01:33:23.803+09:00 DEBUG 33480 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    delete 
+    from
+        users 
+    where
+        id=?
+2026-11-24T01:33:23.810+09:00 DEBUG 33480 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    select
+        c1_0.id,
+        c1_0.type,
+        c1_0.image_url,
+        c1_0.created_at,
+        c1_0.name,
+        c1_0.updated_at,
+        c1_0.owner_id 
+    from
+        clothes c1_0
+2026-11-24T01:33:23.907+09:00 DEBUG 33480 --- [weatherwear] [        event-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-11-24T01:33:23.926+09:00 ERROR 33480 --- [weatherwear] [        event-1] .a.i.SimpleAsyncUncaughtExceptionHandler : Unexpected exception occurred invoking async method: public void com.codeit.weatherwear.global.event.listener.NotificationKafkaListener.handleRoleChangedEvent(java.lang.String)
+
+com.codeit.weatherwear.domain.user.exception.UserNotFoundException: 사용자 확인 실패
+	at com.codeit.weatherwear.domain.notification.NotificationService.create(NotificationService.java:37) ~[main/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359) ~[spring-aop-6.2.8.jar:6.2.8]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.2.8.jar:6.2.8]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.2.8.jar:6.2.8]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:380) ~[spring-tx-6.2.8.jar:6.2.8]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.2.8.jar:6.2.8]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.2.8.jar:6.2.8]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:728) ~[spring-aop-6.2.8.jar:6.2.8]
+	at com.codeit.weatherwear.domain.notification.NotificationService$$SpringCGLIB$$0.create(&lt;generated&gt;) ~[main/:na]
+	at com.codeit.weatherwear.global.event.listener.NotificationKafkaListener.handleRoleChangedEvent(NotificationKafkaListener.java:205) ~[main/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359) ~[spring-aop-6.2.8.jar:6.2.8]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.2.8.jar:6.2.8]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.2.8.jar:6.2.8]
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:114) ~[spring-aop-6.2.8.jar:6.2.8]
+	at org.springframework.security.concurrent.DelegatingSecurityContextCallable.call(DelegatingSecurityContextCallable.java:96) ~[spring-security-core-6.4.7.jar:6.4.7]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+
+2026-11-24T01:33:24.030+09:00 DEBUG 33480 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        users
+        (birth_date, created_at, email, gender, linked_oauth_providers, location_id, locked, name, password, profile_image_url, role, temp_password, temp_password_expiration_time, temperature_sensitivity, updated_at, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-11-24T01:33:24.223+09:00 DEBUG 33480 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        users
+        (birth_date, created_at, email, gender, linked_oauth_providers, location_id, locked, name, password, profile_image_url, role, temp_password, temp_password_expiration_time, temperature_sensitivity, updated_at, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-11-24T01:33:24.238+09:00 DEBUG 33480 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.birth_date,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.linked_oauth_providers,
+        u1_0.location_id,
+        u1_0.locked,
+        u1_0.name,
+        u1_0.password,
+        u1_0.profile_image_url,
+        u1_0.role,
+        u1_0.temp_password,
+        u1_0.temp_password_expiration_time,
+        u1_0.temperature_sensitivity,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-11-24T01:33:24.255+09:00 DEBUG 33480 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        clothes
+        (type, image_url, created_at, name, updated_at, owner_id, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?)
+2026-11-24T01:33:24.274+09:00 DEBUG 33480 --- [weatherwear] [-auto-3-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.birth_date,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.linked_oauth_providers,
+        u1_0.location_id,
+        u1_0.locked,
+        u1_0.name,
+        u1_0.password,
+        u1_0.profile_image_url,
+        u1_0.role,
+        u1_0.temp_password,
+        u1_0.temp_password_expiration_time,
+        u1_0.temperature_sensitivity,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-11-24T01:33:24.434+09:00 DEBUG 33480 --- [weatherwear] [-auto-3-exec-10] .TempPasswordAwareAuthenticationProvider : Authenticated user
+2026-11-24T01:33:24.434+09:00 DEBUG 33480 --- [weatherwear] [-auto-3-exec-10] c.c.w.d.s.c.CustomAuthenticationFilter   : Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=com.codeit.weatherwear.domain.security.customauthentication.CustomUserDetails@6c102481, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[ROLE_USER]]
+2026-11-24T01:33:24.438+09:00 DEBUG 33480 --- [weatherwear] [-auto-3-exec-10] org.hibernate.SQL                        : 
+    select
+        js1_0.id,
+        js1_0.access_token,
+        js1_0.created_at,
+        js1_0.expiration_time,
+        js1_0.refresh_token,
+        js1_0.updated_at,
+        js1_0.user_id 
+    from
+        jwt_sessions js1_0 
+    where
+        js1_0.user_id=?
+2026-11-24T01:33:24.441+09:00 DEBUG 33480 --- [weatherwear] [-auto-3-exec-10] c.c.w.d.s.service.JwtSessionService      : No active JwtSession found for userId: 12c46ac7-2654-4a76-8e97-20e030671909
+2026-11-24T01:33:24.446+09:00 DEBUG 33480 --- [weatherwear] [-auto-3-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.birth_date,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.linked_oauth_providers,
+        u1_0.location_id,
+        u1_0.locked,
+        u1_0.name,
+        u1_0.password,
+        u1_0.profile_image_url,
+        u1_0.role,
+        u1_0.temp_password,
+        u1_0.temp_password_expiration_time,
+        u1_0.temperature_sensitivity,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-11-24T01:33:24.457+09:00 DEBUG 33480 --- [weatherwear] [-auto-3-exec-10] org.hibernate.SQL                        : 
+    insert 
+    into
+        jwt_sessions
+        (access_token, created_at, expiration_time, refresh_token, updated_at, user_id, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?)
+2026-11-24T01:33:24.514+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-2] org.hibernate.SQL                        : 
+    select
+        js1_0.id 
+    from
+        jwt_sessions js1_0 
+    where
+        js1_0.access_token=? 
+    fetch
+        first ? rows only
+2026-11-24T01:33:24.522+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.birth_date,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.linked_oauth_providers,
+        u1_0.location_id,
+        u1_0.locked,
+        u1_0.name,
+        u1_0.password,
+        u1_0.profile_image_url,
+        u1_0.role,
+        u1_0.temp_password,
+        u1_0.temp_password_expiration_time,
+        u1_0.temperature_sensitivity,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-11-24T01:33:24.533+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-2] org.hibernate.SQL                        : 
+    select
+        c1_0.id,
+        c1_0.type,
+        c1_0.image_url,
+        c1_0.created_at,
+        c1_0.name,
+        c1_0.updated_at,
+        c1_0.owner_id 
+    from
+        clothes c1_0 
+    where
+        c1_0.id=?
+2026-11-24T01:33:24.544+09:00  INFO 33480 --- [weatherwear] [o-auto-3-exec-2] c.c.w.d.c.service.ClothServiceImpl       : [Start Deleting Cloth] ID: 22de72ae-87c8-4716-9ad8-f585310f2b35
+2026-11-24T01:33:24.547+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-2] org.hibernate.SQL                        : 
+    select
+        cwa1_0.clothes_id,
+        cwa1_0.id,
+        cwa1_0.definition_id,
+        cwa1_0.created_at,
+        cwa1_0.updated_at,
+        cwa1_0.&quot;value&quot; 
+    from
+        clothes_attribute cwa1_0 
+    where
+        cwa1_0.clothes_id=?
+2026-11-24T01:33:24.551+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.birth_date,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.linked_oauth_providers,
+        u1_0.location_id,
+        u1_0.locked,
+        u1_0.name,
+        u1_0.password,
+        u1_0.profile_image_url,
+        u1_0.role,
+        u1_0.temp_password,
+        u1_0.temp_password_expiration_time,
+        u1_0.temperature_sensitivity,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-11-24T01:33:24.558+09:00  INFO 33480 --- [weatherwear] [o-auto-3-exec-2] c.c.w.d.r.s.AIRecommendationService      : [CacheEvict] Cleared recommendation cache for user 12c46ac7-2654-4a76-8e97-20e030671909, sensitivity null
+2026-11-24T01:33:24.562+09:00  INFO 33480 --- [weatherwear] [o-auto-3-exec-2] c.c.w.d.c.service.ClothServiceImpl       : [Deleting Cloth Completed] ID: 22de72ae-87c8-4716-9ad8-f585310f2b35
+2026-11-24T01:33:24.563+09:00 DEBUG 33480 --- [weatherwear] [o-auto-3-exec-2] org.hibernate.SQL                        : 
+    delete 
+    from
+        clothes 
+    where
+        id=?
+2026-11-24T01:33:24.576+09:00 DEBUG 33480 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.birth_date,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.linked_oauth_providers,
+        u1_0.location_id,
+        u1_0.locked,
+        u1_0.name,
+        u1_0.password,
+        u1_0.profile_image_url,
+        u1_0.role,
+        u1_0.temp_password,
+        u1_0.temp_password_expiration_time,
+        u1_0.temperature_sensitivity,
+        u1_0.updated_at 
+    from
+        users u1_0
+2026-11-24T01:33:24.582+09:00 DEBUG 33480 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    delete 
+    from
+        users 
+    where
+        id=?
+2026-11-24T01:33:24.585+09:00 DEBUG 33480 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    delete 
+    from
+        users 
+    where
+        id=?
+2026-11-24T01:33:24.592+09:00 DEBUG 33480 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    select
+        c1_0.id,
+        c1_0.type,
+        c1_0.image_url,
+        c1_0.created_at,
+        c1_0.name,
+        c1_0.updated_at,
+        c1_0.owner_id 
+    from
+        clothes c1_0
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="https://www.gradle.org">Gradle 8.14.2</a> at 2026. 11. 24. 오전 1:33:46</p>
+</div>
+</div>
+</body>
+</html>

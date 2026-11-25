@@ -1,0 +1,199 @@
+> Task :compileJava
+> Task :processResources UP-TO-DATE
+> Task :classes
+> Task :compileTestJava
+> Task :processTestResources UP-TO-DATE
+> Task :testClasses
+> Task :test
+
+Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+
+> Task :test
+
+PasswordResetFailureTest > [장애2-3] 로그인하지 않은 제3자가 남의 이메일로 초기화를 요청해도, 피해자는 기존 비밀번호로 로그인할 수 있다 FAILED
+    org.opentest4j.AssertionFailedError at PasswordResetFailureTest.java:139
+
+PasswordResetFailureTest > [장애2-1] 메일 서버 장애로 임시 비밀번호 메일이 실패해도, 사용자는 기존 비밀번호로 로그인할 수 있다 FAILED
+    org.opentest4j.AssertionFailedError at PasswordResetFailureTest.java:104
+
+2026-11-24T01:17:50.445+09:00  INFO 25484 --- [weatherwear] [ntainer#8-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-3, groupId=weatherwear] Revoke previously assigned partitions weatherwear.cloth_attribute_updated-0
+2026-11-24T01:17:50.446+09:00  INFO 25484 --- [weatherwear] [ntainer#4-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-7, groupId=weatherwear] Revoke previously assigned partitions weatherwear.cloth_attribute_added-0
+2026-11-24T01:17:50.446+09:00  INFO 25484 --- [weatherwear] [ntainer#9-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-4, groupId=weatherwear] Revoke previously assigned partitions weatherwear.new_feed_comment-0
+2026-11-24T01:17:50.445+09:00  INFO 25484 --- [weatherwear] [ntainer#6-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-1, groupId=weatherwear] Revoke previously assigned partitions weatherwear.role_changed-0
+2026-11-24T01:17:50.445+09:00  INFO 25484 --- [weatherwear] [ntainer#2-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-5, groupId=weatherwear] Revoke previously assigned partitions weatherwear.direct_message_received-0
+2026-11-24T01:17:50.446+09:00  INFO 25484 --- [weatherwear] [tainer#10-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-b4320369-f7e6-4475-a1df-b747d3342d1f-11, groupId=b4320369-f7e6-4475-a1df-b747d3342d1f] Revoke previously assigned partitions weatherwear.sse_sent-0
+2026-11-24T01:17:50.446+09:00  INFO 25484 --- [weatherwear] [ntainer#1-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-10, groupId=weatherwear] Revoke previously assigned partitions weatherwear.weather_alert-0
+2026-11-24T01:17:50.446+09:00  INFO 25484 --- [weatherwear] [ntainer#0-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-68ae0560-0577-4e9c-ba99-78d2f55b567f-9, groupId=68ae0560-0577-4e9c-ba99-78d2f55b567f] Revoke previously assigned partitions weatherwear.direct_message_received-0
+2026-11-24T01:17:50.446+09:00  INFO 25484 --- [weatherwear] [ntainer#5-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-8, groupId=weatherwear] Revoke previously assigned partitions weatherwear.feed_like-0
+2026-11-24T01:17:50.446+09:00  INFO 25484 --- [weatherwear] [ntainer#3-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-6, groupId=weatherwear] Revoke previously assigned partitions weatherwear.followee_feed_posted-0
+2026-11-24T01:17:50.445+09:00  INFO 25484 --- [weatherwear] [ntainer#7-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-2, groupId=weatherwear] Revoke previously assigned partitions weatherwear.new_follower-0
+2026-11-24T01:17:50.448+09:00  INFO 25484 --- [weatherwear] [ntainer#4-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: [weatherwear.cloth_attribute_added-0]
+2026-11-24T01:17:50.448+09:00  INFO 25484 --- [weatherwear] [ntainer#2-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: [weatherwear.direct_message_received-0]
+2026-11-24T01:17:50.448+09:00  INFO 25484 --- [weatherwear] [tainer#10-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : b4320369-f7e6-4475-a1df-b747d3342d1f: partitions revoked: [weatherwear.sse_sent-0]
+2026-11-24T01:17:50.448+09:00  INFO 25484 --- [weatherwear] [ntainer#8-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: [weatherwear.cloth_attribute_updated-0]
+2026-11-24T01:17:50.448+09:00  INFO 25484 --- [weatherwear] [ntainer#1-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: [weatherwear.weather_alert-0]
+2026-11-24T01:17:50.448+09:00  INFO 25484 --- [weatherwear] [ntainer#5-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: [weatherwear.feed_like-0]
+2026-11-24T01:17:50.448+09:00  INFO 25484 --- [weatherwear] [ntainer#9-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: [weatherwear.new_feed_comment-0]
+2026-11-24T01:17:50.448+09:00  INFO 25484 --- [weatherwear] [ntainer#3-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: [weatherwear.followee_feed_posted-0]
+2026-11-24T01:17:50.448+09:00  INFO 25484 --- [weatherwear] [ntainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : 68ae0560-0577-4e9c-ba99-78d2f55b567f: partitions revoked: [weatherwear.direct_message_received-0]
+2026-11-24T01:17:50.448+09:00  INFO 25484 --- [weatherwear] [ntainer#6-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: [weatherwear.role_changed-0]
+2026-11-24T01:17:50.449+09:00  INFO 25484 --- [weatherwear] [ntainer#7-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions revoked: [weatherwear.new_follower-0]
+2026-11-24T01:17:50.450+09:00  INFO 25484 --- [weatherwear] [ntainer#4-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-7, groupId=weatherwear] Member consumer-weatherwear-7-85389370-8f06-490d-8f49-75cf09dad61d sending LeaveGroup request to coordinator localhost:11393 (id: 2147483646 rack: null) due to the consumer unsubscribed from all topics
+2026-11-24T01:17:50.450+09:00  INFO 25484 --- [weatherwear] [tainer#10-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-b4320369-f7e6-4475-a1df-b747d3342d1f-11, groupId=b4320369-f7e6-4475-a1df-b747d3342d1f] Member consumer-b4320369-f7e6-4475-a1df-b747d3342d1f-11-af53ab5f-ed1b-4a6c-8753-cc9e787b8e80 sending LeaveGroup request to coordinator localhost:11393 (id: 2147483646 rack: null) due to the consumer unsubscribed from all topics
+2026-11-24T01:17:50.450+09:00  INFO 25484 --- [weatherwear] [ntainer#8-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-3, groupId=weatherwear] Member consumer-weatherwear-3-8b273edf-037a-4962-ab3d-b9a35c80cc34 sending LeaveGroup request to coordinator localhost:11393 (id: 2147483646 rack: null) due to the consumer unsubscribed from all topics
+2026-11-24T01:17:50.450+09:00  INFO 25484 --- [weatherwear] [ntainer#7-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-2, groupId=weatherwear] Member consumer-weatherwear-2-569da853-8594-43c2-b4fc-6305b3e941fb sending LeaveGroup request to coordinator localhost:11393 (id: 2147483646 rack: null) due to the consumer unsubscribed from all topics
+2026-11-24T01:17:50.450+09:00  INFO 25484 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-8, groupId=weatherwear] Member consumer-weatherwear-8-e82ab45d-1756-471f-94b3-4ff1835a587d sending LeaveGroup request to coordinator localhost:11393 (id: 2147483646 rack: null) due to the consumer unsubscribed from all topics
+2026-11-24T01:17:50.450+09:00  INFO 25484 --- [weatherwear] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-5, groupId=weatherwear] Member consumer-weatherwear-5-22d34621-268b-4e0f-acb5-f31a38a42aa8 sending LeaveGroup request to coordinator localhost:11393 (id: 2147483646 rack: null) due to the consumer unsubscribed from all topics
+2026-11-24T01:17:50.450+09:00  INFO 25484 --- [weatherwear] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-10, groupId=weatherwear] Member consumer-weatherwear-10-51bb0daf-aea8-4782-81b9-f5cdfc9e3ad9 sending LeaveGroup request to coordinator localhost:11393 (id: 2147483646 rack: null) due to the consumer unsubscribed from all topics
+2026-11-24T01:17:50.450+09:00  INFO 25484 --- [weatherwear] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-68ae0560-0577-4e9c-ba99-78d2f55b567f-9, groupId=68ae0560-0577-4e9c-ba99-78d2f55b567f] Member consumer-68ae0560-0577-4e9c-ba99-78d2f55b567f-9-f466180b-d16d-45c1-a3f8-1228f6eb154e sending LeaveGroup request to coordinator localhost:11393 (id: 2147483646 rack: null) due to the consumer unsubscribed from all topics
+2026-11-24T01:17:50.450+09:00  INFO 25484 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-4, groupId=weatherwear] Member consumer-weatherwear-4-147cbffa-bdb7-4f89-b246-682eb0cf0eed sending LeaveGroup request to coordinator localhost:11393 (id: 2147483646 rack: null) due to the consumer unsubscribed from all topics
+2026-11-24T01:17:50.450+09:00  INFO 25484 --- [weatherwear] [ntainer#3-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-6, groupId=weatherwear] Member consumer-weatherwear-6-64c99c98-b445-4bc1-8333-840c4d4eb11f sending LeaveGroup request to coordinator localhost:11393 (id: 2147483646 rack: null) due to the consumer unsubscribed from all topics
+2026-11-24T01:17:50.450+09:00  INFO 25484 --- [weatherwear] [ntainer#6-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-1, groupId=weatherwear] Member consumer-weatherwear-1-17c7eb56-207b-4a3a-b9bf-ea239a7f9116 sending LeaveGroup request to coordinator localhost:11393 (id: 2147483646 rack: null) due to the consumer unsubscribed from all topics
+2026-11-24T01:17:50.451+09:00  INFO 25484 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-4, groupId=weatherwear] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-11-24T01:17:50.451+09:00  INFO 25484 --- [weatherwear] [ntainer#6-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-1, groupId=weatherwear] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-11-24T01:17:50.451+09:00  INFO 25484 --- [weatherwear] [tainer#10-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-b4320369-f7e6-4475-a1df-b747d3342d1f-11, groupId=b4320369-f7e6-4475-a1df-b747d3342d1f] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-11-24T01:17:50.451+09:00  INFO 25484 --- [weatherwear] [ntainer#6-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-1, groupId=weatherwear] Request joining group due to: consumer pro-actively leaving the group
+2026-11-24T01:17:50.451+09:00  INFO 25484 --- [weatherwear] [tainer#10-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-b4320369-f7e6-4475-a1df-b747d3342d1f-11, groupId=b4320369-f7e6-4475-a1df-b747d3342d1f] Request joining group due to: consumer pro-actively leaving the group
+2026-11-24T01:17:50.451+09:00  INFO 25484 --- [weatherwear] [ntainer#8-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-3, groupId=weatherwear] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-11-24T01:17:50.451+09:00  INFO 25484 --- [weatherwear] [ntainer#6-0-C-1] o.a.k.c.c.internals.LegacyKafkaConsumer  : [Consumer clientId=consumer-weatherwear-1, groupId=weatherwear] Unsubscribed all topics or patterns and assigned partitions
+2026-11-24T01:17:50.451+09:00  INFO 25484 --- [weatherwear] [tainer#10-0-C-1] o.a.k.c.c.internals.LegacyKafkaConsumer  : [Consumer clientId=consumer-b4320369-f7e6-4475-a1df-b747d3342d1f-11, groupId=b4320369-f7e6-4475-a1df-b747d3342d1f] Unsubscribed all topics or patterns and assigned partitions
+2026-11-24T01:17:50.451+09:00  INFO 25484 --- [weatherwear] [ntainer#8-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-3, groupId=weatherwear] Request joining group due to: consumer pro-actively leaving the group
+2026-11-24T01:17:50.451+09:00  INFO 25484 --- [weatherwear] [ntainer#3-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-6, groupId=weatherwear] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-11-24T01:17:50.451+09:00  INFO 25484 --- [weatherwear] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-68ae0560-0577-4e9c-ba99-78d2f55b567f-9, groupId=68ae0560-0577-4e9c-ba99-78d2f55b567f] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-11-24T01:17:50.451+09:00  INFO 25484 --- [weatherwear] [ntainer#3-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-6, groupId=weatherwear] Request joining group due to: consumer pro-actively leaving the group
+2026-11-24T01:17:50.451+09:00  INFO 25484 --- [weatherwear] [ntainer#7-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-2, groupId=weatherwear] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-11-24T01:17:50.451+09:00  INFO 25484 --- [weatherwear] [ntainer#3-0-C-1] o.a.k.c.c.internals.LegacyKafkaConsumer  : [Consumer clientId=consumer-weatherwear-6, groupId=weatherwear] Unsubscribed all topics or patterns and assigned partitions
+2026-11-24T01:17:50.451+09:00  INFO 25484 --- [weatherwear] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-68ae0560-0577-4e9c-ba99-78d2f55b567f-9, groupId=68ae0560-0577-4e9c-ba99-78d2f55b567f] Request joining group due to: consumer pro-actively leaving the group
+2026-11-24T01:17:50.451+09:00  INFO 25484 --- [weatherwear] [ntainer#7-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-2, groupId=weatherwear] Request joining group due to: consumer pro-actively leaving the group
+2026-11-24T01:17:50.451+09:00  INFO 25484 --- [weatherwear] [ntainer#0-0-C-1] o.a.k.c.c.internals.LegacyKafkaConsumer  : [Consumer clientId=consumer-68ae0560-0577-4e9c-ba99-78d2f55b567f-9, groupId=68ae0560-0577-4e9c-ba99-78d2f55b567f] Unsubscribed all topics or patterns and assigned partitions
+2026-11-24T01:17:50.451+09:00  INFO 25484 --- [weatherwear] [ntainer#7-0-C-1] o.a.k.c.c.internals.LegacyKafkaConsumer  : [Consumer clientId=consumer-weatherwear-2, groupId=weatherwear] Unsubscribed all topics or patterns and assigned partitions
+2026-11-24T01:17:50.451+09:00  INFO 25484 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-4, groupId=weatherwear] Request joining group due to: consumer pro-actively leaving the group
+2026-11-24T01:17:50.451+09:00  INFO 25484 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.LegacyKafkaConsumer  : [Consumer clientId=consumer-weatherwear-4, groupId=weatherwear] Unsubscribed all topics or patterns and assigned partitions
+2026-11-24T01:17:50.451+09:00  INFO 25484 --- [weatherwear] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-10, groupId=weatherwear] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-11-24T01:17:50.451+09:00  INFO 25484 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-8, groupId=weatherwear] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-11-24T01:17:50.451+09:00  INFO 25484 --- [weatherwear] [ntainer#4-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-7, groupId=weatherwear] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-11-24T01:17:50.451+09:00  INFO 25484 --- [weatherwear] [ntainer#8-0-C-1] o.a.k.c.c.internals.LegacyKafkaConsumer  : [Consumer clientId=consumer-weatherwear-3, groupId=weatherwear] Unsubscribed all topics or patterns and assigned partitions
+2026-11-24T01:17:50.451+09:00  INFO 25484 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-8, groupId=weatherwear] Request joining group due to: consumer pro-actively leaving the group
+2026-11-24T01:17:50.451+09:00  INFO 25484 --- [weatherwear] [ntainer#4-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-7, groupId=weatherwear] Request joining group due to: consumer pro-actively leaving the group
+2026-11-24T01:17:50.451+09:00  INFO 25484 --- [weatherwear] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-5, groupId=weatherwear] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-11-24T01:17:50.451+09:00  INFO 25484 --- [weatherwear] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-10, groupId=weatherwear] Request joining group due to: consumer pro-actively leaving the group
+2026-11-24T01:17:50.451+09:00  INFO 25484 --- [weatherwear] [ntainer#4-0-C-1] o.a.k.c.c.internals.LegacyKafkaConsumer  : [Consumer clientId=consumer-weatherwear-7, groupId=weatherwear] Unsubscribed all topics or patterns and assigned partitions
+2026-11-24T01:17:50.452+09:00  INFO 25484 --- [weatherwear] [ntainer#1-0-C-1] o.a.k.c.c.internals.LegacyKafkaConsumer  : [Consumer clientId=consumer-weatherwear-10, groupId=weatherwear] Unsubscribed all topics or patterns and assigned partitions
+2026-11-24T01:17:50.451+09:00  INFO 25484 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.LegacyKafkaConsumer  : [Consumer clientId=consumer-weatherwear-8, groupId=weatherwear] Unsubscribed all topics or patterns and assigned partitions
+2026-11-24T01:17:50.451+09:00  INFO 25484 --- [weatherwear] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-5, groupId=weatherwear] Request joining group due to: consumer pro-actively leaving the group
+2026-11-24T01:17:50.452+09:00  INFO 25484 --- [weatherwear] [ntainer#2-0-C-1] o.a.k.c.c.internals.LegacyKafkaConsumer  : [Consumer clientId=consumer-weatherwear-5, groupId=weatherwear] Unsubscribed all topics or patterns and assigned partitions
+2026-11-24T01:17:50.457+09:00  INFO 25484 --- [weatherwear] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-68ae0560-0577-4e9c-ba99-78d2f55b567f-9, groupId=68ae0560-0577-4e9c-ba99-78d2f55b567f] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-11-24T01:17:50.457+09:00  INFO 25484 --- [weatherwear] [ntainer#8-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-3, groupId=weatherwear] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-11-24T01:17:50.457+09:00  INFO 25484 --- [weatherwear] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-68ae0560-0577-4e9c-ba99-78d2f55b567f-9, groupId=68ae0560-0577-4e9c-ba99-78d2f55b567f] Request joining group due to: consumer pro-actively leaving the group
+2026-11-24T01:17:50.457+09:00  INFO 25484 --- [weatherwear] [ntainer#6-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-1, groupId=weatherwear] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-11-24T01:17:50.457+09:00  INFO 25484 --- [weatherwear] [ntainer#7-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-2, groupId=weatherwear] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-11-24T01:17:50.457+09:00  INFO 25484 --- [weatherwear] [ntainer#6-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-1, groupId=weatherwear] Request joining group due to: consumer pro-actively leaving the group
+2026-11-24T01:17:50.457+09:00  INFO 25484 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-8, groupId=weatherwear] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-11-24T01:17:50.457+09:00  INFO 25484 --- [weatherwear] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-10, groupId=weatherwear] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-11-24T01:17:50.457+09:00  INFO 25484 --- [weatherwear] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-5, groupId=weatherwear] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-11-24T01:17:50.457+09:00  INFO 25484 --- [weatherwear] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-10, groupId=weatherwear] Request joining group due to: consumer pro-actively leaving the group
+2026-11-24T01:17:50.457+09:00  INFO 25484 --- [weatherwear] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-5, groupId=weatherwear] Request joining group due to: consumer pro-actively leaving the group
+2026-11-24T01:17:50.457+09:00  INFO 25484 --- [weatherwear] [ntainer#3-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-6, groupId=weatherwear] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-11-24T01:17:50.457+09:00  INFO 25484 --- [weatherwear] [ntainer#3-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-6, groupId=weatherwear] Request joining group due to: consumer pro-actively leaving the group
+2026-11-24T01:17:50.457+09:00  INFO 25484 --- [weatherwear] [ntainer#4-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-7, groupId=weatherwear] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-11-24T01:17:50.457+09:00  INFO 25484 --- [weatherwear] [ntainer#7-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-2, groupId=weatherwear] Request joining group due to: consumer pro-actively leaving the group
+2026-11-24T01:17:50.457+09:00  INFO 25484 --- [weatherwear] [ntainer#8-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-3, groupId=weatherwear] Request joining group due to: consumer pro-actively leaving the group
+2026-11-24T01:17:50.457+09:00  INFO 25484 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-8, groupId=weatherwear] Request joining group due to: consumer pro-actively leaving the group
+2026-11-24T01:17:50.458+09:00  INFO 25484 --- [weatherwear] [ntainer#4-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-7, groupId=weatherwear] Request joining group due to: consumer pro-actively leaving the group
+2026-11-24T01:17:50.458+09:00  INFO 25484 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-4, groupId=weatherwear] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-11-24T01:17:50.458+09:00  INFO 25484 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-4, groupId=weatherwear] Request joining group due to: consumer pro-actively leaving the group
+2026-11-24T01:17:50.458+09:00  INFO 25484 --- [weatherwear] [tainer#10-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-b4320369-f7e6-4475-a1df-b747d3342d1f-11, groupId=b4320369-f7e6-4475-a1df-b747d3342d1f] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-11-24T01:17:50.458+09:00  INFO 25484 --- [weatherwear] [tainer#10-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-b4320369-f7e6-4475-a1df-b747d3342d1f-11, groupId=b4320369-f7e6-4475-a1df-b747d3342d1f] Request joining group due to: consumer pro-actively leaving the group
+2026-11-24T01:17:50.664+09:00  INFO 25484 --- [weatherwear] [ntainer#8-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2026-11-24T01:17:50.664+09:00  INFO 25484 --- [weatherwear] [ntainer#8-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-11-24T01:17:50.663+09:00  INFO 25484 --- [weatherwear] [ntainer#5-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2026-11-24T01:17:50.664+09:00  INFO 25484 --- [weatherwear] [ntainer#8-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.telemetry.internals.ClientTelemetryReporter
+2026-11-24T01:17:50.664+09:00  INFO 25484 --- [weatherwear] [ntainer#5-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-11-24T01:17:50.664+09:00  INFO 25484 --- [weatherwear] [ntainer#8-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2026-11-24T01:17:50.664+09:00  INFO 25484 --- [weatherwear] [ntainer#5-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.telemetry.internals.ClientTelemetryReporter
+2026-11-24T01:17:50.665+09:00  INFO 25484 --- [weatherwear] [ntainer#0-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2026-11-24T01:17:50.665+09:00  INFO 25484 --- [weatherwear] [ntainer#4-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2026-11-24T01:17:50.665+09:00  INFO 25484 --- [weatherwear] [ntainer#5-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2026-11-24T01:17:50.665+09:00  INFO 25484 --- [weatherwear] [ntainer#0-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-11-24T01:17:50.665+09:00  INFO 25484 --- [weatherwear] [ntainer#4-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-11-24T01:17:50.665+09:00  INFO 25484 --- [weatherwear] [ntainer#0-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.telemetry.internals.ClientTelemetryReporter
+2026-11-24T01:17:50.665+09:00  INFO 25484 --- [weatherwear] [ntainer#0-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2026-11-24T01:17:50.665+09:00  INFO 25484 --- [weatherwear] [ntainer#4-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.telemetry.internals.ClientTelemetryReporter
+2026-11-24T01:17:50.665+09:00  INFO 25484 --- [weatherwear] [ntainer#4-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2026-11-24T01:17:50.675+09:00  INFO 25484 --- [weatherwear] [ntainer#9-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2026-11-24T01:17:50.675+09:00  INFO 25484 --- [weatherwear] [ntainer#9-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-11-24T01:17:50.675+09:00  INFO 25484 --- [weatherwear] [ntainer#9-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.telemetry.internals.ClientTelemetryReporter
+2026-11-24T01:17:50.675+09:00  INFO 25484 --- [weatherwear] [ntainer#9-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2026-11-24T01:17:50.676+09:00  INFO 25484 --- [weatherwear] [ntainer#6-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2026-11-24T01:17:50.676+09:00  INFO 25484 --- [weatherwear] [ntainer#6-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-11-24T01:17:50.676+09:00  INFO 25484 --- [weatherwear] [ntainer#2-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2026-11-24T01:17:50.676+09:00  INFO 25484 --- [weatherwear] [ntainer#6-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.telemetry.internals.ClientTelemetryReporter
+2026-11-24T01:17:50.676+09:00  INFO 25484 --- [weatherwear] [ntainer#2-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-11-24T01:17:50.676+09:00  INFO 25484 --- [weatherwear] [ntainer#6-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2026-11-24T01:17:50.676+09:00  INFO 25484 --- [weatherwear] [ntainer#2-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.telemetry.internals.ClientTelemetryReporter
+2026-11-24T01:17:50.676+09:00  INFO 25484 --- [weatherwear] [ntainer#2-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2026-11-24T01:17:50.677+09:00  INFO 25484 --- [weatherwear] [ntainer#1-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2026-11-24T01:17:50.678+09:00  INFO 25484 --- [weatherwear] [ntainer#1-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-11-24T01:17:50.678+09:00  INFO 25484 --- [weatherwear] [ntainer#1-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.telemetry.internals.ClientTelemetryReporter
+2026-11-24T01:17:50.679+09:00  INFO 25484 --- [weatherwear] [ntainer#1-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2026-11-24T01:17:50.692+09:00  INFO 25484 --- [weatherwear] [ntainer#8-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-weatherwear-3 unregistered
+2026-11-24T01:17:50.693+09:00  INFO 25484 --- [weatherwear] [ntainer#8-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: Consumer stopped
+2026-11-24T01:17:50.697+09:00  INFO 25484 --- [weatherwear] [ntainer#5-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-weatherwear-8 unregistered
+2026-11-24T01:17:50.698+09:00  INFO 25484 --- [weatherwear] [ntainer#5-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: Consumer stopped
+2026-11-24T01:17:50.699+09:00  INFO 25484 --- [weatherwear] [ntainer#4-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-weatherwear-7 unregistered
+2026-11-24T01:17:50.700+09:00  INFO 25484 --- [weatherwear] [ntainer#4-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: Consumer stopped
+2026-11-24T01:17:50.703+09:00  INFO 25484 --- [weatherwear] [ntainer#6-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-weatherwear-1 unregistered
+2026-11-24T01:17:50.703+09:00  INFO 25484 --- [weatherwear] [ntainer#6-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: Consumer stopped
+2026-11-24T01:17:50.705+09:00  INFO 25484 --- [weatherwear] [ntainer#2-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-weatherwear-5 unregistered
+2026-11-24T01:17:50.705+09:00  INFO 25484 --- [weatherwear] [ntainer#2-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: Consumer stopped
+2026-11-24T01:17:50.705+09:00  INFO 25484 --- [weatherwear] [ntainer#9-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-weatherwear-4 unregistered
+2026-11-24T01:17:50.705+09:00  INFO 25484 --- [weatherwear] [ntainer#9-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: Consumer stopped
+2026-11-24T01:17:50.705+09:00  INFO 25484 --- [weatherwear] [ntainer#1-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-weatherwear-10 unregistered
+2026-11-24T01:17:50.706+09:00  INFO 25484 --- [weatherwear] [ntainer#1-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: Consumer stopped
+2026-11-24T01:17:50.706+09:00  INFO 25484 --- [weatherwear] [ntainer#0-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-68ae0560-0577-4e9c-ba99-78d2f55b567f-9 unregistered
+2026-11-24T01:17:50.707+09:00  INFO 25484 --- [weatherwear] [ntainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : 68ae0560-0577-4e9c-ba99-78d2f55b567f: Consumer stopped
+2026-11-24T01:17:50.718+09:00  INFO 25484 --- [weatherwear] [ntainer#7-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2026-11-24T01:17:50.718+09:00  INFO 25484 --- [weatherwear] [ntainer#7-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-11-24T01:17:50.718+09:00  INFO 25484 --- [weatherwear] [ntainer#7-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.telemetry.internals.ClientTelemetryReporter
+2026-11-24T01:17:50.718+09:00  INFO 25484 --- [weatherwear] [ntainer#7-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2026-11-24T01:17:50.720+09:00  INFO 25484 --- [weatherwear] [ntainer#3-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2026-11-24T01:17:50.720+09:00  INFO 25484 --- [weatherwear] [ntainer#3-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-11-24T01:17:50.720+09:00  INFO 25484 --- [weatherwear] [ntainer#3-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.telemetry.internals.ClientTelemetryReporter
+2026-11-24T01:17:50.721+09:00  INFO 25484 --- [weatherwear] [ntainer#3-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2026-11-24T01:17:50.721+09:00  INFO 25484 --- [weatherwear] [tainer#10-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics scheduler closed
+2026-11-24T01:17:50.721+09:00  INFO 25484 --- [weatherwear] [tainer#10-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-11-24T01:17:50.722+09:00  INFO 25484 --- [weatherwear] [tainer#10-0-C-1] o.apache.kafka.common.metrics.Metrics    : Closing reporter org.apache.kafka.common.telemetry.internals.ClientTelemetryReporter
+2026-11-24T01:17:50.722+09:00  INFO 25484 --- [weatherwear] [tainer#10-0-C-1] o.apache.kafka.common.metrics.Metrics    : Metrics reporters closed
+2026-11-24T01:17:50.731+09:00  INFO 25484 --- [weatherwear] [ntainer#7-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-weatherwear-2 unregistered
+2026-11-24T01:17:50.732+09:00  INFO 25484 --- [weatherwear] [ntainer#7-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: Consumer stopped
+2026-11-24T01:17:50.732+09:00  INFO 25484 --- [weatherwear] [ntainer#3-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-weatherwear-6 unregistered
+2026-11-24T01:17:50.733+09:00  INFO 25484 --- [weatherwear] [ntainer#3-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: Consumer stopped
+2026-11-24T01:17:50.733+09:00  INFO 25484 --- [weatherwear] [tainer#10-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-b4320369-f7e6-4475-a1df-b747d3342d1f-11 unregistered
+2026-11-24T01:17:50.733+09:00  INFO 25484 --- [weatherwear] [tainer#10-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : b4320369-f7e6-4475-a1df-b747d3342d1f: Consumer stopped
+2026-11-24T01:17:50.738+09:00  INFO 25484 --- [weatherwear] [ionShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-11-24T01:17:53.334+09:00  INFO 25484 --- [weatherwear] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-11-24T01:17:53.349+09:00  INFO 25484 --- [weatherwear] [ionShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2026-11-24T01:17:53.350+09:00  INFO 25484 --- [weatherwear] [ionShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@7c5fba85]]
+2026-11-24T01:17:53.351+09:00  INFO 25484 --- [weatherwear] [ionShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2026-11-24T01:17:53.454+09:00  WARN 25484 --- [weatherwear] [ionShutdownHook] o.s.b.f.support.DisposableBeanAdapter    : Custom destroy method 'close' on bean with name 'locationReader' propagated an exception: org.springframework.batch.item.ItemStreamException: Error while closing item reader
+2026-11-24T01:17:53.552+09:00  INFO 25484 --- [weatherwear] [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-11-24T01:17:53.556+09:00  INFO 25484 --- [weatherwear] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-11-24T01:17:53.568+09:00  INFO 25484 --- [weatherwear] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+
+> Task :test
+
+3 tests completed, 2 failed
+
+> Task :test FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':test'.
+> There were failing tests. See the report at: file:///C:/Users/soo71/github/myotboo-password-reset/build/reports/tests/test/index.html
+
+* Try:
+> Run with --scan to get full insights.
+
+BUILD FAILED in 3m 26s
+5 actionable tasks: 3 executed, 2 up-to-date

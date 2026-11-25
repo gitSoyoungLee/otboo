@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - AuthControllerTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>AuthControllerTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/com.codeit.weatherwear.domain.auth.controller.html">com.codeit.weatherwear.domain.auth.controller</a> &gt; AuthControllerTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">4</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">3.669s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="tab-container">
+<ul class="tabLinks">
+<li>
+<a href="#">Tests</a>
+</li>
+<li>
+<a href="#">Standard output</a>
+</li>
+</ul>
+<div class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Method name</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">csrf토큰을 조회한다.</td>
+<td class="success">getCsrfToken_shouldReturnCsrfToken()</td>
+<td class="success">1.970s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">쿠키의 리프레시 토큰으로 액세스 토큰을 조회한다.</td>
+<td class="success">getMe_shouldReturnAccessToken()</td>
+<td class="success">0.174s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">비밀번호 초기화 요청 시 NoContent status을 반환한다.</td>
+<td class="success">resetPassword()</td>
+<td class="success">1.402s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">리프레시 토큰과 액세스 토큰을 재발급한다.</td>
+<td class="success">rotateToken_shouldReturnNewToken()</td>
+<td class="success">0.123s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>2026-11-24T00:55:55.609+09:00  INFO 41800 --- [weatherwear] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.codeit.weatherwear.domain.auth.controller.AuthControllerTest]: AuthControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-11-24T00:55:56.717+09:00  INFO 41800 --- [weatherwear] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.codeit.weatherwear.WeatherwearApplication for test class com.codeit.weatherwear.domain.auth.controller.AuthControllerTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.7)
+
+2026-11-24T00:55:56.993+09:00  INFO 41800 --- [weatherwear] [    Test worker] c.c.w.d.a.controller.AuthControllerTest  : Starting AuthControllerTest using Java 17.0.11 with PID 41800 (started by soo71 in C:\Users\soo71\github\myotboo-password-reset)
+2026-11-24T00:55:56.994+09:00 DEBUG 41800 --- [weatherwear] [    Test worker] c.c.w.d.a.controller.AuthControllerTest  : Running with Spring Boot v3.4.7, Spring v6.2.8
+2026-11-24T00:55:56.995+09:00  INFO 41800 --- [weatherwear] [    Test worker] c.c.w.d.a.controller.AuthControllerTest  : The following 1 profile is active: &quot;test&quot;
+2026-11-24T00:56:04.108+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2026-11-24T00:56:07.681+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-11-24T00:56:07.683+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-11-24T00:56:07.688+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2026-11-24T00:56:09.217+09:00  INFO 41800 --- [weatherwear] [    Test worker] c.c.w.d.a.controller.AuthControllerTest  : Started AuthControllerTest in 12.491 seconds (process running for 170.22)
+2026-11-24T00:56:09.353+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-11-24T00:56:09.356+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-11-24T00:56:09.360+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 4 ms
+2026-11-24T00:56:11.260+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-11-24T00:56:11.262+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-11-24T00:56:11.265+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2026-11-24T00:56:12.671+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-11-24T00:56:12.672+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-11-24T00:56:12.674+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2026-11-24T00:56:12.856+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-11-24T00:56:12.861+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-11-24T00:56:12.867+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 3 ms
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="https://www.gradle.org">Gradle 8.14.2</a> at 2026. 11. 24. 오전 12:56:29</p>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,1646 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.codeit.weatherwear.domain.auth.integration.PasswordResetMailConsistencyTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-11-23T15:55:41.733Z" hostname="소영" time="13.824">
+  <properties/>
+  <testcase name="커밋이 실패해 롤백되면 임시 비밀번호 메일이 발송되지 않는다" classname="com.codeit.weatherwear.domain.auth.integration.PasswordResetMailConsistencyTest" time="12.87"/>
+  <testcase name="정상 커밋되면 메일이 발송되고, 메일 속 임시 비밀번호로 DB 비밀번호가 일치한다" classname="com.codeit.weatherwear.domain.auth.integration.PasswordResetMailConsistencyTest" time="0.952"/>
+  <system-out><![CDATA[00:53:32.938 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.codeit.weatherwear.domain.auth.integration.PasswordResetMailConsistencyTest]: PasswordResetMailConsistencyTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+00:53:36.373 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.codeit.weatherwear.WeatherwearApplication for test class com.codeit.weatherwear.domain.auth.integration.PasswordResetMailConsistencyTest
+00:53:38.371 [Test worker] INFO org.testcontainers.images.PullPolicy -- Image pull policy will be performed by: DefaultPullPolicy()
+00:53:38.406 [Test worker] INFO org.testcontainers.utility.ImageNameSubstitutor -- Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+00:53:38.530 [Test worker] INFO org.testcontainers.DockerClientFactory -- Testcontainers version: 1.20.6
+00:53:41.504 [Test worker] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+00:53:44.092 [Test worker] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+00:53:44.103 [Test worker] INFO org.testcontainers.DockerClientFactory -- Docker host IP address is localhost
+00:53:44.179 [Test worker] INFO org.testcontainers.DockerClientFactory -- Connected to docker: 
+  Server Version: 28.0.1
+  API Version: 1.48
+  Operating System: Docker Desktop
+  Total Memory: 7784 MB
+  Labels: 
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+00:53:44.798 [Test worker] INFO tc.testcontainers/ryuk:0.11.0 -- Creating container for image: testcontainers/ryuk:0.11.0
+00:53:45.534 [Test worker] INFO tc.testcontainers/ryuk:0.11.0 -- Container testcontainers/ryuk:0.11.0 is starting: 7586e17fb44e6b983534acdcc030e400e6957dce759d94d736c34267d692c2ae
+00:53:46.765 [Test worker] INFO tc.testcontainers/ryuk:0.11.0 -- Container testcontainers/ryuk:0.11.0 started in PT1.9670426S
+00:53:46.791 [Test worker] INFO org.testcontainers.utility.RyukResourceReaper -- Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+00:53:46.792 [Test worker] INFO org.testcontainers.DockerClientFactory -- Checking the system...
+00:53:46.801 [Test worker] INFO org.testcontainers.DockerClientFactory -- ?? Docker server version should be at least 1.6.0
+00:53:46.803 [Test worker] INFO tc.postgres:17-alpine -- Creating container for image: postgres:17-alpine
+00:53:47.090 [Test worker] INFO tc.postgres:17-alpine -- Container postgres:17-alpine is starting: 822f898964b606d5eed329a18294e0ddb9c0a4373287ee7e53863f33688be449
+00:53:51.931 [Test worker] INFO tc.postgres:17-alpine -- Container postgres:17-alpine started in PT5.1287951S
+00:53:51.935 [Test worker] INFO tc.postgres:17-alpine -- Container is started (JDBC URL: jdbc:postgresql://localhost:14843/weatherwear?loggerLevel=OFF)
+00:53:52.039 [Test worker] INFO org.testcontainers.ext.ScriptUtils -- Executing database script from schema.sql
+00:53:53.708 [Test worker] INFO org.testcontainers.ext.ScriptUtils -- Executed database script from schema.sql in 1669 ms.
+00:53:53.711 [Test worker] INFO tc.apache/kafka:4.0.0 -- Creating container for image: apache/kafka:4.0.0
+00:53:54.254 [Test worker] INFO tc.apache/kafka:4.0.0 -- Container apache/kafka:4.0.0 is starting: 4e4a715861fe51b136a1995eb73c85f0cc304133731bad8af821dc5e3db692a6
+00:54:07.960 [Test worker] INFO tc.apache/kafka:4.0.0 -- Container apache/kafka:4.0.0 started in PT14.2490815S
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.7)
+
+2026-11-24T00:54:11.309+09:00  INFO 41800 --- [weatherwear] [    Test worker] w.d.a.i.PasswordResetMailConsistencyTest : Starting PasswordResetMailConsistencyTest using Java 17.0.11 with PID 41800 (started by soo71 in C:\Users\soo71\github\myotboo-password-reset)
+2026-11-24T00:54:11.314+09:00 DEBUG 41800 --- [weatherwear] [    Test worker] w.d.a.i.PasswordResetMailConsistencyTest : Running with Spring Boot v3.4.7, Spring v6.2.8
+2026-11-24T00:54:11.317+09:00  INFO 41800 --- [weatherwear] [    Test worker] w.d.a.i.PasswordResetMailConsistencyTest : The following 1 profile is active: "test-security"
+2026-11-24T00:54:27.359+09:00  INFO 41800 --- [weatherwear] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-11-24T00:54:27.368+09:00  INFO 41800 --- [weatherwear] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-24T00:54:30.532+09:00  INFO 41800 --- [weatherwear] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3112 ms. Found 15 JPA repository interfaces.
+2026-11-24T00:54:30.670+09:00  INFO 41800 --- [weatherwear] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-11-24T00:54:30.683+09:00  INFO 41800 --- [weatherwear] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-11-24T00:54:31.338+09:00  INFO 41800 --- [weatherwear] [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.codeit.weatherwear.domain.clothes.repository.AttributeRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-11-24T00:54:31.339+09:00  INFO 41800 --- [weatherwear] [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.codeit.weatherwear.domain.clothes.repository.ClothRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-11-24T00:54:31.340+09:00  INFO 41800 --- [weatherwear] [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.codeit.weatherwear.domain.clothes.repository.ClothWithAttributesRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-11-24T00:54:31.341+09:00  INFO 41800 --- [weatherwear] [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.codeit.weatherwear.domain.directmessage.repository.DirectMessageRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-11-24T00:54:31.343+09:00  INFO 41800 --- [weatherwear] [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.codeit.weatherwear.domain.feed.repository.FeedCommentRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-11-24T00:54:31.344+09:00  INFO 41800 --- [weatherwear] [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.codeit.weatherwear.domain.feed.repository.FeedLikeRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-11-24T00:54:31.346+09:00  INFO 41800 --- [weatherwear] [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.codeit.weatherwear.domain.feed.repository.FeedRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-11-24T00:54:31.349+09:00  INFO 41800 --- [weatherwear] [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.codeit.weatherwear.domain.follow.repository.FollowRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-11-24T00:54:31.350+09:00  INFO 41800 --- [weatherwear] [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.codeit.weatherwear.domain.location.repository.LocationRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-11-24T00:54:31.351+09:00  INFO 41800 --- [weatherwear] [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.codeit.weatherwear.domain.notification.repository.NotificationRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-11-24T00:54:31.352+09:00  INFO 41800 --- [weatherwear] [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.codeit.weatherwear.domain.ootd.repository.OotdRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-11-24T00:54:31.353+09:00  INFO 41800 --- [weatherwear] [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.codeit.weatherwear.domain.security.repository.JwtSessionRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-11-24T00:54:31.355+09:00  INFO 41800 --- [weatherwear] [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.codeit.weatherwear.domain.user.repository.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-11-24T00:54:31.356+09:00  INFO 41800 --- [weatherwear] [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.codeit.weatherwear.domain.weather.repository.WeatherApiDataRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-11-24T00:54:31.357+09:00  INFO 41800 --- [weatherwear] [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.codeit.weatherwear.domain.weather.repository.WeatherRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2026-11-24T00:54:31.358+09:00  INFO 41800 --- [weatherwear] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 597 ms. Found 0 Redis repository interfaces.
+2026-11-24T00:54:38.256+09:00  INFO 41800 --- [weatherwear] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-24T00:54:38.458+09:00  INFO 41800 --- [weatherwear] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@314e6795
+2026-11-24T00:54:38.478+09:00  INFO 41800 --- [weatherwear] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-11-24T00:54:40.105+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-11-24T00:54:40.777+09:00  INFO 41800 --- [weatherwear] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.18.Final
+2026-11-24T00:54:41.202+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-11-24T00:54:43.154+09:00  INFO 41800 --- [weatherwear] [    Test worker] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-24T00:54:48.547+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-24T00:54:59.957+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-24T00:54:59.979+09:00  INFO 41800 --- [weatherwear] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-24T00:55:02.192+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-11-24T00:55:27.044+09:00  WARN 41800 --- [weatherwear] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-11-24T00:55:27.230+09:00  INFO 41800 --- [weatherwear] [    Test worker] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2026-11-24T00:55:28.452+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2026-11-24T00:55:30.139+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-11-24T00:55:35.040+09:00  WARN 41800 --- [weatherwear] [    Test worker] i.m.c.i.b.cache.CaffeineCacheMetrics     : The cache 'recommendations' is not recording statistics. No meters except 'cache.size' will be registered. Call 'Caffeine#recordStats()' prior to building the cache for metrics to be recorded.
+2026-11-24T00:55:35.052+09:00  WARN 41800 --- [weatherwear] [    Test worker] i.m.c.i.b.cache.CaffeineCacheMetrics     : The cache 'users' is not recording statistics. No meters except 'cache.size' will be registered. Call 'Caffeine#recordStats()' prior to building the cache for metrics to be recorded.
+2026-11-24T00:55:36.772+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2026-11-24T00:55:36.774+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@289c051c]]
+2026-11-24T00:55:36.779+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2026-11-24T00:55:37.173+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.include.jmx.reporter = true
+	auto.offset.reset = earliest
+	bootstrap.servers = [localhost:7580]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-weatherwear-1
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	enable.metrics.push = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = weatherwear
+	group.instance.id = null
+	group.protocol = classic
+	group.remote.assignor = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metadata.recovery.strategy = none
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2026-11-24T00:55:37.650+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.k.c.t.i.KafkaMetricsCollector        : initializing Kafka metrics collector
+2026-11-24T00:55:38.528+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.8.1
+2026-11-24T00:55:38.529+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 70d6ff42debf7e17
+2026-11-24T00:55:38.529+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1795449338513
+2026-11-24T00:55:38.602+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.k.c.c.internals.LegacyKafkaConsumer  : [Consumer clientId=consumer-weatherwear-1, groupId=weatherwear] Subscribed to topic(s): weatherwear.cloth_attribute_added
+2026-11-24T00:55:38.645+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.include.jmx.reporter = true
+	auto.offset.reset = earliest
+	bootstrap.servers = [localhost:7580]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-weatherwear-2
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	enable.metrics.push = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = weatherwear
+	group.instance.id = null
+	group.protocol = classic
+	group.remote.assignor = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metadata.recovery.strategy = none
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2026-11-24T00:55:38.654+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.k.c.t.i.KafkaMetricsCollector        : initializing Kafka metrics collector
+2026-11-24T00:55:38.684+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.8.1
+2026-11-24T00:55:38.685+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 70d6ff42debf7e17
+2026-11-24T00:55:38.687+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1795449338684
+2026-11-24T00:55:38.714+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.k.c.c.internals.LegacyKafkaConsumer  : [Consumer clientId=consumer-weatherwear-2, groupId=weatherwear] Subscribed to topic(s): weatherwear.direct_message_received
+2026-11-24T00:55:38.722+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.include.jmx.reporter = true
+	auto.offset.reset = earliest
+	bootstrap.servers = [localhost:7580]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-weatherwear-3
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	enable.metrics.push = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = weatherwear
+	group.instance.id = null
+	group.protocol = classic
+	group.remote.assignor = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metadata.recovery.strategy = none
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2026-11-24T00:55:38.727+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.k.c.t.i.KafkaMetricsCollector        : initializing Kafka metrics collector
+2026-11-24T00:55:38.754+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.8.1
+2026-11-24T00:55:38.754+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 70d6ff42debf7e17
+2026-11-24T00:55:38.754+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1795449338754
+2026-11-24T00:55:38.774+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.k.c.c.internals.LegacyKafkaConsumer  : [Consumer clientId=consumer-weatherwear-3, groupId=weatherwear] Subscribed to topic(s): weatherwear.new_follower
+2026-11-24T00:55:38.779+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.include.jmx.reporter = true
+	auto.offset.reset = earliest
+	bootstrap.servers = [localhost:7580]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-weatherwear-4
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	enable.metrics.push = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = weatherwear
+	group.instance.id = null
+	group.protocol = classic
+	group.remote.assignor = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metadata.recovery.strategy = none
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2026-11-24T00:55:38.783+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.k.c.t.i.KafkaMetricsCollector        : initializing Kafka metrics collector
+2026-11-24T00:55:38.813+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.8.1
+2026-11-24T00:55:38.814+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 70d6ff42debf7e17
+2026-11-24T00:55:38.816+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1795449338813
+2026-11-24T00:55:38.830+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.k.c.c.internals.LegacyKafkaConsumer  : [Consumer clientId=consumer-weatherwear-4, groupId=weatherwear] Subscribed to topic(s): weatherwear.weather_alert
+2026-11-24T00:55:38.838+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.include.jmx.reporter = true
+	auto.offset.reset = earliest
+	bootstrap.servers = [localhost:7580]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-weatherwear-5
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	enable.metrics.push = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = weatherwear
+	group.instance.id = null
+	group.protocol = classic
+	group.remote.assignor = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metadata.recovery.strategy = none
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2026-11-24T00:55:38.843+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.k.c.t.i.KafkaMetricsCollector        : initializing Kafka metrics collector
+2026-11-24T00:55:38.872+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.8.1
+2026-11-24T00:55:38.873+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 70d6ff42debf7e17
+2026-11-24T00:55:38.873+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1795449338872
+2026-11-24T00:55:38.887+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.k.c.c.internals.LegacyKafkaConsumer  : [Consumer clientId=consumer-weatherwear-5, groupId=weatherwear] Subscribed to topic(s): weatherwear.role_changed
+2026-11-24T00:55:38.892+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.include.jmx.reporter = true
+	auto.offset.reset = earliest
+	bootstrap.servers = [localhost:7580]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-weatherwear-6
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	enable.metrics.push = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = weatherwear
+	group.instance.id = null
+	group.protocol = classic
+	group.remote.assignor = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metadata.recovery.strategy = none
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2026-11-24T00:55:38.896+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.k.c.t.i.KafkaMetricsCollector        : initializing Kafka metrics collector
+2026-11-24T00:55:38.923+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.8.1
+2026-11-24T00:55:38.924+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 70d6ff42debf7e17
+2026-11-24T00:55:38.925+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1795449338923
+2026-11-24T00:55:38.943+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.k.c.c.internals.LegacyKafkaConsumer  : [Consumer clientId=consumer-weatherwear-6, groupId=weatherwear] Subscribed to topic(s): weatherwear.followee_feed_posted
+2026-11-24T00:55:38.950+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.include.jmx.reporter = true
+	auto.offset.reset = earliest
+	bootstrap.servers = [localhost:7580]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-weatherwear-7
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	enable.metrics.push = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = weatherwear
+	group.instance.id = null
+	group.protocol = classic
+	group.remote.assignor = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metadata.recovery.strategy = none
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2026-11-24T00:55:38.953+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.k.c.t.i.KafkaMetricsCollector        : initializing Kafka metrics collector
+2026-11-24T00:55:38.974+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.8.1
+2026-11-24T00:55:38.975+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 70d6ff42debf7e17
+2026-11-24T00:55:38.975+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1795449338974
+2026-11-24T00:55:38.986+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.k.c.c.internals.LegacyKafkaConsumer  : [Consumer clientId=consumer-weatherwear-7, groupId=weatherwear] Subscribed to topic(s): weatherwear.cloth_attribute_updated
+2026-11-24T00:55:38.997+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.include.jmx.reporter = true
+	auto.offset.reset = earliest
+	bootstrap.servers = [localhost:7580]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-weatherwear-8
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	enable.metrics.push = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = weatherwear
+	group.instance.id = null
+	group.protocol = classic
+	group.remote.assignor = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metadata.recovery.strategy = none
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2026-11-24T00:55:39.000+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.k.c.t.i.KafkaMetricsCollector        : initializing Kafka metrics collector
+2026-11-24T00:55:39.032+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.8.1
+2026-11-24T00:55:39.032+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 70d6ff42debf7e17
+2026-11-24T00:55:39.033+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1795449339032
+2026-11-24T00:55:39.043+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.k.c.c.internals.LegacyKafkaConsumer  : [Consumer clientId=consumer-weatherwear-8, groupId=weatherwear] Subscribed to topic(s): weatherwear.feed_like
+2026-11-24T00:55:39.047+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.include.jmx.reporter = true
+	auto.offset.reset = earliest
+	bootstrap.servers = [localhost:7580]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-e5c6301f-8717-4c9d-9173-2cf87b9bb7b1-9
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	enable.metrics.push = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = e5c6301f-8717-4c9d-9173-2cf87b9bb7b1
+	group.instance.id = null
+	group.protocol = classic
+	group.remote.assignor = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metadata.recovery.strategy = none
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2026-11-24T00:55:39.048+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.k.c.t.i.KafkaMetricsCollector        : initializing Kafka metrics collector
+2026-11-24T00:55:39.067+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.8.1
+2026-11-24T00:55:39.068+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 70d6ff42debf7e17
+2026-11-24T00:55:39.068+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1795449339067
+2026-11-24T00:55:39.082+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.k.c.c.internals.LegacyKafkaConsumer  : [Consumer clientId=consumer-e5c6301f-8717-4c9d-9173-2cf87b9bb7b1-9, groupId=e5c6301f-8717-4c9d-9173-2cf87b9bb7b1] Subscribed to topic(s): weatherwear.direct_message_received
+2026-11-24T00:55:39.087+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.include.jmx.reporter = true
+	auto.offset.reset = earliest
+	bootstrap.servers = [localhost:7580]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-weatherwear-10
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	enable.metrics.push = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = weatherwear
+	group.instance.id = null
+	group.protocol = classic
+	group.remote.assignor = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metadata.recovery.strategy = none
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2026-11-24T00:55:39.089+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.k.c.t.i.KafkaMetricsCollector        : initializing Kafka metrics collector
+2026-11-24T00:55:39.113+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.8.1
+2026-11-24T00:55:39.114+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 70d6ff42debf7e17
+2026-11-24T00:55:39.114+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1795449339113
+2026-11-24T00:55:39.133+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.k.c.c.internals.LegacyKafkaConsumer  : [Consumer clientId=consumer-weatherwear-10, groupId=weatherwear] Subscribed to topic(s): weatherwear.new_feed_comment
+2026-11-24T00:55:39.140+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.include.jmx.reporter = true
+	auto.offset.reset = earliest
+	bootstrap.servers = [localhost:7580]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-cf98e750-46c6-42bf-bdf3-b835fc33413d-11
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	enable.metrics.push = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = cf98e750-46c6-42bf-bdf3-b835fc33413d
+	group.instance.id = null
+	group.protocol = classic
+	group.remote.assignor = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metadata.recovery.strategy = none
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2026-11-24T00:55:39.145+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.k.c.t.i.KafkaMetricsCollector        : initializing Kafka metrics collector
+2026-11-24T00:55:39.167+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.8.1
+2026-11-24T00:55:39.167+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 70d6ff42debf7e17
+2026-11-24T00:55:39.167+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1795449339167
+2026-11-24T00:55:39.187+09:00  INFO 41800 --- [weatherwear] [    Test worker] o.a.k.c.c.internals.LegacyKafkaConsumer  : [Consumer clientId=consumer-cf98e750-46c6-42bf-bdf3-b835fc33413d-11, groupId=cf98e750-46c6-42bf-bdf3-b835fc33413d] Subscribed to topic(s): weatherwear.sse_sent
+2026-11-24T00:55:39.293+09:00  INFO 41800 --- [weatherwear] [    Test worker] w.d.a.i.PasswordResetMailConsistencyTest : Started PasswordResetMailConsistencyTest in 91.254 seconds (process running for 140.297)
+2026-11-24T00:55:39.985+09:00 DEBUG 41800 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    select
+        a1_0.id 
+    from
+        clothes_attribute_def a1_0 
+    where
+        a1_0.name=? 
+    fetch
+        first ? rows only
+2026-11-24T00:55:40.753+09:00 DEBUG 41800 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        clothes_attribute_def
+        (created_at, name, selectable_values, updated_at, id) 
+    values
+        (?, ?, ?, ?, ?)
+2026-11-24T00:55:41.143+09:00 DEBUG 41800 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    select
+        a1_0.id 
+    from
+        clothes_attribute_def a1_0 
+    where
+        a1_0.name=? 
+    fetch
+        first ? rows only
+2026-11-24T00:55:41.152+09:00 DEBUG 41800 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        clothes_attribute_def
+        (created_at, name, selectable_values, updated_at, id) 
+    values
+        (?, ?, ?, ?, ?)
+2026-11-24T00:55:41.166+09:00 DEBUG 41800 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.id 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+    fetch
+        first ? rows only
+2026-11-24T00:55:41.176+09:00 DEBUG 41800 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.id 
+    from
+        users u1_0 
+    where
+        u1_0.name=? 
+    fetch
+        first ? rows only
+2026-11-24T00:55:41.614+09:00 DEBUG 41800 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        users
+        (birth_date, created_at, email, gender, linked_oauth_providers, location_id, locked, name, password, profile_image_url, role, temp_password_expiration_time, temperature_sensitivity, updated_at, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-11-24T00:55:41.625+09:00  INFO 41800 --- [weatherwear] [    Test worker] c.c.w.d.user.init.AdminUserInitializer   : Admin User Created: admin_test@mail.com
+2026-11-24T00:55:42.088+09:00  WARN 41800 --- [weatherwear] [ntainer#4-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-weatherwear-7, groupId=weatherwear] Error while fetching metadata with correlation id 2 : {weatherwear.cloth_attribute_updated=UNKNOWN_TOPIC_OR_PARTITION}
+2026-11-24T00:55:42.088+09:00  WARN 41800 --- [weatherwear] [ntainer#5-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-weatherwear-8, groupId=weatherwear] Error while fetching metadata with correlation id 2 : {weatherwear.feed_like=UNKNOWN_TOPIC_OR_PARTITION}
+2026-11-24T00:55:42.088+09:00  WARN 41800 --- [weatherwear] [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-e5c6301f-8717-4c9d-9173-2cf87b9bb7b1-9, groupId=e5c6301f-8717-4c9d-9173-2cf87b9bb7b1] Error while fetching metadata with correlation id 2 : {weatherwear.direct_message_received=UNKNOWN_TOPIC_OR_PARTITION}
+2026-11-24T00:55:42.088+09:00  WARN 41800 --- [weatherwear] [ntainer#7-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-weatherwear-2, groupId=weatherwear] Error while fetching metadata with correlation id 2 : {weatherwear.direct_message_received=UNKNOWN_TOPIC_OR_PARTITION}
+2026-11-24T00:55:42.088+09:00  WARN 41800 --- [weatherwear] [ntainer#2-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-weatherwear-5, groupId=weatherwear] Error while fetching metadata with correlation id 2 : {weatherwear.role_changed=UNKNOWN_TOPIC_OR_PARTITION}
+2026-11-24T00:55:42.088+09:00  WARN 41800 --- [weatherwear] [ntainer#6-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-weatherwear-1, groupId=weatherwear] Error while fetching metadata with correlation id 2 : {weatherwear.cloth_attribute_added=UNKNOWN_TOPIC_OR_PARTITION}
+2026-11-24T00:55:42.088+09:00  WARN 41800 --- [weatherwear] [ntainer#3-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-weatherwear-6, groupId=weatherwear] Error while fetching metadata with correlation id 2 : {weatherwear.followee_feed_posted=UNKNOWN_TOPIC_OR_PARTITION}
+2026-11-24T00:55:42.088+09:00  WARN 41800 --- [weatherwear] [ntainer#9-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-weatherwear-4, groupId=weatherwear] Error while fetching metadata with correlation id 2 : {weatherwear.weather_alert=UNKNOWN_TOPIC_OR_PARTITION}
+2026-11-24T00:55:42.088+09:00  WARN 41800 --- [weatherwear] [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-weatherwear-10, groupId=weatherwear] Error while fetching metadata with correlation id 2 : {weatherwear.new_feed_comment=UNKNOWN_TOPIC_OR_PARTITION}
+2026-11-24T00:55:42.088+09:00  WARN 41800 --- [weatherwear] [ntainer#8-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-weatherwear-3, groupId=weatherwear] Error while fetching metadata with correlation id 2 : {weatherwear.new_follower=UNKNOWN_TOPIC_OR_PARTITION}
+2026-11-24T00:55:42.089+09:00  WARN 41800 --- [weatherwear] [tainer#10-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-cf98e750-46c6-42bf-bdf3-b835fc33413d-11, groupId=cf98e750-46c6-42bf-bdf3-b835fc33413d] Error while fetching metadata with correlation id 2 : {weatherwear.sse_sent=UNKNOWN_TOPIC_OR_PARTITION}
+2026-11-24T00:55:42.092+09:00  INFO 41800 --- [weatherwear] [ntainer#4-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-weatherwear-7, groupId=weatherwear] Cluster ID: 4L6g3nShT-eMCtK--X86sw
+2026-11-24T00:55:42.093+09:00  INFO 41800 --- [weatherwear] [tainer#10-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-cf98e750-46c6-42bf-bdf3-b835fc33413d-11, groupId=cf98e750-46c6-42bf-bdf3-b835fc33413d] Cluster ID: 4L6g3nShT-eMCtK--X86sw
+2026-11-24T00:55:42.094+09:00  INFO 41800 --- [weatherwear] [ntainer#8-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-weatherwear-3, groupId=weatherwear] Cluster ID: 4L6g3nShT-eMCtK--X86sw
+2026-11-24T00:55:42.096+09:00  INFO 41800 --- [weatherwear] [ntainer#3-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-weatherwear-6, groupId=weatherwear] Cluster ID: 4L6g3nShT-eMCtK--X86sw
+2026-11-24T00:55:42.096+09:00  INFO 41800 --- [weatherwear] [ntainer#1-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-weatherwear-10, groupId=weatherwear] Cluster ID: 4L6g3nShT-eMCtK--X86sw
+2026-11-24T00:55:42.096+09:00  INFO 41800 --- [weatherwear] [ntainer#0-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-e5c6301f-8717-4c9d-9173-2cf87b9bb7b1-9, groupId=e5c6301f-8717-4c9d-9173-2cf87b9bb7b1] Cluster ID: 4L6g3nShT-eMCtK--X86sw
+2026-11-24T00:55:42.096+09:00  INFO 41800 --- [weatherwear] [ntainer#6-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-weatherwear-1, groupId=weatherwear] Cluster ID: 4L6g3nShT-eMCtK--X86sw
+2026-11-24T00:55:42.096+09:00  INFO 41800 --- [weatherwear] [ntainer#5-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-weatherwear-8, groupId=weatherwear] Cluster ID: 4L6g3nShT-eMCtK--X86sw
+2026-11-24T00:55:42.096+09:00  INFO 41800 --- [weatherwear] [ntainer#2-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-weatherwear-5, groupId=weatherwear] Cluster ID: 4L6g3nShT-eMCtK--X86sw
+2026-11-24T00:55:42.096+09:00  INFO 41800 --- [weatherwear] [ntainer#7-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-weatherwear-2, groupId=weatherwear] Cluster ID: 4L6g3nShT-eMCtK--X86sw
+2026-11-24T00:55:42.096+09:00  INFO 41800 --- [weatherwear] [ntainer#9-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-weatherwear-4, groupId=weatherwear] Cluster ID: 4L6g3nShT-eMCtK--X86sw
+2026-11-24T00:55:42.241+09:00  WARN 41800 --- [weatherwear] [ntainer#3-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-weatherwear-6, groupId=weatherwear] Error while fetching metadata with correlation id 5 : {weatherwear.followee_feed_posted=UNKNOWN_TOPIC_OR_PARTITION}
+2026-11-24T00:55:42.261+09:00  WARN 41800 --- [weatherwear] [ntainer#2-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-weatherwear-5, groupId=weatherwear] Error while fetching metadata with correlation id 5 : {weatherwear.role_changed=UNKNOWN_TOPIC_OR_PARTITION}
+2026-11-24T00:55:42.265+09:00  WARN 41800 --- [weatherwear] [tainer#10-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-cf98e750-46c6-42bf-bdf3-b835fc33413d-11, groupId=cf98e750-46c6-42bf-bdf3-b835fc33413d] Error while fetching metadata with correlation id 5 : {weatherwear.sse_sent=UNKNOWN_TOPIC_OR_PARTITION}
+2026-11-24T00:55:42.267+09:00  WARN 41800 --- [weatherwear] [ntainer#9-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-weatherwear-4, groupId=weatherwear] Error while fetching metadata with correlation id 5 : {weatherwear.weather_alert=UNKNOWN_TOPIC_OR_PARTITION}
+2026-11-24T00:55:42.268+09:00  WARN 41800 --- [weatherwear] [ntainer#6-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-weatherwear-1, groupId=weatherwear] Error while fetching metadata with correlation id 5 : {weatherwear.cloth_attribute_added=UNKNOWN_TOPIC_OR_PARTITION}
+2026-11-24T00:55:42.267+09:00  WARN 41800 --- [weatherwear] [ntainer#5-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-weatherwear-8, groupId=weatherwear] Error while fetching metadata with correlation id 5 : {weatherwear.feed_like=UNKNOWN_TOPIC_OR_PARTITION}
+2026-11-24T00:55:42.281+09:00  WARN 41800 --- [weatherwear] [ntainer#4-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-weatherwear-7, groupId=weatherwear] Error while fetching metadata with correlation id 5 : {weatherwear.cloth_attribute_updated=UNKNOWN_TOPIC_OR_PARTITION}
+2026-11-24T00:55:42.457+09:00  INFO 41800 --- [weatherwear] [ntainer#3-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-6, groupId=weatherwear] Discovered group coordinator localhost:7580 (id: 2147483646 rack: null)
+2026-11-24T00:55:42.467+09:00  INFO 41800 --- [weatherwear] [ntainer#3-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-6, groupId=weatherwear] (Re-)joining group
+2026-11-24T00:55:42.484+09:00  INFO 41800 --- [weatherwear] [ntainer#4-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-7, groupId=weatherwear] Discovered group coordinator localhost:7580 (id: 2147483646 rack: null)
+2026-11-24T00:55:42.487+09:00  INFO 41800 --- [weatherwear] [ntainer#4-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-7, groupId=weatherwear] (Re-)joining group
+2026-11-24T00:55:42.493+09:00  INFO 41800 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-4, groupId=weatherwear] Discovered group coordinator localhost:7580 (id: 2147483646 rack: null)
+2026-11-24T00:55:42.495+09:00  INFO 41800 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-4, groupId=weatherwear] (Re-)joining group
+2026-11-24T00:55:42.499+09:00  INFO 41800 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-8, groupId=weatherwear] Discovered group coordinator localhost:7580 (id: 2147483646 rack: null)
+2026-11-24T00:55:42.500+09:00  INFO 41800 --- [weatherwear] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-e5c6301f-8717-4c9d-9173-2cf87b9bb7b1-9, groupId=e5c6301f-8717-4c9d-9173-2cf87b9bb7b1] Discovered group coordinator localhost:7580 (id: 2147483646 rack: null)
+2026-11-24T00:55:42.500+09:00  INFO 41800 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-8, groupId=weatherwear] (Re-)joining group
+2026-11-24T00:55:42.504+09:00  INFO 41800 --- [weatherwear] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-e5c6301f-8717-4c9d-9173-2cf87b9bb7b1-9, groupId=e5c6301f-8717-4c9d-9173-2cf87b9bb7b1] (Re-)joining group
+2026-11-24T00:55:42.511+09:00  INFO 41800 --- [weatherwear] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-5, groupId=weatherwear] Discovered group coordinator localhost:7580 (id: 2147483646 rack: null)
+2026-11-24T00:55:42.512+09:00  INFO 41800 --- [weatherwear] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-10, groupId=weatherwear] Discovered group coordinator localhost:7580 (id: 2147483646 rack: null)
+2026-11-24T00:55:42.514+09:00  INFO 41800 --- [weatherwear] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-5, groupId=weatherwear] (Re-)joining group
+2026-11-24T00:55:42.516+09:00  INFO 41800 --- [weatherwear] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-10, groupId=weatherwear] (Re-)joining group
+2026-11-24T00:55:42.529+09:00  INFO 41800 --- [weatherwear] [ntainer#6-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-1, groupId=weatherwear] Discovered group coordinator localhost:7580 (id: 2147483646 rack: null)
+2026-11-24T00:55:42.530+09:00  INFO 41800 --- [weatherwear] [ntainer#7-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-2, groupId=weatherwear] Discovered group coordinator localhost:7580 (id: 2147483646 rack: null)
+2026-11-24T00:55:42.533+09:00  INFO 41800 --- [weatherwear] [ntainer#8-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-3, groupId=weatherwear] Discovered group coordinator localhost:7580 (id: 2147483646 rack: null)
+2026-11-24T00:55:42.533+09:00  INFO 41800 --- [weatherwear] [ntainer#6-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-1, groupId=weatherwear] (Re-)joining group
+2026-11-24T00:55:42.534+09:00  INFO 41800 --- [weatherwear] [ntainer#7-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-2, groupId=weatherwear] (Re-)joining group
+2026-11-24T00:55:42.537+09:00  INFO 41800 --- [weatherwear] [ntainer#8-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-3, groupId=weatherwear] (Re-)joining group
+2026-11-24T00:55:42.584+09:00  INFO 41800 --- [weatherwear] [tainer#10-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-cf98e750-46c6-42bf-bdf3-b835fc33413d-11, groupId=cf98e750-46c6-42bf-bdf3-b835fc33413d] Discovered group coordinator localhost:7580 (id: 2147483646 rack: null)
+2026-11-24T00:55:42.587+09:00  INFO 41800 --- [weatherwear] [tainer#10-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-cf98e750-46c6-42bf-bdf3-b835fc33413d-11, groupId=cf98e750-46c6-42bf-bdf3-b835fc33413d] (Re-)joining group
+2026-11-24T00:55:42.610+09:00  INFO 41800 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-4, groupId=weatherwear] Request joining group due to: need to re-join with the given member-id: consumer-weatherwear-4-770c31c9-be2c-4162-9133-ab6be39e4248
+2026-11-24T00:55:42.612+09:00  INFO 41800 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-4, groupId=weatherwear] (Re-)joining group
+2026-11-24T00:55:42.630+09:00  INFO 41800 --- [weatherwear] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-10, groupId=weatherwear] Request joining group due to: need to re-join with the given member-id: consumer-weatherwear-10-c72af712-1121-4d27-8030-50ebf1a2afd1
+2026-11-24T00:55:42.630+09:00  INFO 41800 --- [weatherwear] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-e5c6301f-8717-4c9d-9173-2cf87b9bb7b1-9, groupId=e5c6301f-8717-4c9d-9173-2cf87b9bb7b1] Request joining group due to: need to re-join with the given member-id: consumer-e5c6301f-8717-4c9d-9173-2cf87b9bb7b1-9-b27ee2ed-ee06-4426-b363-d5ef6d94ecb2
+2026-11-24T00:55:42.630+09:00  INFO 41800 --- [weatherwear] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-10, groupId=weatherwear] (Re-)joining group
+2026-11-24T00:55:42.630+09:00  INFO 41800 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-8, groupId=weatherwear] Request joining group due to: need to re-join with the given member-id: consumer-weatherwear-8-cef8b6ed-aa5e-4dc8-8eb5-7b4ac55aff38
+2026-11-24T00:55:42.630+09:00  INFO 41800 --- [weatherwear] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-e5c6301f-8717-4c9d-9173-2cf87b9bb7b1-9, groupId=e5c6301f-8717-4c9d-9173-2cf87b9bb7b1] (Re-)joining group
+2026-11-24T00:55:42.632+09:00  INFO 41800 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-8, groupId=weatherwear] (Re-)joining group
+2026-11-24T00:55:42.658+09:00  INFO 41800 --- [weatherwear] [ntainer#4-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-7, groupId=weatherwear] Request joining group due to: need to re-join with the given member-id: consumer-weatherwear-7-da530bd2-a1b8-4130-b93c-5b21acfe79da
+2026-11-24T00:55:42.658+09:00  INFO 41800 --- [weatherwear] [ntainer#3-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-6, groupId=weatherwear] Request joining group due to: need to re-join with the given member-id: consumer-weatherwear-6-767e8de3-adf9-4650-a59c-83f8abf4ab60
+2026-11-24T00:55:42.658+09:00  INFO 41800 --- [weatherwear] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-5, groupId=weatherwear] Request joining group due to: need to re-join with the given member-id: consumer-weatherwear-5-25abe563-aced-44e6-8a8a-911521559897
+2026-11-24T00:55:42.658+09:00  INFO 41800 --- [weatherwear] [ntainer#3-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-6, groupId=weatherwear] (Re-)joining group
+2026-11-24T00:55:42.658+09:00  INFO 41800 --- [weatherwear] [ntainer#4-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-7, groupId=weatherwear] (Re-)joining group
+2026-11-24T00:55:42.659+09:00  INFO 41800 --- [weatherwear] [ntainer#8-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-3, groupId=weatherwear] Request joining group due to: need to re-join with the given member-id: consumer-weatherwear-3-93f1300a-9c4e-4494-b296-55e2370db6d4
+2026-11-24T00:55:42.660+09:00  INFO 41800 --- [weatherwear] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-5, groupId=weatherwear] (Re-)joining group
+2026-11-24T00:55:42.660+09:00  INFO 41800 --- [weatherwear] [ntainer#8-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-3, groupId=weatherwear] (Re-)joining group
+2026-11-24T00:55:42.668+09:00  INFO 41800 --- [weatherwear] [ntainer#6-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-1, groupId=weatherwear] Request joining group due to: need to re-join with the given member-id: consumer-weatherwear-1-e414601f-3f61-40e6-ad26-9362277d7810
+2026-11-24T00:55:42.668+09:00  INFO 41800 --- [weatherwear] [ntainer#7-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-2, groupId=weatherwear] Request joining group due to: need to re-join with the given member-id: consumer-weatherwear-2-ee9af43d-90e4-4bbe-bead-2a436a6de12b
+2026-11-24T00:55:42.671+09:00  INFO 41800 --- [weatherwear] [ntainer#6-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-1, groupId=weatherwear] (Re-)joining group
+2026-11-24T00:55:42.671+09:00  INFO 41800 --- [weatherwear] [ntainer#7-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-2, groupId=weatherwear] (Re-)joining group
+2026-11-24T00:55:42.675+09:00  INFO 41800 --- [weatherwear] [tainer#10-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-cf98e750-46c6-42bf-bdf3-b835fc33413d-11, groupId=cf98e750-46c6-42bf-bdf3-b835fc33413d] Request joining group due to: need to re-join with the given member-id: consumer-cf98e750-46c6-42bf-bdf3-b835fc33413d-11-90b1127f-d4f2-4e43-b17b-bd8c2e5000c7
+2026-11-24T00:55:42.676+09:00  INFO 41800 --- [weatherwear] [tainer#10-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-cf98e750-46c6-42bf-bdf3-b835fc33413d-11, groupId=cf98e750-46c6-42bf-bdf3-b835fc33413d] (Re-)joining group
+2026-11-24T00:55:42.682+09:00  INFO 41800 --- [weatherwear] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-e5c6301f-8717-4c9d-9173-2cf87b9bb7b1-9, groupId=e5c6301f-8717-4c9d-9173-2cf87b9bb7b1] Successfully joined group with generation Generation{generationId=1, memberId='consumer-e5c6301f-8717-4c9d-9173-2cf87b9bb7b1-9-b27ee2ed-ee06-4426-b363-d5ef6d94ecb2', protocol='range'}
+2026-11-24T00:55:42.692+09:00  INFO 41800 --- [weatherwear] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-10, groupId=weatherwear] Successfully joined group with generation Generation{generationId=1, memberId='consumer-weatherwear-10-c72af712-1121-4d27-8030-50ebf1a2afd1', protocol='range'}
+2026-11-24T00:55:42.692+09:00  INFO 41800 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-8, groupId=weatherwear] Successfully joined group with generation Generation{generationId=1, memberId='consumer-weatherwear-8-cef8b6ed-aa5e-4dc8-8eb5-7b4ac55aff38', protocol='range'}
+2026-11-24T00:55:42.692+09:00  INFO 41800 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-4, groupId=weatherwear] Successfully joined group with generation Generation{generationId=1, memberId='consumer-weatherwear-4-770c31c9-be2c-4162-9133-ab6be39e4248', protocol='range'}
+2026-11-24T00:55:42.709+09:00  INFO 41800 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-4, groupId=weatherwear] Finished assignment for group at generation 1: {consumer-weatherwear-8-cef8b6ed-aa5e-4dc8-8eb5-7b4ac55aff38=Assignment(partitions=[weatherwear.feed_like-0]), consumer-weatherwear-10-c72af712-1121-4d27-8030-50ebf1a2afd1=Assignment(partitions=[weatherwear.new_feed_comment-0]), consumer-weatherwear-4-770c31c9-be2c-4162-9133-ab6be39e4248=Assignment(partitions=[weatherwear.weather_alert-0])}
+2026-11-24T00:55:42.709+09:00  INFO 41800 --- [weatherwear] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-e5c6301f-8717-4c9d-9173-2cf87b9bb7b1-9, groupId=e5c6301f-8717-4c9d-9173-2cf87b9bb7b1] Finished assignment for group at generation 1: {consumer-e5c6301f-8717-4c9d-9173-2cf87b9bb7b1-9-b27ee2ed-ee06-4426-b363-d5ef6d94ecb2=Assignment(partitions=[weatherwear.direct_message_received-0])}
+2026-11-24T00:55:42.710+09:00  INFO 41800 --- [weatherwear] [tainer#10-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-cf98e750-46c6-42bf-bdf3-b835fc33413d-11, groupId=cf98e750-46c6-42bf-bdf3-b835fc33413d] Successfully joined group with generation Generation{generationId=1, memberId='consumer-cf98e750-46c6-42bf-bdf3-b835fc33413d-11-90b1127f-d4f2-4e43-b17b-bd8c2e5000c7', protocol='range'}
+2026-11-24T00:55:42.711+09:00  INFO 41800 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-8, groupId=weatherwear] SyncGroup failed: The group began another rebalance. Need to re-join the group. Sent generation was Generation{generationId=1, memberId='consumer-weatherwear-8-cef8b6ed-aa5e-4dc8-8eb5-7b4ac55aff38', protocol='range'}
+2026-11-24T00:55:42.711+09:00  INFO 41800 --- [weatherwear] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-10, groupId=weatherwear] SyncGroup failed: The group began another rebalance. Need to re-join the group. Sent generation was Generation{generationId=1, memberId='consumer-weatherwear-10-c72af712-1121-4d27-8030-50ebf1a2afd1', protocol='range'}
+2026-11-24T00:55:42.721+09:00  INFO 41800 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-8, groupId=weatherwear] Request joining group due to: rebalance failed due to 'The group is rebalancing, so a rejoin is needed.' (RebalanceInProgressException)
+2026-11-24T00:55:42.721+09:00  INFO 41800 --- [weatherwear] [tainer#10-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-cf98e750-46c6-42bf-bdf3-b835fc33413d-11, groupId=cf98e750-46c6-42bf-bdf3-b835fc33413d] Finished assignment for group at generation 1: {consumer-cf98e750-46c6-42bf-bdf3-b835fc33413d-11-90b1127f-d4f2-4e43-b17b-bd8c2e5000c7=Assignment(partitions=[weatherwear.sse_sent-0])}
+2026-11-24T00:55:42.721+09:00  INFO 41800 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-8, groupId=weatherwear] (Re-)joining group
+2026-11-24T00:55:42.721+09:00  INFO 41800 --- [weatherwear] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-10, groupId=weatherwear] Request joining group due to: rebalance failed due to 'The group is rebalancing, so a rejoin is needed.' (RebalanceInProgressException)
+2026-11-24T00:55:42.721+09:00  INFO 41800 --- [weatherwear] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-10, groupId=weatherwear] (Re-)joining group
+2026-11-24T00:55:42.737+09:00  INFO 41800 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-4, groupId=weatherwear] SyncGroup failed: The group began another rebalance. Need to re-join the group. Sent generation was Generation{generationId=1, memberId='consumer-weatherwear-4-770c31c9-be2c-4162-9133-ab6be39e4248', protocol='range'}
+2026-11-24T00:55:42.738+09:00  INFO 41800 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-4, groupId=weatherwear] Request joining group due to: rebalance failed due to 'The group is rebalancing, so a rejoin is needed.' (RebalanceInProgressException)
+2026-11-24T00:55:42.738+09:00  INFO 41800 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-4, groupId=weatherwear] (Re-)joining group
+2026-11-24T00:55:42.747+09:00  INFO 41800 --- [weatherwear] [ntainer#8-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-3, groupId=weatherwear] Successfully joined group with generation Generation{generationId=2, memberId='consumer-weatherwear-3-93f1300a-9c4e-4494-b296-55e2370db6d4', protocol='range'}
+2026-11-24T00:55:42.747+09:00  INFO 41800 --- [weatherwear] [ntainer#4-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-7, groupId=weatherwear] Successfully joined group with generation Generation{generationId=2, memberId='consumer-weatherwear-7-da530bd2-a1b8-4130-b93c-5b21acfe79da', protocol='range'}
+2026-11-24T00:55:42.748+09:00  INFO 41800 --- [weatherwear] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-5, groupId=weatherwear] Successfully joined group with generation Generation{generationId=2, memberId='consumer-weatherwear-5-25abe563-aced-44e6-8a8a-911521559897', protocol='range'}
+2026-11-24T00:55:42.753+09:00  INFO 41800 --- [weatherwear] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-10, groupId=weatherwear] Successfully joined group with generation Generation{generationId=2, memberId='consumer-weatherwear-10-c72af712-1121-4d27-8030-50ebf1a2afd1', protocol='range'}
+2026-11-24T00:55:42.753+09:00  INFO 41800 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-8, groupId=weatherwear] Successfully joined group with generation Generation{generationId=2, memberId='consumer-weatherwear-8-cef8b6ed-aa5e-4dc8-8eb5-7b4ac55aff38', protocol='range'}
+2026-11-24T00:55:42.754+09:00  INFO 41800 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-4, groupId=weatherwear] Successfully joined group with generation Generation{generationId=2, memberId='consumer-weatherwear-4-770c31c9-be2c-4162-9133-ab6be39e4248', protocol='range'}
+2026-11-24T00:55:42.754+09:00  INFO 41800 --- [weatherwear] [ntainer#6-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-1, groupId=weatherwear] Successfully joined group with generation Generation{generationId=2, memberId='consumer-weatherwear-1-e414601f-3f61-40e6-ad26-9362277d7810', protocol='range'}
+2026-11-24T00:55:42.755+09:00  INFO 41800 --- [weatherwear] [ntainer#7-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-2, groupId=weatherwear] Successfully joined group with generation Generation{generationId=2, memberId='consumer-weatherwear-2-ee9af43d-90e4-4bbe-bead-2a436a6de12b', protocol='range'}
+2026-11-24T00:55:42.757+09:00  INFO 41800 --- [weatherwear] [ntainer#3-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-6, groupId=weatherwear] Successfully joined group with generation Generation{generationId=2, memberId='consumer-weatherwear-6-767e8de3-adf9-4650-a59c-83f8abf4ab60', protocol='range'}
+2026-11-24T00:55:42.759+09:00  INFO 41800 --- [weatherwear] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-e5c6301f-8717-4c9d-9173-2cf87b9bb7b1-9, groupId=e5c6301f-8717-4c9d-9173-2cf87b9bb7b1] Successfully synced group in generation Generation{generationId=1, memberId='consumer-e5c6301f-8717-4c9d-9173-2cf87b9bb7b1-9-b27ee2ed-ee06-4426-b363-d5ef6d94ecb2', protocol='range'}
+2026-11-24T00:55:42.760+09:00  INFO 41800 --- [weatherwear] [tainer#10-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-cf98e750-46c6-42bf-bdf3-b835fc33413d-11, groupId=cf98e750-46c6-42bf-bdf3-b835fc33413d] Successfully synced group in generation Generation{generationId=1, memberId='consumer-cf98e750-46c6-42bf-bdf3-b835fc33413d-11-90b1127f-d4f2-4e43-b17b-bd8c2e5000c7', protocol='range'}
+2026-11-24T00:55:42.760+09:00  INFO 41800 --- [weatherwear] [tainer#10-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-cf98e750-46c6-42bf-bdf3-b835fc33413d-11, groupId=cf98e750-46c6-42bf-bdf3-b835fc33413d] Notifying assignor about the new Assignment(partitions=[weatherwear.sse_sent-0])
+2026-11-24T00:55:42.760+09:00  INFO 41800 --- [weatherwear] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-e5c6301f-8717-4c9d-9173-2cf87b9bb7b1-9, groupId=e5c6301f-8717-4c9d-9173-2cf87b9bb7b1] Notifying assignor about the new Assignment(partitions=[weatherwear.direct_message_received-0])
+2026-11-24T00:55:42.766+09:00  INFO 41800 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-4, groupId=weatherwear] Finished assignment for group at generation 2: {consumer-weatherwear-3-93f1300a-9c4e-4494-b296-55e2370db6d4=Assignment(partitions=[weatherwear.new_follower-0]), consumer-weatherwear-7-da530bd2-a1b8-4130-b93c-5b21acfe79da=Assignment(partitions=[weatherwear.cloth_attribute_updated-0]), consumer-weatherwear-5-25abe563-aced-44e6-8a8a-911521559897=Assignment(partitions=[weatherwear.role_changed-0]), consumer-weatherwear-8-cef8b6ed-aa5e-4dc8-8eb5-7b4ac55aff38=Assignment(partitions=[weatherwear.feed_like-0]), consumer-weatherwear-10-c72af712-1121-4d27-8030-50ebf1a2afd1=Assignment(partitions=[weatherwear.new_feed_comment-0]), consumer-weatherwear-4-770c31c9-be2c-4162-9133-ab6be39e4248=Assignment(partitions=[weatherwear.weather_alert-0]), consumer-weatherwear-2-ee9af43d-90e4-4bbe-bead-2a436a6de12b=Assignment(partitions=[weatherwear.direct_message_received-0]), consumer-weatherwear-1-e414601f-3f61-40e6-ad26-9362277d7810=Assignment(partitions=[weatherwear.cloth_attribute_added-0]), consumer-weatherwear-6-767e8de3-adf9-4650-a59c-83f8abf4ab60=Assignment(partitions=[weatherwear.followee_feed_posted-0])}
+2026-11-24T00:55:42.775+09:00  INFO 41800 --- [weatherwear] [tainer#10-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-cf98e750-46c6-42bf-bdf3-b835fc33413d-11, groupId=cf98e750-46c6-42bf-bdf3-b835fc33413d] Adding newly assigned partitions: weatherwear.sse_sent-0
+2026-11-24T00:55:42.775+09:00  INFO 41800 --- [weatherwear] [ntainer#0-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-e5c6301f-8717-4c9d-9173-2cf87b9bb7b1-9, groupId=e5c6301f-8717-4c9d-9173-2cf87b9bb7b1] Adding newly assigned partitions: weatherwear.direct_message_received-0
+2026-11-24T00:55:42.802+09:00  INFO 41800 --- [weatherwear] [ntainer#8-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-3, groupId=weatherwear] Successfully synced group in generation Generation{generationId=2, memberId='consumer-weatherwear-3-93f1300a-9c4e-4494-b296-55e2370db6d4', protocol='range'}
+2026-11-24T00:55:42.802+09:00  INFO 41800 --- [weatherwear] [ntainer#7-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-2, groupId=weatherwear] Successfully synced group in generation Generation{generationId=2, memberId='consumer-weatherwear-2-ee9af43d-90e4-4bbe-bead-2a436a6de12b', protocol='range'}
+2026-11-24T00:55:42.802+09:00  INFO 41800 --- [weatherwear] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-5, groupId=weatherwear] Successfully synced group in generation Generation{generationId=2, memberId='consumer-weatherwear-5-25abe563-aced-44e6-8a8a-911521559897', protocol='range'}
+2026-11-24T00:55:42.802+09:00  INFO 41800 --- [weatherwear] [ntainer#7-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-2, groupId=weatherwear] Notifying assignor about the new Assignment(partitions=[weatherwear.direct_message_received-0])
+2026-11-24T00:55:42.803+09:00  INFO 41800 --- [weatherwear] [ntainer#8-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-3, groupId=weatherwear] Notifying assignor about the new Assignment(partitions=[weatherwear.new_follower-0])
+2026-11-24T00:55:42.803+09:00  INFO 41800 --- [weatherwear] [ntainer#7-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-2, groupId=weatherwear] Adding newly assigned partitions: weatherwear.direct_message_received-0
+2026-11-24T00:55:42.803+09:00  INFO 41800 --- [weatherwear] [ntainer#8-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-3, groupId=weatherwear] Adding newly assigned partitions: weatherwear.new_follower-0
+2026-11-24T00:55:42.803+09:00  INFO 41800 --- [weatherwear] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-5, groupId=weatherwear] Notifying assignor about the new Assignment(partitions=[weatherwear.role_changed-0])
+2026-11-24T00:55:42.803+09:00  INFO 41800 --- [weatherwear] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-10, groupId=weatherwear] Successfully synced group in generation Generation{generationId=2, memberId='consumer-weatherwear-10-c72af712-1121-4d27-8030-50ebf1a2afd1', protocol='range'}
+2026-11-24T00:55:42.804+09:00  INFO 41800 --- [weatherwear] [ntainer#2-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-5, groupId=weatherwear] Adding newly assigned partitions: weatherwear.role_changed-0
+2026-11-24T00:55:42.804+09:00  INFO 41800 --- [weatherwear] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-10, groupId=weatherwear] Notifying assignor about the new Assignment(partitions=[weatherwear.new_feed_comment-0])
+2026-11-24T00:55:42.804+09:00  INFO 41800 --- [weatherwear] [ntainer#1-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-10, groupId=weatherwear] Adding newly assigned partitions: weatherwear.new_feed_comment-0
+2026-11-24T00:55:42.806+09:00  INFO 41800 --- [weatherwear] [ntainer#3-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-6, groupId=weatherwear] Successfully synced group in generation Generation{generationId=2, memberId='consumer-weatherwear-6-767e8de3-adf9-4650-a59c-83f8abf4ab60', protocol='range'}
+2026-11-24T00:55:42.807+09:00  INFO 41800 --- [weatherwear] [ntainer#3-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-6, groupId=weatherwear] Notifying assignor about the new Assignment(partitions=[weatherwear.followee_feed_posted-0])
+2026-11-24T00:55:42.807+09:00  INFO 41800 --- [weatherwear] [ntainer#3-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-6, groupId=weatherwear] Adding newly assigned partitions: weatherwear.followee_feed_posted-0
+2026-11-24T00:55:42.813+09:00  INFO 41800 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-4, groupId=weatherwear] Successfully synced group in generation Generation{generationId=2, memberId='consumer-weatherwear-4-770c31c9-be2c-4162-9133-ab6be39e4248', protocol='range'}
+2026-11-24T00:55:42.813+09:00  INFO 41800 --- [weatherwear] [ntainer#4-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-7, groupId=weatherwear] Successfully synced group in generation Generation{generationId=2, memberId='consumer-weatherwear-7-da530bd2-a1b8-4130-b93c-5b21acfe79da', protocol='range'}
+2026-11-24T00:55:42.813+09:00  INFO 41800 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-4, groupId=weatherwear] Notifying assignor about the new Assignment(partitions=[weatherwear.weather_alert-0])
+2026-11-24T00:55:42.813+09:00  INFO 41800 --- [weatherwear] [ntainer#4-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-7, groupId=weatherwear] Notifying assignor about the new Assignment(partitions=[weatherwear.cloth_attribute_updated-0])
+2026-11-24T00:55:42.813+09:00  INFO 41800 --- [weatherwear] [ntainer#9-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-4, groupId=weatherwear] Adding newly assigned partitions: weatherwear.weather_alert-0
+2026-11-24T00:55:42.813+09:00  INFO 41800 --- [weatherwear] [ntainer#4-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-7, groupId=weatherwear] Adding newly assigned partitions: weatherwear.cloth_attribute_updated-0
+2026-11-24T00:55:42.814+09:00  INFO 41800 --- [weatherwear] [ntainer#6-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-1, groupId=weatherwear] Successfully synced group in generation Generation{generationId=2, memberId='consumer-weatherwear-1-e414601f-3f61-40e6-ad26-9362277d7810', protocol='range'}
+2026-11-24T00:55:42.814+09:00  INFO 41800 --- [weatherwear] [ntainer#6-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-1, groupId=weatherwear] Notifying assignor about the new Assignment(partitions=[weatherwear.cloth_attribute_added-0])
+2026-11-24T00:55:42.814+09:00  INFO 41800 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-8, groupId=weatherwear] Successfully synced group in generation Generation{generationId=2, memberId='consumer-weatherwear-8-cef8b6ed-aa5e-4dc8-8eb5-7b4ac55aff38', protocol='range'}
+2026-11-24T00:55:42.814+09:00  INFO 41800 --- [weatherwear] [ntainer#6-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-1, groupId=weatherwear] Adding newly assigned partitions: weatherwear.cloth_attribute_added-0
+2026-11-24T00:55:42.814+09:00  INFO 41800 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-8, groupId=weatherwear] Notifying assignor about the new Assignment(partitions=[weatherwear.feed_like-0])
+2026-11-24T00:55:42.814+09:00  INFO 41800 --- [weatherwear] [ntainer#5-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-weatherwear-8, groupId=weatherwear] Adding newly assigned partitions: weatherwear.feed_like-0
+2026-11-24T00:55:42.837+09:00  INFO 41800 --- [weatherwear] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-10, groupId=weatherwear] Found no committed offset for partition weatherwear.new_feed_comment-0
+2026-11-24T00:55:42.837+09:00  INFO 41800 --- [weatherwear] [ntainer#8-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-3, groupId=weatherwear] Found no committed offset for partition weatherwear.new_follower-0
+2026-11-24T00:55:42.837+09:00  INFO 41800 --- [weatherwear] [ntainer#6-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-1, groupId=weatherwear] Found no committed offset for partition weatherwear.cloth_attribute_added-0
+2026-11-24T00:55:42.837+09:00  INFO 41800 --- [weatherwear] [ntainer#4-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-7, groupId=weatherwear] Found no committed offset for partition weatherwear.cloth_attribute_updated-0
+2026-11-24T00:55:42.837+09:00  INFO 41800 --- [weatherwear] [ntainer#7-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-2, groupId=weatherwear] Found no committed offset for partition weatherwear.direct_message_received-0
+2026-11-24T00:55:42.843+09:00  INFO 41800 --- [weatherwear] [ntainer#3-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-6, groupId=weatherwear] Found no committed offset for partition weatherwear.followee_feed_posted-0
+2026-11-24T00:55:42.848+09:00  INFO 41800 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-8, groupId=weatherwear] Found no committed offset for partition weatherwear.feed_like-0
+2026-11-24T00:55:42.848+09:00  INFO 41800 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-4, groupId=weatherwear] Found no committed offset for partition weatherwear.weather_alert-0
+2026-11-24T00:55:42.849+09:00  INFO 41800 --- [weatherwear] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-e5c6301f-8717-4c9d-9173-2cf87b9bb7b1-9, groupId=e5c6301f-8717-4c9d-9173-2cf87b9bb7b1] Found no committed offset for partition weatherwear.direct_message_received-0
+2026-11-24T00:55:42.851+09:00  INFO 41800 --- [weatherwear] [tainer#10-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-cf98e750-46c6-42bf-bdf3-b835fc33413d-11, groupId=cf98e750-46c6-42bf-bdf3-b835fc33413d] Found no committed offset for partition weatherwear.sse_sent-0
+2026-11-24T00:55:42.851+09:00  INFO 41800 --- [weatherwear] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-weatherwear-5, groupId=weatherwear] Found no committed offset for partition weatherwear.role_changed-0
+2026-11-24T00:55:42.941+09:00  INFO 41800 --- [weatherwear] [ntainer#4-0-C-1] o.a.k.c.c.internals.SubscriptionState    : [Consumer clientId=consumer-weatherwear-7, groupId=weatherwear] Resetting offset for partition weatherwear.cloth_attribute_updated-0 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:7580 (id: 1 rack: null)], epoch=0}}.
+2026-11-24T00:55:42.941+09:00  INFO 41800 --- [weatherwear] [ntainer#5-0-C-1] o.a.k.c.c.internals.SubscriptionState    : [Consumer clientId=consumer-weatherwear-8, groupId=weatherwear] Resetting offset for partition weatherwear.feed_like-0 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:7580 (id: 1 rack: null)], epoch=0}}.
+2026-11-24T00:55:42.940+09:00  INFO 41800 --- [weatherwear] [ntainer#2-0-C-1] o.a.k.c.c.internals.SubscriptionState    : [Consumer clientId=consumer-weatherwear-5, groupId=weatherwear] Resetting offset for partition weatherwear.role_changed-0 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:7580 (id: 1 rack: null)], epoch=0}}.
+2026-11-24T00:55:42.941+09:00  INFO 41800 --- [weatherwear] [ntainer#7-0-C-1] o.a.k.c.c.internals.SubscriptionState    : [Consumer clientId=consumer-weatherwear-2, groupId=weatherwear] Resetting offset for partition weatherwear.direct_message_received-0 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:7580 (id: 1 rack: null)], epoch=0}}.
+2026-11-24T00:55:42.941+09:00  INFO 41800 --- [weatherwear] [ntainer#1-0-C-1] o.a.k.c.c.internals.SubscriptionState    : [Consumer clientId=consumer-weatherwear-10, groupId=weatherwear] Resetting offset for partition weatherwear.new_feed_comment-0 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:7580 (id: 1 rack: null)], epoch=0}}.
+2026-11-24T00:55:42.941+09:00  INFO 41800 --- [weatherwear] [ntainer#0-0-C-1] o.a.k.c.c.internals.SubscriptionState    : [Consumer clientId=consumer-e5c6301f-8717-4c9d-9173-2cf87b9bb7b1-9, groupId=e5c6301f-8717-4c9d-9173-2cf87b9bb7b1] Resetting offset for partition weatherwear.direct_message_received-0 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:7580 (id: 1 rack: null)], epoch=0}}.
+2026-11-24T00:55:42.941+09:00  INFO 41800 --- [weatherwear] [ntainer#6-0-C-1] o.a.k.c.c.internals.SubscriptionState    : [Consumer clientId=consumer-weatherwear-1, groupId=weatherwear] Resetting offset for partition weatherwear.cloth_attribute_added-0 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:7580 (id: 1 rack: null)], epoch=0}}.
+2026-11-24T00:55:42.941+09:00  INFO 41800 --- [weatherwear] [ntainer#8-0-C-1] o.a.k.c.c.internals.SubscriptionState    : [Consumer clientId=consumer-weatherwear-3, groupId=weatherwear] Resetting offset for partition weatherwear.new_follower-0 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:7580 (id: 1 rack: null)], epoch=0}}.
+2026-11-24T00:55:42.942+09:00  INFO 41800 --- [weatherwear] [ntainer#3-0-C-1] o.a.k.c.c.internals.SubscriptionState    : [Consumer clientId=consumer-weatherwear-6, groupId=weatherwear] Resetting offset for partition weatherwear.followee_feed_posted-0 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:7580 (id: 1 rack: null)], epoch=0}}.
+2026-11-24T00:55:42.950+09:00  INFO 41800 --- [weatherwear] [ntainer#2-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions assigned: [weatherwear.role_changed-0]
+2026-11-24T00:55:42.950+09:00  INFO 41800 --- [weatherwear] [ntainer#5-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions assigned: [weatherwear.feed_like-0]
+2026-11-24T00:55:42.952+09:00  INFO 41800 --- [weatherwear] [ntainer#1-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions assigned: [weatherwear.new_feed_comment-0]
+2026-11-24T00:55:42.952+09:00  INFO 41800 --- [weatherwear] [ntainer#6-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions assigned: [weatherwear.cloth_attribute_added-0]
+2026-11-24T00:55:42.950+09:00  INFO 41800 --- [weatherwear] [ntainer#7-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions assigned: [weatherwear.direct_message_received-0]
+2026-11-24T00:55:42.950+09:00  INFO 41800 --- [weatherwear] [ntainer#8-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions assigned: [weatherwear.new_follower-0]
+2026-11-24T00:55:42.950+09:00  INFO 41800 --- [weatherwear] [ntainer#4-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions assigned: [weatherwear.cloth_attribute_updated-0]
+2026-11-24T00:55:42.952+09:00  INFO 41800 --- [weatherwear] [ntainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : e5c6301f-8717-4c9d-9173-2cf87b9bb7b1: partitions assigned: [weatherwear.direct_message_received-0]
+2026-11-24T00:55:42.954+09:00  INFO 41800 --- [weatherwear] [ntainer#3-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions assigned: [weatherwear.followee_feed_posted-0]
+2026-11-24T00:55:42.954+09:00  INFO 41800 --- [weatherwear] [ntainer#9-0-C-1] o.a.k.c.c.internals.SubscriptionState    : [Consumer clientId=consumer-weatherwear-4, groupId=weatherwear] Resetting offset for partition weatherwear.weather_alert-0 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:7580 (id: 1 rack: null)], epoch=0}}.
+2026-11-24T00:55:42.954+09:00  INFO 41800 --- [weatherwear] [tainer#10-0-C-1] o.a.k.c.c.internals.SubscriptionState    : [Consumer clientId=consumer-cf98e750-46c6-42bf-bdf3-b835fc33413d-11, groupId=cf98e750-46c6-42bf-bdf3-b835fc33413d] Resetting offset for partition weatherwear.sse_sent-0 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:7580 (id: 1 rack: null)], epoch=0}}.
+2026-11-24T00:55:42.954+09:00  INFO 41800 --- [weatherwear] [ntainer#9-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : weatherwear: partitions assigned: [weatherwear.weather_alert-0]
+2026-11-24T00:55:42.954+09:00  INFO 41800 --- [weatherwear] [tainer#10-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : cf98e750-46c6-42bf-bdf3-b835fc33413d: partitions assigned: [weatherwear.sse_sent-0]
+2026-11-24T00:55:49.485+09:00  INFO 41800 --- [weatherwear] [/127.0.0.1:5295] c.icegreen.greenmail.user.UserManager    : Created user login warm-up@mail.com for address warm-up@mail.com with password warm-up@mail.com because it didn't exist before.
+[warm-up] 메일 발송 소요: 6245 ms
+2026-11-24T00:55:50.656+09:00 DEBUG 41800 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        users
+        (birth_date, created_at, email, gender, linked_oauth_providers, location_id, locked, name, password, profile_image_url, role, temp_password_expiration_time, temperature_sensitivity, updated_at, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-11-24T00:55:50.718+09:00 DEBUG 41800 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.birth_date,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.linked_oauth_providers,
+        u1_0.location_id,
+        u1_0.locked,
+        u1_0.name,
+        u1_0.password,
+        u1_0.profile_image_url,
+        u1_0.role,
+        u1_0.temp_password_expiration_time,
+        u1_0.temperature_sensitivity,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-11-24T00:55:51.070+09:00 DEBUG 41800 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.birth_date,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.linked_oauth_providers,
+        u1_0.location_id,
+        u1_0.locked,
+        u1_0.name,
+        u1_0.password,
+        u1_0.profile_image_url,
+        u1_0.role,
+        u1_0.temp_password_expiration_time,
+        u1_0.temperature_sensitivity,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-11-24T00:55:54.448+09:00 DEBUG 41800 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.birth_date,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.linked_oauth_providers,
+        u1_0.location_id,
+        u1_0.locked,
+        u1_0.name,
+        u1_0.password,
+        u1_0.profile_image_url,
+        u1_0.role,
+        u1_0.temp_password_expiration_time,
+        u1_0.temperature_sensitivity,
+        u1_0.updated_at 
+    from
+        users u1_0
+2026-11-24T00:55:54.495+09:00 DEBUG 41800 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    delete 
+    from
+        users 
+    where
+        id=?
+2026-11-24T00:55:54.516+09:00 DEBUG 41800 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    delete 
+    from
+        users 
+    where
+        id=?
+2026-11-24T00:55:54.672+09:00  INFO 41800 --- [weatherwear] [127.0.0.1:11866] c.icegreen.greenmail.user.UserManager    : Created user login warm-up@mail.com for address warm-up@mail.com with password warm-up@mail.com because it didn't exist before.
+[warm-up] 메일 발송 소요: 158 ms
+2026-11-24T00:55:54.941+09:00 DEBUG 41800 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        users
+        (birth_date, created_at, email, gender, linked_oauth_providers, location_id, locked, name, password, profile_image_url, role, temp_password_expiration_time, temperature_sensitivity, updated_at, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-11-24T00:55:54.954+09:00 DEBUG 41800 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.birth_date,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.linked_oauth_providers,
+        u1_0.location_id,
+        u1_0.locked,
+        u1_0.name,
+        u1_0.password,
+        u1_0.profile_image_url,
+        u1_0.role,
+        u1_0.temp_password_expiration_time,
+        u1_0.temperature_sensitivity,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-11-24T00:55:55.128+09:00 DEBUG 41800 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    update
+        users 
+    set
+        birth_date=?,
+        email=?,
+        gender=?,
+        linked_oauth_providers=?,
+        location_id=?,
+        locked=?,
+        name=?,
+        password=?,
+        profile_image_url=?,
+        role=?,
+        temp_password_expiration_time=?,
+        temperature_sensitivity=?,
+        updated_at=? 
+    where
+        id=?
+2026-11-24T00:55:55.182+09:00  INFO 41800 --- [weatherwear] [127.0.0.1:11867] c.icegreen.greenmail.user.UserManager    : Created user login reset-target@mail.com for address reset-target@mail.com with password reset-target@mail.com because it didn't exist before.
+2026-11-24T00:55:55.283+09:00 DEBUG 41800 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.birth_date,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.linked_oauth_providers,
+        u1_0.location_id,
+        u1_0.locked,
+        u1_0.name,
+        u1_0.password,
+        u1_0.profile_image_url,
+        u1_0.role,
+        u1_0.temp_password_expiration_time,
+        u1_0.temperature_sensitivity,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-11-24T00:55:55.526+09:00 DEBUG 41800 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.birth_date,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.gender,
+        u1_0.linked_oauth_providers,
+        u1_0.location_id,
+        u1_0.locked,
+        u1_0.name,
+        u1_0.password,
+        u1_0.profile_image_url,
+        u1_0.role,
+        u1_0.temp_password_expiration_time,
+        u1_0.temperature_sensitivity,
+        u1_0.updated_at 
+    from
+        users u1_0
+2026-11-24T00:55:55.533+09:00 DEBUG 41800 --- [weatherwear] [    Test worker] org.hibernate.SQL                        : 
+    delete 
+    from
+        users 
+    where
+        id=?
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
