@@ -92,6 +92,10 @@ public class User {
   @Column(nullable = true)
   private Instant tempPasswordExpirationTime;
 
+  // 임시 비밀번호(해시). 기존 비밀번호(password)를 덮어쓰지 않고 따로 보관한다.
+  @Column(nullable = true)
+  private String tempPassword;
+
   @Builder
   private User(UUID id, String email, String name, String password,
       Role role, boolean locked, Gender gender, LocalDate birthDate,
@@ -145,7 +149,9 @@ public class User {
   public void updatePassword(String password) {
     if (password != null && !password.isBlank()) {
       this.password = password;
-      this.tempPasswordExpirationTime = null;   // 정식으로 비밀번호 변경된 경우 다시 null로 설정
+      // 정식으로 비밀번호가 변경되면 임시 비밀번호는 더 이상 쓸 수 없게 지운다
+      this.tempPassword = null;
+      this.tempPasswordExpirationTime = null;
     }
   }
 
@@ -155,9 +161,10 @@ public class User {
     }
   }
 
+  // 기존 비밀번호는 그대로 두고 임시 비밀번호만 발급한다 (둘 중 하나로 로그인 가능)
   public void setTempPassword(String password, Instant tempPasswordExpirationTime) {
     if (password != null && !password.isBlank()) {
-      this.password = password;
+      this.tempPassword = password;
       this.tempPasswordExpirationTime = tempPasswordExpirationTime;
     }
   }

@@ -1,6 +1,8 @@
 package com.codeit.weatherwear.domain.auth.controller;
 
 import static org.mockito.BDDMockito.given;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doNothing;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -75,7 +77,7 @@ class AuthControllerTest extends BaseControllerTest {
   void resetPassword() throws Exception {
     // given
     ResetPasswordRequest request = new ResetPasswordRequest("test@mail.com");
-    doNothing().when(authService).resetPassword(request);
+    doNothing().when(authService).resetPassword(eq(request), anyString());
 
     // when & then
     mockMvc.perform(post("/api/auth/reset-password")

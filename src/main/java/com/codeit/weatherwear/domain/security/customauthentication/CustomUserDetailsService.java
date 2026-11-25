@@ -32,7 +32,8 @@ public class CustomUserDetailsService implements UserDetailsService {
                 user.getPassword(),
                 user.getRole(),
                 user.isLocked(),
-                user.getTempPasswordExpirationTime()
+                user.getTempPasswordExpirationTime(),
+                user.getTempPassword()
             )
         )
         .orElseThrow(

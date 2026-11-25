@@ -23,6 +23,10 @@ public enum ErrorCode {
   USER_ALREADY_EXISTS(HttpStatus.BAD_REQUEST, "사용자 등록 실패", "사용자가 이미 존재합니다."),
   USER_NOT_FOUND(HttpStatus.NOT_FOUND, "사용자 확인 실패", "존재하지 않는 사용자입니다."),
 
+  // AUTH
+  PASSWORD_RESET_TOO_MANY_REQUESTS(HttpStatus.TOO_MANY_REQUESTS, "비밀번호 초기화 요청 횟수 초과",
+      "잠시 후 다시 시도해 주세요."),
+
   //FOLLOW
   SELF_FOLLOW_NOT_ALLOWED(HttpStatus.BAD_REQUEST, "자기 자신을 팔로우 할 수 없습니다.", ""),
   FOLLOW_DUPLICATED(HttpStatus.BAD_REQUEST, "이미 팔로우한 사용자입니다.", ""),

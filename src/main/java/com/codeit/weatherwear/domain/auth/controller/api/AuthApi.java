@@ -1,6 +1,8 @@
 package com.codeit.weatherwear.domain.auth.controller.api;
 
 import com.codeit.weatherwear.domain.auth.dto.ResetPasswordRequest;
+import io.swagger.v3.oas.annotations.Parameter;
+import jakarta.servlet.http.HttpServletRequest;
 import com.codeit.weatherwear.domain.security.dto.SignInRequest;
 import com.codeit.weatherwear.global.response.ErrorResponse;
 import io.swagger.v3.oas.annotations.Operation;
@@ -62,13 +64,19 @@ public interface AuthApi {
           description = "비밀번호 초기화 성공",
           content = @Content(schema = @Schema())),
       @ApiResponse(
+          responseCode = "429",
+          description = "요청 횟수 초과",
+          content = @Content(schema = @Schema(implementation = ErrorResponse.class))
+      ),
+      @ApiResponse(
           responseCode = "404",
           description = "비밀번호 초기화 실패",
           content = @Content(schema = @Schema(implementation = ErrorResponse.class))
       )
   })
   @PostMapping
-  ResponseEntity<Void> resetPassword(@Valid @RequestBody ResetPasswordRequest request);
+  ResponseEntity<Void> resetPassword(@Valid @RequestBody ResetPasswordRequest request,
+      @Parameter(hidden = true) HttpServletRequest httpRequest);
 
   @Operation(summary = "CSRF 토큰 조회", description = "CSRF 토큰을 조회합니다. 토큰은 쿠키(XSRF-TOKEN)에 저장됩니다.")
   @ApiResponses({

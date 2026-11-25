@@ -40,6 +40,7 @@ CREATE TABLE users
     linked_oauth_providers     jsonb           NULL,
     location_id                uuid            NULL,
     temp_password_expiration_time TIMESTAMP WITH TIME ZONE NULL, -- 0702 새로 추가
+    temp_password              varchar(255)    NULL, -- 임시 비밀번호(해시). 기존 비밀번호와 별도 저장
     PRIMARY KEY (id)
 );
 

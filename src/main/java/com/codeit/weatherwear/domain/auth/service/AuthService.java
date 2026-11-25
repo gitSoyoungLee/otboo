@@ -4,5 +4,5 @@ import com.codeit.weatherwear.domain.auth.dto.ResetPasswordRequest;
 
 public interface AuthService {
 
-  void resetPassword(ResetPasswordRequest resetPasswordRequest);
+  void resetPassword(ResetPasswordRequest resetPasswordRequest, String clientIp);
 }

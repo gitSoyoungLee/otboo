@@ -21,17 +21,25 @@ public class CustomUserDetails implements UserDetails, OAuth2User {
   private final Role role;
   private final boolean locked;
   private final Instant tempPasswordExpirationTime;
+  private final String tempPassword;
 
   private Map<String, Object> attributes;
 
   public CustomUserDetails(UUID userId, String email, String password, Role role,
       boolean locked, Instant tempPasswordExpirationTime) {
+    this(userId, email, password, role, locked, tempPasswordExpirationTime, null);
+  }
+
+  // 로그인(이메일+비밀번호) 시 사용: 임시 비밀번호 해시까지 담는다
+  public CustomUserDetails(UUID userId, String email, String password, Role role,
+      boolean locked, Instant tempPasswordExpirationTime, String tempPassword) {
     this.userID = userId;
     this.email = email;
     this.password = password;
     this.role = role;
     this.locked = locked;
     this.tempPasswordExpirationTime = tempPasswordExpirationTime;
+    this.tempPassword = tempPassword;
   }
 
   @Override
@@ -57,13 +65,24 @@ public class CustomUserDetails implements UserDetails, OAuth2User {
     return !locked;
   }
 
+  // 기존에는 임시 비밀번호가 만료되면 계정 전체 로그인을 막았다(기존 비밀번호가 덮어써졌기 때문).
+  // 이제 기존 비밀번호는 항상 유효하고, 임시 비밀번호 만료는 matchesTempPassword에서만 판단한다.
   @Override
   public boolean isCredentialsNonExpired() {
-    if (tempPasswordExpirationTime != null && tempPasswordExpirationTime.isBefore(Instant.now())) {
-      log.info("Sign In Failed: Expired tempPassword");
+    return true;
+  }
+
+  /** 유효기간 내의 임시 비밀번호와 일치하는지 확인한다. */
+  public boolean matchesTempPassword(String rawPassword,
+      org.springframework.security.crypto.password.PasswordEncoder passwordEncoder, Instant now) {
+    if (tempPassword == null || tempPasswordExpirationTime == null) {
       return false;
     }
-    return true;
+    if (!tempPasswordExpirationTime.isAfter(now)) {
+      log.info("Sign In with tempPassword rejected: expired. userId={}", userID);
+      return false;
+    }
+    return passwordEncoder.matches(rawPassword, tempPassword);
   }
 
   public UUID getUserId() {

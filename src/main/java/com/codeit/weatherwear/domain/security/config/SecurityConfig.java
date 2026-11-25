@@ -22,6 +22,7 @@ import org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import com.codeit.weatherwear.domain.security.customauthentication.TempPasswordAwareAuthenticationProvider;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -109,7 +110,8 @@ public class SecurityConfig {
   @Bean
   public AuthenticationManager authenticationManager(
       CustomUserDetailsService customUserDetailsService) {
-    DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+    // 기존 비밀번호 또는 유효한 임시 비밀번호로 로그인 허용
+    DaoAuthenticationProvider provider = new TempPasswordAwareAuthenticationProvider();
     provider.setUserDetailsService(customUserDetailsService);
     provider.setPasswordEncoder(passwordEncoder());
     return new ProviderManager(provider);

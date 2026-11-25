@@ -2,6 +2,7 @@ package com.codeit.weatherwear.domain.auth.controller;
 
 import com.codeit.weatherwear.domain.auth.controller.api.AuthApi;
 import com.codeit.weatherwear.domain.auth.dto.ResetPasswordRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import com.codeit.weatherwear.domain.auth.service.AuthService;
 import com.codeit.weatherwear.domain.security.dto.SignInRequest;
 import com.codeit.weatherwear.domain.security.dto.TokenRotationResult;
@@ -56,8 +57,10 @@ public class AuthController implements AuthApi {
 
   // 비밀번호 초기화
   @PostMapping("/reset-password")
-  public ResponseEntity<Void> resetPassword(@Valid @RequestBody ResetPasswordRequest request) {
-    authService.resetPassword(request);
+  public ResponseEntity<Void> resetPassword(@Valid @RequestBody ResetPasswordRequest request,
+      HttpServletRequest httpRequest) {
+    // nginx 뒤에서는 server.forward-headers-strategy=native 설정으로 X-Forwarded-For가 반영된다
+    authService.resetPassword(request, httpRequest.getRemoteAddr());
     return ResponseEntity.noContent().build();
   }
 

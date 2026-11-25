@@ -114,6 +114,13 @@ jwt:
 
 resetpassword:
   validity-seconds: 600 # 10분
+  rate-limit:            # 요청 횟수 제한 (윈도우 내 최대 요청 수)
+    email:
+      max-requests: 3
+      window-seconds: 600
+    ip:
+      max-requests: 20
+      window-seconds: 600
 
 sse:
   event-queue-capacity: ${SSE_EVENT_QUEUE_CAPACITY:1000}

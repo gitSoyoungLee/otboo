@@ -107,6 +107,9 @@ dependencies {
     testImplementation 'org.testcontainers:postgresql'
     testImplementation 'org.testcontainers:kafka'
 
+    // 테스트용 가짜 SMTP 서버 (실제 메일 발송 방지)
+    testImplementation 'com.icegreen:greenmail-junit5:2.1.2'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.boot:spring-boot-starter-webflux'
     testImplementation 'io.projectreactor:reactor-test'
